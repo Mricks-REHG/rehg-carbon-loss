@@ -1,0 +1,3039 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>CARBON | LOSS — REHG Carbon™ Loss Engine</title>
+  <meta name="description" content="REHG Carbon™ Loss Engine — Enterprise Physical & Financial Shrinkage Vault, Wagon Wheel Anomaly Matrix™, Blind Drops, Phantom Guest Anti-Theft & Micro-Packaging COGS." />
+  <meta name="theme-color" content="#050811" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="CARBON | LOSS" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <link rel="icon" type="image/jpeg" href="./carbon-loss-logo.jpg" />
+  <link rel="apple-touch-icon" href="./carbon-loss-logo.jpg" />
+  <link id="dynamic-manifest" rel="manifest" href="" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#050811',
+            gunmetal: '#0B101E',
+            slatepanel: '#111827',
+            titanium: '#2A3447',
+            crimson: '#EF4444',
+            crimsonDark: '#991B1B',
+            sovereign: '#D4AF37',
+            emeraldVault: '#10B981'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+            cinzel: ['Cinzel', 'serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    body {
+      background-color: #050811;
+      color: #E2E8F0;
+      font-family: 'Inter', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .titanium-wordmark {
+      background: linear-gradient(180deg, #FFFFFF 0%, #CBD5E1 52%, #94A3B8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .crimson-wordmark {
+      background: linear-gradient(180deg, #F87171 0%, #EF4444 55%, #991B1B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 24px rgba(239, 68, 68, 0.28);
+    }
+    .carbon-card {
+      background: linear-gradient(180deg, rgba(17, 24, 39, 0.92) 0%, rgba(11, 16, 30, 0.96) 100%);
+      border: 1px solid #2A3447;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+    }
+    .carbon-subcard {
+      background-color: #0B101E;
+      border: 1px solid #2A3447;
+    }
+    .carbon-input {
+      background-color: #050811;
+      border: 1px solid #2A3447;
+      color: #F8FAFC;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .carbon-input:focus {
+      outline: none;
+      border-color: #EF4444;
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+    }
+    .tab-btn-active {
+      background: linear-gradient(180deg, rgba(239, 68, 68, 0.22) 0%, rgba(153, 27, 27, 0.35) 100%);
+      border-color: #EF4444 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 20px rgba(239, 68, 68, 0.18);
+    }
+    .logo-blend {
+      background-color: #050811;
+      mix-blend-mode: lighten;
+    }
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050811;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2A3447;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #EF4444;
+    }
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #0F172A !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .carbon-card, .carbon-subcard {
+        background: #FFFFFF !important;
+        border: 1px solid #CBD5E1 !important;
+        box-shadow: none !important;
+        color: #0F172A !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-crimson selection:text-white">
+
+  <!-- TOAST NOTIFICATION STACK -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-[100] flex flex-col gap-2 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
+
+  <!-- ========================================================================= -->
+  <!-- ROLE-ISOLATED PIN GATE OVERLAY                                            -->
+  <!-- ========================================================================= -->
+  <div id="pin-gate-overlay" class="fixed inset-0 z-50 bg-obsidian flex flex-col items-center justify-center p-4 overflow-y-auto">
+    <div class="w-full max-w-md carbon-card rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+      <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-crimsonDark via-crimson to-sovereign"></div>
+
+      <!-- Brand Header -->
+      <div class="flex flex-col items-center text-center mb-6">
+        <div class="w-28 h-28 rounded-2xl bg-obsidian border border-titanium/80 flex items-center justify-center overflow-hidden mb-3 shadow-lg">
+          <img src="./carbon-loss-logo.jpg" alt="CARBON | LOSS" class="w-full h-full object-contain logo-blend" onerror="this.style.display='none'; document.getElementById('gate-fallback-hex').classList.remove('hidden');" />
+          <div id="gate-fallback-hex" class="hidden flex-col items-center justify-center">
+            <span class="font-cinzel text-[11px] tracking-[0.28em] text-sovereign font-bold">REHG</span>
+            <span class="text-crimson font-extrabold text-xl font-mono mt-0.5">HEX-06</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 text-2xl font-extrabold tracking-wider">
+          <span class="titanium-wordmark">CARBON</span>
+          <span class="text-slate-500 font-light">|</span>
+          <span class="crimson-wordmark">LOSS</span>
+        </div>
+        <p class="text-[11px] tracking-[0.26em] text-slate-400 uppercase mt-1 font-medium">Loss Prevention &amp; Shrinkage Vault</p>
+        <div class="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-obsidian border border-sovereign/40 text-[11px] text-sovereign font-semibold">
+          <span>ENTERPRISE CLOUD EXTENSION</span>
+          <span class="text-slate-600">•</span>
+          <span>v4.0 SOVEREIGN</span>
+        </div>
+      </div>
+
+      <!-- Active Venue Scope Input -->
+      <div class="mb-4">
+        <label class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1.5">Scoped Venue Identifier (<code class="text-crimson">venue_id</code>)</label>
+        <div class="flex gap-2">
+          <input id="gate-venue-id" type="text" value="ELEVEN11_ATL" class="carbon-input w-full rounded-lg px-3 py-2 text-sm font-mono uppercase" placeholder="e.g. ELEVEN11_ATL or DEFAULT_VENUE" />
+          <button onclick="openSettingsModal()" type="button" class="px-3 py-2 rounded-lg bg-gunmetal border border-titanium hover:border-sovereign text-slate-300 text-xs font-semibold whitespace-nowrap transition">
+            ⚙️ DB Vault
+          </button>
+        </div>
+      </div>
+
+      <!-- PIN Display Dots -->
+      <div class="mb-4">
+        <div class="flex items-center justify-between text-[11px] text-slate-400 uppercase tracking-wider mb-1.5 font-semibold">
+          <span>4-Digit Governance PIN</span>
+          <span id="pin-error-msg" class="text-crimson font-mono hidden">INVALID PIN</span>
+        </div>
+        <div id="pin-dots" class="grid grid-cols-4 gap-3 bg-obsidian border border-titanium rounded-xl p-3.5">
+          <div class="h-3.5 rounded-full bg-titanium/50 transition-all"></div>
+          <div class="h-3.5 rounded-full bg-titanium/50 transition-all"></div>
+          <div class="h-3.5 rounded-full bg-titanium/50 transition-all"></div>
+          <div class="h-3.5 rounded-full bg-titanium/50 transition-all"></div>
+        </div>
+      </div>
+
+      <!-- Numeric Keypad -->
+      <div class="grid grid-cols-3 gap-2.5 mb-5">
+        <button type="button" onclick="pressPinDigit('1')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">1</button>
+        <button type="button" onclick="pressPinDigit('2')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">2</button>
+        <button type="button" onclick="pressPinDigit('3')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">3</button>
+        <button type="button" onclick="pressPinDigit('4')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">4</button>
+        <button type="button" onclick="pressPinDigit('5')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">5</button>
+        <button type="button" onclick="pressPinDigit('6')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">6</button>
+        <button type="button" onclick="pressPinDigit('7')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">7</button>
+        <button type="button" onclick="pressPinDigit('8')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">8</button>
+        <button type="button" onclick="pressPinDigit('9')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">9</button>
+        <button type="button" onclick="clearPinDigits()" class="py-3.5 rounded-xl bg-obsidian hover:bg-crimsonDark/40 border border-titanium text-xs font-mono font-bold text-slate-400 hover:text-white uppercase transition">CLR</button>
+        <button type="button" onclick="pressPinDigit('0')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">0</button>
+        <button type="button" onclick="submitPinGate()" class="py-3.5 rounded-xl bg-crimson hover:bg-red-500 border border-crimson text-xs font-mono font-bold text-white uppercase transition shadow-lg shadow-crimson/20">UNLOCK</button>
+      </div>
+
+      <!-- Role Reference Legend -->
+      <div class="rounded-xl bg-obsidian/90 border border-titanium/70 p-3 text-[11px] text-slate-400 space-y-1.5">
+        <div class="flex items-center justify-between">
+          <span class="text-sovereign font-semibold">🏛️ Sovereign Owner / Exec</span>
+          <span class="font-mono text-slate-300">PIN <b class="text-white">9999</b> or Override <b class="text-sovereign">2424</b></span>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-crimson font-semibold">🔒 Night Ops MOD (Blind Slot)</span>
+          <span class="font-mono text-slate-300">PIN <b class="text-white">7777</b> (Zero POS Leakage View)</span>
+        </div>
+      </div>
+
+      <div class="mt-4 flex items-center justify-between gap-2">
+        <button id="gate-pwa-install-btn" type="button" onclick="triggerPwaInstall()" class="w-full py-2.5 px-3 rounded-lg bg-gunmetal hover:bg-slatepanel border border-sovereign/50 text-sovereign text-xs font-semibold flex items-center justify-center gap-2 transition">
+          <span>📲 Install App to Phone Home Screen</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- TOP ENTERPRISE COMMAND HEADER                                             -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-40 bg-obsidian/95 backdrop-blur-md border-b border-titanium no-print">
+    <div class="max-w-[1600px] mx-auto px-3 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <!-- Left: Master Brand Mark -->
+      <div class="flex items-center gap-3.5">
+        <div class="w-12 h-12 rounded-xl bg-obsidian border border-titanium flex items-center justify-center overflow-hidden shrink-0">
+          <img src="./carbon-loss-logo.jpg" alt="CARBON | LOSS" class="w-full h-full object-contain logo-blend" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" />
+          <span class="hidden font-mono text-xs font-extrabold text-crimson">C|L</span>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-lg sm:text-xl font-extrabold tracking-wider titanium-wordmark">CARBON</span>
+            <span class="text-slate-600 font-light text-lg">|</span>
+            <span class="text-lg sm:text-xl font-extrabold tracking-wider crimson-wordmark">LOSS</span>
+            <span id="role-badge" class="ml-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-sovereign/15 text-sovereign border border-sovereign/40">
+              SOVEREIGN OWNER
+            </span>
+          </div>
+          <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-400">
+            <span class="uppercase tracking-[0.18em] font-medium">Loss Prevention Engine</span>
+            <span class="text-slate-600">•</span>
+            <span class="font-mono text-slate-300">Venue: <strong id="header-venue-label" class="text-white">ELEVEN11_ATL</strong></span>
+            <span class="text-slate-600">•</span>
+            <span id="supabase-conn-pill" class="inline-flex items-center gap-1.5 font-mono text-[10px] text-emeraldVault">
+              <span class="w-2 h-2 rounded-full bg-emeraldVault animate-pulse"></span>
+              rehg-pos-core LIVE
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center: Dual-Mode Ingestion Switch + Shift Date -->
+      <div class="flex flex-wrap items-center gap-2">
+        <div class="inline-flex rounded-xl bg-gunmetal p-1 border border-titanium">
+          <button id="mode-btn-live" type="button" onclick="setIngestionMode('CARBON_POS_LIVE')" class="px-3 py-1.5 rounded-lg text-[11px] font-bold tracking-wide transition bg-crimson text-white shadow">
+            ⚡ CARBON POS LIVE AUTOPILOT
+          </button>
+          <button id="mode-btn-csv" type="button" onclick="setIngestionMode('EXTERNAL_CSV')" class="px-3 py-1.5 rounded-lg text-[11px] font-bold tracking-wide transition text-slate-400 hover:text-white">
+            📂 STANDALONE / CSV BRIDGE
+          </button>
+        </div>
+
+        <input id="active-shift-date" type="date" onchange="refreshAllData()" class="carbon-input rounded-xl px-3 py-1.5 text-xs font-mono" />
+      </div>
+
+      <!-- Right: Demo Seed, Install PWA, Settings, Lock -->
+      <div class="flex flex-wrap items-center gap-2">
+        <button id="demo-seed-btn" type="button" onclick="toggleDemoTelemetry()" class="px-3 py-1.5 rounded-xl bg-gunmetal hover:bg-slatepanel border border-sovereign/50 text-sovereign text-xs font-semibold transition">
+          🧪 Seed Forensic Demo
+        </button>
+        <button id="live-reset-btn" type="button" onclick="resetToCleanLive()" class="hidden px-3 py-1.5 rounded-xl bg-emeraldVault/15 hover:bg-emeraldVault/25 border border-emeraldVault/50 text-emeraldVault text-xs font-semibold transition">
+          🔄 Clean Live Reset
+        </button>
+        <button id="header-pwa-btn" type="button" onclick="triggerPwaInstall()" class="px-3 py-1.5 rounded-xl bg-gunmetal hover:bg-slatepanel border border-titanium hover:border-sovereign text-slate-200 text-xs font-semibold transition">
+          📲 Install App
+        </button>
+        <button type="button" onclick="openSettingsModal()" class="px-3 py-1.5 rounded-xl bg-gunmetal hover:bg-slatepanel border border-titanium text-slate-300 text-xs font-semibold transition" title="Supabase & Provisioning Vault">
+          ⚙️ Vault Config
+        </button>
+        <button type="button" onclick="lockSession()" class="px-3 py-1.5 rounded-xl bg-crimsonDark/50 hover:bg-crimson border border-crimson text-white text-xs font-bold transition">
+          🔒 Lock Out
+        </button>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- SOVEREIGN 5-TAB NAVIGATION BAR (HIDDEN IN MOD ONE-WAY BLIND SLOT MODE)  -->
+    <!-- ======================================================================= -->
+    <nav id="owner-tab-bar" class="max-w-[1600px] mx-auto px-3 sm:px-6 pb-2.5 pt-1 overflow-x-auto">
+      <div class="flex items-center gap-2 min-w-max">
+        <button type="button" data-tab="tab-41" onclick="switchOwnerTab('tab-41')" class="owner-tab-btn tab-btn-active px-3.5 py-2 rounded-xl border border-titanium bg-gunmetal text-xs font-bold tracking-wide text-slate-300 hover:text-white transition flex items-center gap-2">
+          <span class="font-mono text-[11px] text-crimson font-extrabold">4.1</span>
+          <span>Wagon Wheel &amp; POS Overrides</span>
+        </button>
+        <button type="button" data-tab="tab-42" onclick="switchOwnerTab('tab-42')" class="owner-tab-btn px-3.5 py-2 rounded-xl border border-titanium bg-gunmetal text-xs font-bold tracking-wide text-slate-300 hover:text-white transition flex items-center gap-2">
+          <span class="font-mono text-[11px] text-crimson font-extrabold">4.2</span>
+          <span>Blind Drops, Door Bands &amp; VIP Cage</span>
+        </button>
+        <button type="button" data-tab="tab-43" onclick="switchOwnerTab('tab-43')" class="owner-tab-btn px-3.5 py-2 rounded-xl border border-titanium bg-gunmetal text-xs font-bold tracking-wide text-slate-300 hover:text-white transition flex items-center gap-2">
+          <span class="font-mono text-[11px] text-crimson font-extrabold">4.3</span>
+          <span>Security, Tuesday DVR Queue &amp; Vault Seal</span>
+        </button>
+        <button type="button" data-tab="tab-44" onclick="switchOwnerTab('tab-44')" class="owner-tab-btn px-3.5 py-2 rounded-xl border border-titanium bg-gunmetal text-xs font-bold tracking-wide text-slate-300 hover:text-white transition flex items-center gap-2">
+          <span class="font-mono text-[11px] text-crimson font-extrabold">4.4</span>
+          <span>Model A vs. B "Phantom Guest" Engine</span>
+        </button>
+        <button type="button" data-tab="tab-45" onclick="switchOwnerTab('tab-45')" class="owner-tab-btn px-3.5 py-2 rounded-xl border border-titanium bg-gunmetal text-xs font-bold tracking-wide text-slate-300 hover:text-white transition flex items-center gap-2">
+          <span class="font-mono text-[11px] text-crimson font-extrabold">4.5</span>
+          <span>Extended Inventory &amp; Micro-Packaging Vault</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN WORKSPACE CONTAINER                                                  -->
+  <!-- ========================================================================= -->
+  <main class="flex-1 max-w-[1600px] w-full mx-auto px-3 sm:px-6 py-5 space-y-6">
+
+    <!-- STANDALONE CSV BRIDGE BANNER (SHOWN WHEN EXTERNAL_CSV ACTIVE FOR OWNER) -->
+    <section id="csv-bridge-banner" class="hidden carbon-card rounded-2xl p-4 border-l-4 border-l-sovereign no-print">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded bg-sovereign/20 text-sovereign font-mono text-[10px] font-bold uppercase">BRIDGE MODE ACTIVE (EXTERNAL_CSV)</span>
+            <h2 class="text-sm font-bold text-white">Toast / Square / Aloha / Micros Exception &amp; Z-Tape Bridge</h2>
+          </div>
+          <p class="text-xs text-slate-400 mt-1">Upload competitor POS sales/void CSV exports to cross-examine against Night MOD One-Way Blind Drops stored in <code class="text-slate-200">rehg-pos-core</code>.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <label class="cursor-pointer px-3.5 py-2 rounded-xl bg-crimson hover:bg-red-500 text-white text-xs font-bold transition">
+            📤 Upload POS Sales/Void CSV
+            <input type="file" accept=".csv,.txt" class="hidden" onchange="handleExternalPosCsvUpload(event)" />
+          </label>
+          <button type="button" onclick="downloadSampleBridgeCsv()" class="px-3 py-2 rounded-xl bg-gunmetal hover:bg-slatepanel border border-titanium text-slate-300 text-xs font-semibold transition">
+            ⬇️ Sample Toast/Square CSV Template
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================= -->
+    <!-- NIGHT MOD ONE-WAY BLIND DROP-SLOT WORKSPACE (ROLE = MOD ONLY)           -->
+    <!-- ZERO EXPECTED CASH, ZERO WAGON WHEEL SCORES, ZERO PHANTOM GUEST FLAGS   -->
+    <!-- ======================================================================= -->
+    <div id="mod-blind-workspace" class="hidden space-y-6">
+      <div class="carbon-card rounded-2xl p-5 border-l-4 border-l-crimson">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div>
+            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-crimson/20 border border-crimson/50 text-crimson text-[11px] font-bold uppercase">
+              🔒 One-Way Blind Drop-Slot Governance Active
+            </div>
+            <h1 class="text-lg sm:text-xl font-extrabold text-white mt-1.5">Night Manager Closing Vault Submission</h1>
+            <p class="text-xs text-slate-400 mt-0.5">Submit counted drawer cash, 11:30 PM safe skims, wristband serials, VIP bottle cage returns, physical shelf counts, and floor incidents. Expected POS totals &amp; forensic variance scores are hardware-isolated to Sovereign Ownership.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span id="mod-submission-counter" class="px-3 py-1.5 rounded-xl bg-obsidian border border-titanium font-mono text-xs text-emeraldVault">0 Packets Logged Tonight</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- MOD Card 1: Blind Drawer Drop -->
+        <div class="carbon-card rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-titanium pb-3">
+            <div>
+              <h3 class="text-sm font-bold text-white uppercase tracking-wider">1. Dual-Custody Blind Cash Drop</h3>
+              <p class="text-[11px] text-slate-400">Fixed Starting Banks: $300.00 Bar / $200.00 Door • Mandatory 11:30 PM $500 Skim</p>
+            </div>
+            <span class="font-mono text-xs text-sovereign">BLIND ENTRY</span>
+          </div>
+          <form onsubmit="submitBlindDrop(event, 'MOD')" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Station / Well Name</label>
+              <input name="station_name" required placeholder="Main Bar Well #1" class="carbon-input w-full rounded-lg px-3 py-2" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Drawer Classification</label>
+              <select name="drawer_type" onchange="autoBankByDrawerType(this)" class="carbon-input w-full rounded-lg px-3 py-2">
+                <option value="BAR">BAR WELL ($300 Bank)</option>
+                <option value="DOOR">FRONT DOOR ($200 Bank)</option>
+                <option value="VIP">VIP CAGE ($300 Bank)</option>
+                <option value="PATIO">PATIO BAR ($300 Bank)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Starting Bank ($)</label>
+              <input name="starting_bank" type="number" step="0.01" value="300.00" required class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">11:30 PM Safe Skim ($)</label>
+              <input name="skim_1130_amount" type="number" step="0.01" value="0.00" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Total Counted Drawer Cash ($)</label>
+              <input name="blind_drawer_cash" type="number" step="0.01" required placeholder="0.00" class="carbon-input w-full rounded-lg px-3 py-2 font-mono text-white font-bold" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Safe Drop Envelope Serial #</label>
+              <input name="safe_drop_envelope_id" required placeholder="ENV-88412" class="carbon-input w-full rounded-lg px-3 py-2 font-mono uppercase" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Bartender / Cashier Custodian</label>
+              <input name="staff_custodian" required placeholder="Full Name" class="carbon-input w-full rounded-lg px-3 py-2" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Witnessing Night MOD</label>
+              <input name="mod_witness" required placeholder="MOD Initials / Name" class="carbon-input w-full rounded-lg px-3 py-2" />
+            </div>
+            <div class="sm:col-span-2">
+              <button type="submit" class="w-full py-2.5 rounded-xl bg-crimson hover:bg-red-500 text-white font-bold uppercase tracking-wider transition">
+                📥 Drop Blind Cash Envelope into Vault
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- MOD Card 2: Door Wristband & Clicker Submission -->
+        <div class="carbon-card rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-titanium pb-3">
+            <div>
+              <h3 class="text-sm font-bold text-white uppercase tracking-wider">2. Front Door Wristband &amp; Clicker Log</h3>
+              <p class="text-[11px] text-slate-400">6-Bucket Cover Tiers • Stapled Spoiled Bands Required</p>
+            </div>
+            <span class="font-mono text-xs text-sovereign">3-WAY DOOR</span>
+          </div>
+          <form onsubmit="submitDoorRecon(event, 'MOD')" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div class="sm:col-span-2">
+              <label class="block text-slate-400 mb-1 font-semibold">Cover Bucket Tier</label>
+              <select name="tier_bucket" class="carbon-input w-full rounded-lg px-3 py-2">
+                <option value="BUCKET_1_EARLY_GA">Bucket 1 — Early GA (10PM–11PM)</option>
+                <option value="BUCKET_2_PEAK_GA">Bucket 2 — Peak GA (11PM–1AM)</option>
+                <option value="BUCKET_3_LATE_SURGE">Bucket 3 — Late Surge (After 1AM)</option>
+                <option value="BUCKET_4_VIP_SKIP">Bucket 4 — VIP Skip-the-Line Band</option>
+                <option value="BUCKET_5_PROMOTER_COMP">Bucket 5 — Promoter Guestlist ($0)</option>
+                <option value="BUCKET_6_SPECIAL_EVENT">Bucket 6 — Special Event / Concert</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Cover Price ($)</label>
+              <input name="tier_cover_price" type="number" step="0.01" value="20.00" required class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Start Serial #</label>
+              <input name="starting_serial" type="number" required placeholder="40100" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Ending Serial #</label>
+              <input name="ending_serial" type="number" required placeholder="40285" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Stapled Spoiled</label>
+              <input name="stapled_spoiled_bands" type="number" value="0" required class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Security Clicker #</label>
+              <input name="clicker_headcount" type="number" required placeholder="184" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Door Cash ($)</label>
+              <input name="door_cash_collected" type="number" step="0.01" required placeholder="2100.00" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Door CC Batch ($)</label>
+              <input name="door_cc_batch_total" type="number" step="0.01" required placeholder="1600.00" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Door Cashier</label>
+              <input name="door_cashier" required placeholder="Cashier Name" class="carbon-input w-full rounded-lg px-3 py-2" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Security Clicker Lead</label>
+              <input name="security_clicker_lead" required placeholder="Head Bouncer" class="carbon-input w-full rounded-lg px-3 py-2" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Verifying MOD</label>
+              <input name="mod_verifier" required placeholder="MOD Name" class="carbon-input w-full rounded-lg px-3 py-2" />
+            </div>
+            <div class="sm:col-span-3">
+              <button type="submit" class="w-full py-2.5 rounded-xl bg-crimson hover:bg-red-500 text-white font-bold uppercase tracking-wider transition">
+                🎟️ Submit Blind Wristband &amp; Clicker Count
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- MOD Card 3: VIP Foil Sticker & Dead Soldier Bottle Log -->
+        <div class="carbon-card rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-titanium pb-3">
+            <div>
+              <h3 class="text-sm font-bold text-white uppercase tracking-wider">3. VIP Foil-Sticker &amp; "Dead Soldier" Cage Swap</h3>
+              <p class="text-[11px] text-slate-400">Sequential Destructible Cap Stickers vs. Returned Empty Bottles</p>
+            </div>
+            <span class="font-mono text-xs text-sovereign">LIQUOR CAGE</span>
+          </div>
+          <form onsubmit="submitVipBottleSwap(event, 'MOD')" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Foil Sticker Serial #</label>
+              <input name="foil_sticker_serial" required placeholder="VIP-FOIL-0901" class="carbon-input w-full rounded-lg px-3 py-2 font-mono uppercase" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Bottle SKU Issued</label>
+              <input name="bottle_sku_name" required placeholder="Don Julio 1942 (750ml)" class="carbon-input w-full rounded-lg px-3 py-2" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">VIP Booth / Section</label>
+              <input name="vip_booth_section" required placeholder="VIP Booth #4" class="carbon-input w-full rounded-lg px-3 py-2" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">VIP Bottle Server</label>
+              <input name="vip_server_name" required placeholder="Server Name" class="carbon-input w-full rounded-lg px-3 py-2" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">POS Check #</label>
+              <input name="pos_check_number" placeholder="CHK-4092" class="carbon-input w-full rounded-lg px-3 py-2 font-mono uppercase" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Cage Issuer MOD</label>
+              <input name="cage_issuer_mod" required placeholder="MOD Name" class="carbon-input w-full rounded-lg px-3 py-2" />
+            </div>
+            <div class="sm:col-span-2 flex items-center gap-2.5 bg-obsidian p-2.5 rounded-lg border border-titanium">
+              <input id="mod-dead-soldier" name="dead_soldier_returned" type="checkbox" class="w-4 h-4 accent-emeraldVault" />
+              <label for="mod-dead-soldier" class="text-slate-200 font-medium">Empty "Dead Soldier" Bottle Physically Returned &amp; Verified at Cage</label>
+            </div>
+            <div class="sm:col-span-2">
+              <button type="submit" class="w-full py-2.5 rounded-xl bg-crimson hover:bg-red-500 text-white font-bold uppercase tracking-wider transition">
+                🍾 Log VIP Foil Bottle Release / Return
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- MOD Card 4: Weekly Shelf Count + Security Incident & Seal -->
+        <div class="carbon-card rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-titanium pb-3">
+            <div>
+              <h3 class="text-sm font-bold text-white uppercase tracking-wider">4. Floor Security Incident &amp; Shift Vault Seal</h3>
+              <p class="text-[11px] text-slate-400">Bookmark 4K DVR Camera Channels &amp; Execute One-Way Sovereign Seal</p>
+            </div>
+            <span class="font-mono text-xs text-emeraldVault">FINAL LOCKDOWN</span>
+          </div>
+          <form onsubmit="submitSecurityIncident(event, 'MOD')" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Zone / Camera Channel</label>
+              <input name="dvr_camera_channel" required placeholder="CAM-04 Main Service Well" class="carbon-input w-full rounded-lg px-3 py-2" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Incident Category</label>
+              <select name="incident_category" class="carbon-input w-full rounded-lg px-3 py-2">
+                <option value="FLOOR_EJECTION">Patron Floor Ejection</option>
+                <option value="ID_CONFISCATION">Fake ID Confiscation</option>
+                <option value="VIP_DISPUTE">VIP Chargeback / Check Dispute</option>
+                <option value="NO_SALE_DRAWER_POP">Unexplained Drawer Open</option>
+                <option value="BACK_DOOR_BREACH">BOH Exit Prop / Alarm</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">DVR Timestamp Window</label>
+              <input name="dvr_timestamp_window" required placeholder="01:42 AM - 01:49 AM" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">MOD On Duty</label>
+              <input name="mod_on_duty" required placeholder="MOD Name" class="carbon-input w-full rounded-lg px-3 py-2" />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block text-slate-400 mb-1 font-semibold">Factual Incident Narrative</label>
+              <textarea name="narrative" rows="2" required placeholder="Concise factual log for Tuesday 10AM DVR review..." class="carbon-input w-full rounded-lg px-3 py-2"></textarea>
+            </div>
+            <div class="sm:col-span-2 flex flex-col sm:flex-row gap-2.5">
+              <button type="submit" class="flex-1 py-2.5 rounded-xl bg-gunmetal hover:bg-slatepanel border border-titanium text-white font-bold uppercase tracking-wider transition">
+                📹 Log DVR Incident
+              </button>
+              <button type="button" onclick="sealShiftToSovereignVault('MOD')" class="flex-1 py-2.5 rounded-xl bg-emeraldVault hover:bg-emerald-400 text-obsidian font-extrabold uppercase tracking-wider transition shadow-lg shadow-emeraldVault/20">
+                ✓ SEAL SHIFT TO SOVEREIGN VAULT
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- MOD Blind Shelf Count Quick Entry -->
+      <div class="carbon-card rounded-2xl p-5 space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-titanium pb-3">
+          <div>
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider">5. Blind Weekly Physical Packaging Shelf Count</h3>
+            <p class="text-[11px] text-slate-400">Enter actual physical BOH shelf counts. Theoretical POS depletion &amp; variance math remain sealed to Ownership.</p>
+          </div>
+          <button type="button" onclick="saveModBlindShelfCounts()" class="px-4 py-2 rounded-xl bg-crimson hover:bg-red-500 text-white text-xs font-bold uppercase tracking-wider transition">
+            📦 Submit Blind Physical Shelf Counts
+          </button>
+        </div>
+        <div id="mod-shelf-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs"></div>
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- SOVEREIGN OWNER / EXECUTIVE 5-TAB FORENSIC SUITE                        -->
+    <!-- ======================================================================= -->
+    <div id="owner-forensic-workspace" class="space-y-6">
+
+      <!-- TOP EXECUTIVE KPI PULSE STRIP -->
+      <section class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
+        <div class="carbon-card rounded-2xl p-4">
+          <p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Wagon Wheel Criticals</p>
+          <div class="flex items-baseline justify-between mt-1.5">
+            <span id="kpi-wagon-flags" class="text-2xl font-extrabold font-mono text-crimson">0</span>
+            <span class="text-[11px] font-mono text-slate-400">Xfer &ge;4 / Voids</span>
+          </div>
+        </div>
+        <div class="carbon-card rounded-2xl p-4">
+          <p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Comp / Void Exposure</p>
+          <div class="flex items-baseline justify-between mt-1.5">
+            <span id="kpi-override-dollars" class="text-2xl font-extrabold font-mono text-white">$0.00</span>
+            <span id="kpi-tripwire-pill" class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emeraldVault/15 text-emeraldVault">PASS</span>
+          </div>
+        </div>
+        <div class="carbon-card rounded-2xl p-4">
+          <p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Net Cash &amp; Door Var</p>
+          <div class="flex items-baseline justify-between mt-1.5">
+            <span id="kpi-cash-door-var" class="text-2xl font-extrabold font-mono text-white">$0.00</span>
+            <span class="text-[11px] font-mono text-slate-400">&plusmn;$2 / &plusmn;3 Cap</span>
+          </div>
+        </div>
+        <div class="carbon-card rounded-2xl p-4">
+          <p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Phantom Guest Leakage</p>
+          <div class="flex items-baseline justify-between mt-1.5">
+            <span id="kpi-phantom-exposure" class="text-2xl font-extrabold font-mono text-crimson">$0.00</span>
+            <span id="kpi-phantom-guests" class="text-[11px] font-mono text-crimson">+0 Unrung</span>
+          </div>
+        </div>
+        <div class="carbon-card rounded-2xl p-4">
+          <p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Packaging COGS %</p>
+          <div class="flex items-baseline justify-between mt-1.5">
+            <span id="kpi-pkg-cogs-pct" class="text-2xl font-extrabold font-mono text-sovereign">0.00%</span>
+            <span class="text-[11px] font-mono text-slate-400">Target &lt;1.5%</span>
+          </div>
+        </div>
+        <div class="carbon-card rounded-2xl p-4">
+          <p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Shift Vault Status</p>
+          <div class="flex items-center justify-between mt-2">
+            <span id="kpi-vault-seal-badge" class="px-2.5 py-1 rounded-lg font-mono text-xs font-bold bg-titanium/60 text-slate-300">
+              UNSEALED SHIFT
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- TAB 4.1 — POS OVERRIDE & "WAGON WHEEL" ANOMALY MATRIX™                -->
+      <!-- ===================================================================== -->
+      <section id="tab-41" class="owner-tab-panel space-y-6">
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <!-- Left 2 Cols: Staff Wagon Wheel Risk Ranking Table -->
+          <div class="xl:col-span-2 carbon-card rounded-2xl p-5 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-titanium pb-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded bg-crimson/20 text-crimson font-mono text-[10px] font-bold">PROPRIETARY FORENSIC ENGINE</span>
+                  <h2 class="text-base font-extrabold text-white">Tab 4.1 — "Wagon Wheel" Floating-Item &amp; Override Risk Matrix™</h2>
+                </div>
+                <p class="text-xs text-slate-400 mt-0.5">Flags Check Transfers (&ge;4), Post-Print Cash Voids, 1:30–3:30 AM Closing Void Clusters, and &gt;12% Soda/Water-to-Liquor Ratios.</p>
+              </div>
+              <div class="flex items-center gap-2 text-[11px] font-mono">
+                <span class="px-2.5 py-1 rounded-lg bg-obsidian border border-titanium text-slate-300">Single Limit $X: <b id="label-single-limit" class="text-sovereign">$50</b></span>
+                <span class="px-2.5 py-1 rounded-lg bg-obsidian border border-titanium text-slate-300">Shift Ceiling $Y: <b id="label-shift-ceiling" class="text-sovereign">$250</b></span>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b border-titanium text-[10px] uppercase tracking-wider text-slate-400">
+                    <th class="py-2.5 px-3">Bartender / Server</th>
+                    <th class="py-2.5 px-3 text-right">Checks</th>
+                    <th class="py-2.5 px-3 text-right">Xfers (&ge;4)</th>
+                    <th class="py-2.5 px-3 text-right">Post-Print Voids</th>
+                    <th class="py-2.5 px-3 text-right">1:30–3:30a Voids</th>
+                    <th class="py-2.5 px-3 text-right">Soda:Liquor %</th>
+                    <th class="py-2.5 px-3 text-right">Override $</th>
+                    <th class="py-2.5 px-3 text-right">Risk Score</th>
+                  </tr>
+                </thead>
+                <tbody id="wagon-wheel-tbody" class="divide-y divide-titanium/50 font-mono"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Right Col: Manager Approver x Bartender Collusion Heatmap -->
+          <div class="carbon-card rounded-2xl p-5 space-y-4">
+            <div class="border-b border-titanium pb-3">
+              <h3 class="text-sm font-extrabold text-white uppercase tracking-wider">Manager &times; Staff Collusion Matrix</h3>
+              <p class="text-xs text-slate-400 mt-0.5">Pinpoints concentrated PIN override pairing between specific floor managers and bartenders.</p>
+            </div>
+            <div id="collusion-matrix-container" class="space-y-2.5 text-xs"></div>
+          </div>
+        </div>
+
+        <!-- Live $X / $Y Comp-Void-Transfer Tripwire Breach Feed -->
+        <div class="carbon-card rounded-2xl p-5 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-titanium pb-3">
+            <div>
+              <h3 class="text-sm font-extrabold text-white uppercase tracking-wider">Live Comp / Void / Transfer Tripwire Stream (<code class="text-crimson">governance_audits</code>)</h3>
+              <p class="text-xs text-slate-400">Real-time ingestion of <code class="text-slate-300">COMP_DISC</code>, <code class="text-slate-300">VOID_TICKET</code>, <code class="text-slate-300">TRANSFER_CHECK</code>, and <code class="text-slate-300">NO_SALE</code> events.</p>
+            </div>
+            <span id="tripwire-breach-count" class="px-3 py-1 rounded-full bg-crimson/20 border border-crimson/40 text-crimson font-mono text-xs font-bold">0 Tripwire Breaches</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="border-b border-titanium text-[10px] uppercase tracking-wider text-slate-400">
+                  <th class="py-2.5 px-3">Timestamp</th>
+                  <th class="py-2.5 px-3">Event Type</th>
+                  <th class="py-2.5 px-3">Check #</th>
+                  <th class="py-2.5 px-3">Staff Requester</th>
+                  <th class="py-2.5 px-3">Manager Approver</th>
+                  <th class="py-2.5 px-3 text-right">Amount ($)</th>
+                  <th class="py-2.5 px-3">Forensic Trigger</th>
+                </tr>
+              </thead>
+              <tbody id="governance-feed-tbody" class="divide-y divide-titanium/50 font-mono"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- TAB 4.2 — BLIND CASH DROPS, DOOR WRISTBANDS & VIP BOTTLE CAGE         -->
+      <!-- ===================================================================== -->
+      <section id="tab-42" class="owner-tab-panel hidden space-y-6">
+        <!-- 4.2A: Dual-Custody Blind Cash Drops -->
+        <div class="carbon-card rounded-2xl p-5 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-titanium pb-3">
+            <div>
+              <h2 class="text-base font-extrabold text-white">4.2A — Dual-Custody Blind Drawer &amp; 11:30 PM Safe Skim Ledger</h2>
+              <p class="text-xs text-slate-400">Enforces $300 Bar / $200 Door banks, mandatory 11:30 PM $500 safe skims, &plusmn;$2.00 variance cap, and Exact-$0.00 pre-count clustering flags.</p>
+            </div>
+            <button type="button" onclick="toggleQuickForm('owner-drop-form')" class="px-3.5 py-2 rounded-xl bg-crimson hover:bg-red-500 text-white text-xs font-bold transition">
+              + Log / Reconcile Blind Drop
+            </button>
+          </div>
+
+          <!-- Collapsible Owner Drop & POS Expected Cash Form -->
+          <form id="owner-drop-form" onsubmit="submitBlindDrop(event, 'OWNER')" class="hidden carbon-subcard rounded-xl p-4 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 text-xs">
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Station / Well</label>
+              <input name="station_name" required placeholder="Main Bar Well #1" class="carbon-input w-full rounded-lg px-2.5 py-2" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Drawer Type</label>
+              <select name="drawer_type" onchange="autoBankByDrawerType(this)" class="carbon-input w-full rounded-lg px-2.5 py-2">
+                <option value="BAR">BAR ($300)</option>
+                <option value="DOOR">DOOR ($200)</option>
+                <option value="VIP">VIP ($300)</option>
+                <option value="PATIO">PATIO ($300)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Start Bank ($)</label>
+              <input name="starting_bank" type="number" step="0.01" value="300.00" required class="carbon-input w-full rounded-lg px-2.5 py-2 font-mono" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">11:30 PM Skim ($)</label>
+              <input name="skim_1130_amount" type="number" step="0.01" value="500.00" class="carbon-input w-full rounded-lg px-2.5 py-2 font-mono" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Blind Counted Cash ($)</label>
+              <input name="blind_drawer_cash" type="number" step="0.01" required placeholder="1420.00" class="carbon-input w-full rounded-lg px-2.5 py-2 font-mono" />
+            </div>
+            <div>
+              <label class="block text-sovereign mb-1 font-semibold">POS Expected Cash ($)</label>
+              <input name="pos_expected_cash" type="number" step="0.01" placeholder="1620.00" class="carbon-input w-full rounded-lg px-2.5 py-2 font-mono border-sovereign/50" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Envelope Serial #</label>
+              <input name="safe_drop_envelope_id" required placeholder="ENV-9012" class="carbon-input w-full rounded-lg px-2.5 py-2 font-mono uppercase" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">Staff Custodian</label>
+              <input name="staff_custodian" required placeholder="Bartender Name" class="carbon-input w-full rounded-lg px-2.5 py-2" />
+            </div>
+            <div>
+              <label class="block text-slate-400 mb-1 font-semibold">MOD Witness</label>
+              <input name="mod_witness" required placeholder="MOD Name" class="carbon-input w-full rounded-lg px-2.5 py-2" />
+            </div>
+            <div class="flex items-end">
+              <button type="submit" class="w-full py-2 rounded-lg bg-emeraldVault text-obsidian font-extrabold uppercase">Save &amp; Audit</button>
+            </div>
+          </form>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="border-b border-titanium text-[10px] uppercase tracking-wider text-slate-400">
+                  <th class="py-2.5 px-3">Station</th>
+                  <th class="py-2.5 px-3">Custodian / MOD</th>
+                  <th class="py-2.5 px-3 text-right">Bank</th>
+                  <th class="py-2.5 px-3 text-right">11:30p Skim</th>
+                  <th class="py-2.5 px-3 text-right">Counted Drawer</th>
+                  <th class="py-2.5 px-3 text-right">Net Cash Drop</th>
+                  <th class="py-2.5 px-3 text-right">POS Expected</th>
+                  <th class="py-2.5 px-3 text-right">Variance</th>
+                  <th class="py-2.5 px-3">Forensic Verdict</th>
+                </tr>
+              </thead>
+              <tbody id="blind-drops-tbody" class="divide-y divide-titanium/50 font-mono"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 4.2B & 4.2C Grid -->
+        <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+          <!-- 4.2B: 6-Bucket / 3-Way Door Wristband & Clicker Reconciliation -->
+          <div class="carbon-card rounded-2xl p-5 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-titanium pb-3">
+              <div>
+                <h3 class="text-sm font-extrabold text-white uppercase tracking-wider">4.2B — 6-Bucket / 3-Way Door Wristband vs. Clicker</h3>
+                <p class="text-xs text-slate-400">(End &minus; Start &minus; Stapled Spoiled) &times; Tier Price vs. Security Clicker (&plusmn;3 Guest Cap).</p>
+              </div>
+              <button type="button" onclick="toggleQuickForm('owner-door-form')" class="px-3 py-1.5 rounded-xl bg-gunmetal border border-titanium hover:border-crimson text-xs font-bold text-white transition">
+                + Add Door Tier
+              </button>
+            </div>
+
+            <form id="owner-door-form" onsubmit="submitDoorRecon(event, 'OWNER')" class="hidden carbon-subcard rounded-xl p-3.5 grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+              <select name="tier_bucket" class="carbon-input rounded-lg px-2.5 py-1.5 col-span-2">
+                <option value="BUCKET_1_EARLY_GA">Bucket 1 — Early GA</option>
+                <option value="BUCKET_2_PEAK_GA">Bucket 2 — Peak GA</option>
+                <option value="BUCKET_3_LATE_SURGE">Bucket 3 — Late Surge</option>
+                <option value="BUCKET_4_VIP_SKIP">Bucket 4 — VIP Skip-Line</option>
+                <option value="BUCKET_5_PROMOTER_COMP">Bucket 5 — Promoter Comp</option>
+                <option value="BUCKET_6_SPECIAL_EVENT">Bucket 6 — Special Event</option>
+              </select>
+              <input name="tier_cover_price" type="number" step="0.01" value="20" placeholder="Price $" required class="carbon-input rounded-lg px-2.5 py-1.5 font-mono" />
+              <input name="starting_serial" type="number" placeholder="Start #" required class="carbon-input rounded-lg px-2.5 py-1.5 font-mono" />
+              <input name="ending_serial" type="number" placeholder="End #" required class="carbon-input rounded-lg px-2.5 py-1.5 font-mono" />
+              <input name="stapled_spoiled_bands" type="number" value="0" placeholder="Spoiled" required class="carbon-input rounded-lg px-2.5 py-1.5 font-mono" />
+              <input name="clicker_headcount" type="number" placeholder="Clicker #" required class="carbon-input rounded-lg px-2.5 py-1.5 font-mono" />
+              <input name="door_cash_collected" type="number" step="0.01" placeholder="Cash $" required class="carbon-input rounded-lg px-2.5 py-1.5 font-mono" />
+              <input name="door_cc_batch_total" type="number" step="0.01" placeholder="CC Batch $" required class="carbon-input rounded-lg px-2.5 py-1.5 font-mono" />
+              <input name="door_cashier" placeholder="Cashier" required class="carbon-input rounded-lg px-2.5 py-1.5" />
+              <input name="security_clicker_lead" placeholder="Clicker Security" required class="carbon-input rounded-lg px-2.5 py-1.5" />
+              <button type="submit" class="rounded-lg bg-crimson text-white font-bold py-1.5 uppercase">Save</button>
+            </form>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b border-titanium text-[10px] uppercase tracking-wider text-slate-400">
+                    <th class="py-2 px-2.5">Bucket Tier</th>
+                    <th class="py-2 px-2.5 text-right">Net Bands</th>
+                    <th class="py-2 px-2.5 text-right">Clicker (&Delta;)</th>
+                    <th class="py-2 px-2.5 text-right">Expected $</th>
+                    <th class="py-2 px-2.5 text-right">Actual $</th>
+                    <th class="py-2 px-2.5">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="door-recon-tbody" class="divide-y divide-titanium/50 font-mono"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 4.2C: Sequential VIP Foil-Sticker "Dead Soldier" Bottle Cage -->
+          <div class="carbon-card rounded-2xl p-5 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-titanium pb-3">
+              <div>
+                <h3 class="text-sm font-extrabold text-white uppercase tracking-wider">4.2C — VIP Foil-Sticker &amp; "Dead Soldier" Bottle Cage</h3>
+                <p class="text-xs text-slate-400">Tracks sequential cap stickers against POS check numbers &amp; empty bottle returns.</p>
+              </div>
+              <button type="button" onclick="toggleQuickForm('owner-vip-form')" class="px-3 py-1.5 rounded-xl bg-gunmetal border border-titanium hover:border-crimson text-xs font-bold text-white transition">
+                + Issue VIP Bottle
+              </button>
+            </div>
+
+            <form id="owner-vip-form" onsubmit="submitVipBottleSwap(event, 'OWNER')" class="hidden carbon-subcard rounded-xl p-3.5 grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs">
+              <input name="foil_sticker_serial" placeholder="VIP-FOIL-0901" required class="carbon-input rounded-lg px-2.5 py-1.5 font-mono uppercase" />
+              <input name="bottle_sku_name" placeholder="Casamigos Repo 750ml" required class="carbon-input rounded-lg px-2.5 py-1.5" />
+              <input name="vip_menu_price" type="number" step="0.01" placeholder="Menu $450" value="450" class="carbon-input rounded-lg px-2.5 py-1.5 font-mono" />
+              <input name="vip_booth_section" placeholder="VIP Booth #2" required class="carbon-input rounded-lg px-2.5 py-1.5" />
+              <input name="vip_server_name" placeholder="VIP Server" required class="carbon-input rounded-lg px-2.5 py-1.5" />
+              <input name="pos_check_number" placeholder="CHK-8821 (Blank=Unrung)" class="carbon-input rounded-lg px-2.5 py-1.5 font-mono uppercase" />
+              <input name="cage_issuer_mod" placeholder="Issuer MOD" required class="carbon-input rounded-lg px-2.5 py-1.5" />
+              <label class="flex items-center gap-2 text-slate-300 px-2">
+                <input type="checkbox" name="dead_soldier_returned" checked class="accent-emeraldVault" />
+                <span>Dead Soldier In</span>
+              </label>
+              <button type="submit" class="rounded-lg bg-crimson text-white font-bold py-1.5 uppercase">Log Bottle</button>
+            </form>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b border-titanium text-[10px] uppercase tracking-wider text-slate-400">
+                    <th class="py-2 px-2.5">Foil Serial</th>
+                    <th class="py-2 px-2.5">Bottle / Booth</th>
+                    <th class="py-2 px-2.5">POS Check</th>
+                    <th class="py-2 px-2.5 text-center">Dead Soldier</th>
+                    <th class="py-2 px-2.5">Cage Status</th>
+                  </tr>
+                </thead>
+                <tbody id="vip-bottle-tbody" class="divide-y divide-titanium/50 font-mono"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- TAB 4.3 — SECURITY INCIDENTS, 4K DVR QUEUE & SOVEREIGN VAULT SEAL     -->
+      <!-- ===================================================================== -->
+      <section id="tab-43" class="owner-tab-panel hidden space-y-6">
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <!-- Auto-Generated Tuesday 10:00 AM Top-5 High-Risk 4K DVR Queue -->
+          <div class="xl:col-span-2 carbon-card rounded-2xl p-5 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-titanium pb-3">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="px-2 py-0.5 rounded bg-sovereign/20 text-sovereign font-mono text-[10px] font-bold">TUESDAY 10:00 AM PROTOCOL</span>
+                  <h2 class="text-base font-extrabold text-white">Auto-Generated Top-5 High-Risk 4K DVR Camera Spot-Check Queue</h2>
+                </div>
+                <p class="text-xs text-slate-400 mt-0.5">Automatically isolates the 5 highest-risk POS timestamps (closing voids, No-Sale drawer pops, un-rung VIP bottles) for 10-minute overhead NVR camera verification.</p>
+              </div>
+            </div>
+            <div id="dvr-top5-queue-list" class="space-y-3"></div>
+          </div>
+
+          <!-- Sovereign Shift Vault Seal & Lockdown Attestation -->
+          <div class="carbon-card rounded-2xl p-5 space-y-4 border-t-4 border-t-emeraldVault">
+            <div class="border-b border-titanium pb-3">
+              <h3 class="text-sm font-extrabold text-white uppercase tracking-wider">Sovereign Shift Vault Seal</h3>
+              <p class="text-xs text-slate-400 mt-0.5">Cryptographically hashes tonight's forensic snapshot into <code class="text-slate-300">loss_security_seals</code> + async webhook POST to REHG 4.0 Sovereign Provisioner.</p>
+            </div>
+
+            <div class="space-y-2.5 text-xs">
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-obsidian border border-titanium cursor-pointer">
+                <input id="attest-safe" type="checkbox" checked class="w-4 h-4 accent-emeraldVault" />
+                <span>Dual-Custody Safe Drop Envelopes Verified &amp; Locked</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-obsidian border border-titanium cursor-pointer">
+                <input id="attest-cage" type="checkbox" checked class="w-4 h-4 accent-emeraldVault" />
+                <span>Liquor Cage Padlocked &amp; VIP Foil Roll Secured</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-obsidian border border-titanium cursor-pointer">
+                <input id="attest-dvr" type="checkbox" checked class="w-4 h-4 accent-emeraldVault" />
+                <span>4K NVR Recording Active Across All Wells &amp; Exits</span>
+              </label>
+              <label class="flex items-center gap-2.5 p-2.5 rounded-xl bg-obsidian border border-titanium cursor-pointer">
+                <input id="attest-backdoor" type="checkbox" checked class="w-4 h-4 accent-emeraldVault" />
+                <span>BOH Receiving Door Deadbolted &amp; Dumpster Run Clear</span>
+              </label>
+            </div>
+
+            <button id="owner-vault-seal-btn" type="button" onclick="sealShiftToSovereignVault('OWNER')" class="w-full py-3.5 rounded-xl bg-emeraldVault hover:bg-emerald-400 text-obsidian font-extrabold text-sm uppercase tracking-wider transition shadow-lg shadow-emeraldVault/25">
+              ✓ SEAL SHIFT TO SOVEREIGN VAULT
+            </button>
+
+            <div id="last-seal-receipt" class="rounded-xl bg-obsidian border border-titanium p-3 font-mono text-[11px] text-slate-400">
+              Awaiting shift seal execution...
+            </div>
+          </div>
+        </div>
+
+        <!-- Floor Security & Ejection Incident Ledger -->
+        <div class="carbon-card rounded-2xl p-5 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-titanium pb-3">
+            <div>
+              <h3 class="text-sm font-extrabold text-white uppercase tracking-wider">Floor Security, Ejection &amp; NVR Clip Ledger</h3>
+              <p class="text-xs text-slate-400">Permanent evidentiary log protecting liquor license &amp; chargeback defense.</p>
+            </div>
+            <button type="button" onclick="toggleQuickForm('owner-incident-form')" class="px-3.5 py-2 rounded-xl bg-gunmetal border border-titanium hover:border-crimson text-xs font-bold text-white transition">
+              + Log Floor / DVR Incident
+            </button>
+          </div>
+
+          <form id="owner-incident-form" onsubmit="submitSecurityIncident(event, 'OWNER')" class="hidden carbon-subcard rounded-xl p-4 grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
+            <input name="dvr_camera_channel" required placeholder="CAM-02 Front Door" class="carbon-input rounded-lg px-3 py-2" />
+            <select name="incident_category" class="carbon-input rounded-lg px-3 py-2">
+              <option value="FLOOR_EJECTION">Patron Floor Ejection</option>
+              <option value="NO_SALE_DRAWER_POP">No-Sale Drawer Pop</option>
+              <option value="VIP_DISPUTE">VIP Chargeback Defense</option>
+              <option value="ID_CONFISCATION">Fake ID Confiscation</option>
+              <option value="BACK_DOOR_BREACH">BOH Exit Prop</option>
+            </select>
+            <input name="dvr_timestamp_window" required placeholder="02:14 AM - 02:19 AM" class="carbon-input rounded-lg px-3 py-2 font-mono" />
+            <input name="mod_on_duty" required placeholder="MOD Name" class="carbon-input rounded-lg px-3 py-2" />
+            <input name="narrative" required placeholder="Factual narrative & staff involved..." class="carbon-input rounded-lg px-3 py-2 sm:col-span-3" />
+            <button type="submit" class="rounded-lg bg-crimson text-white font-bold py-2 uppercase">Save Incident</button>
+          </form>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="border-b border-titanium text-[10px] uppercase tracking-wider text-slate-400">
+                  <th class="py-2.5 px-3">Logged At</th>
+                  <th class="py-2.5 px-3">Record / Category</th>
+                  <th class="py-2.5 px-3">Camera / Window</th>
+                  <th class="py-2.5 px-3">MOD</th>
+                  <th class="py-2.5 px-3">Narrative / Seal Hash</th>
+                  <th class="py-2.5 px-3">Vault State</th>
+                </tr>
+              </thead>
+              <tbody id="security-incidents-tbody" class="divide-y divide-titanium/50 font-mono"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- TAB 4.4 — MODEL A VS. MODEL B "PHANTOM GUEST" ANTI-THEFT ENGINE       -->
+      <!-- ===================================================================== -->
+      <section id="tab-44" class="owner-tab-panel hidden space-y-6">
+        <div class="carbon-card rounded-2xl p-5 border-l-4 border-l-crimson space-y-4">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-titanium pb-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded bg-crimson text-white font-mono text-[10px] font-extrabold uppercase">SIGNATURE WEAPON • STEALTH TELEMETRY</span>
+                <h2 class="text-base sm:text-lg font-extrabold text-white">Tab 4.4 — Model A vs. Model B "Phantom Guest" Variance Engine</h2>
+              </div>
+              <p class="text-xs text-slate-400 mt-1">Cross-examines <strong>Model A</strong> (POS Stated Guests &amp; Rung Drinks/Entrees) against <strong>Model B</strong> (Implied Guests derived from real-time 12oz/16oz cup, bev nap, food boat/liner, and wrapped utensil kit burn) across every shift, bar well, and VIP booth—completely invisible on frontline POS screens.</p>
+            </div>
+            <div class="flex items-center gap-3 shrink-0">
+              <div class="carbon-subcard rounded-xl px-3.5 py-2 text-right">
+                <span class="block text-[10px] uppercase text-slate-400">Avg Unrung Check Value</span>
+                <div class="flex items-center gap-1 mt-0.5">
+                  <span class="text-xs font-mono text-slate-400">$</span>
+                  <input id="phantom-avg-spend" type="number" step="1" value="28" onchange="renderPhantomGuestEngine()" class="w-16 bg-transparent font-mono text-sm font-bold text-sovereign text-right focus:outline-none" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Model A vs Model B Summary Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="carbon-subcard rounded-xl p-4">
+              <span class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Model A — POS Stated Guests</span>
+              <div id="phantom-model-a-total" class="text-2xl font-extrabold font-mono text-white mt-1">0</div>
+              <span class="text-[11px] text-slate-400">Closed &amp; Active POS Covers</span>
+            </div>
+            <div class="carbon-subcard rounded-xl p-4">
+              <span class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Model B — Packaging-Implied Guests</span>
+              <div id="phantom-model-b-total" class="text-2xl font-extrabold font-mono text-sovereign mt-1">0</div>
+              <span class="text-[11px] text-slate-400">Derived from Cup/Utensil/Liner Burn</span>
+            </div>
+            <div class="carbon-subcard rounded-xl p-4">
+              <span class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Net "Phantom Guests" Served</span>
+              <div id="phantom-delta-total" class="text-2xl font-extrabold font-mono text-crimson mt-1">+0</div>
+              <span class="text-[11px] text-slate-400">Physical Burn Exceeding Rung POS</span>
+            </div>
+            <div class="carbon-subcard rounded-xl p-4 border-crimson/50">
+              <span class="text-[10px] uppercase tracking-wider text-crimson font-bold">Est. Un-Rung Theft Exposure</span>
+              <div id="phantom-dollar-total" class="text-2xl font-extrabold font-mono text-crimson mt-1">$0.00</div>
+              <span class="text-[11px] text-slate-400">Cash Pocketed / Free Booth Pours</span>
+            </div>
+          </div>
+
+          <!-- Station / Bar Well / VIP Booth Breakdown Table -->
+          <div class="overflow-x-auto pt-2">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="border-b border-titanium text-[10px] uppercase tracking-wider text-slate-400">
+                  <th class="py-2.5 px-3">Station / Bar Well / VIP Booth</th>
+                  <th class="py-2.5 px-3">Assigned Staff</th>
+                  <th class="py-2.5 px-3 text-right">Model A (POS Covers / Rung)</th>
+                  <th class="py-2.5 px-3 text-right">Cups + Liners + Kits Burned</th>
+                  <th class="py-2.5 px-3 text-right">Model B (Implied Guests)</th>
+                  <th class="py-2.5 px-3 text-right">Phantom Variance</th>
+                  <th class="py-2.5 px-3 text-right">Est. Unrung $ Exposure</th>
+                  <th class="py-2.5 px-3">Forensic Signal</th>
+                </tr>
+              </thead>
+              <tbody id="phantom-station-tbody" class="divide-y divide-titanium/50 font-mono"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
+      <!-- TAB 4.5 — EXTENDED INVENTORY & BOH MICRO-DEPLETION PACKAGING VAULT    -->
+      <!-- ===================================================================== -->
+      <section id="tab-45" class="owner-tab-panel hidden space-y-6">
+        <div class="carbon-card rounded-2xl p-5 space-y-5">
+          <!-- Header + Sub-View Switcher -->
+          <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 border-b border-titanium pb-4">
+            <div>
+              <h2 class="text-base sm:text-lg font-extrabold text-white">Tab 4.5 — Extended Inventory &amp; BOH Micro-Depletion Packaging Vault</h2>
+              <p class="text-xs text-slate-400 mt-0.5">Sub-cent 4-decimal COGS tracking across 2oz souffle ramekins, lids, wrapped utensil/napkin kits, 12oz/16oz cups, straws, dine-in liners, hinged clamshells &amp; carryout bags.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 no-print">
+              <div class="inline-flex rounded-xl bg-obsidian p-1 border border-titanium">
+                <button type="button" data-subview="daily" onclick="switchPkgSubview('daily')" class="pkg-subview-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-crimson text-white">
+                  1. Daily Burn &amp; Par
+                </button>
+                <button type="button" data-subview="weekly" onclick="switchPkgSubview('weekly')" class="pkg-subview-btn px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white">
+                  2. Weekly Shelf Scrub
+                </button>
+                <button type="button" data-subview="monthly" onclick="switchPkgSubview('monthly')" class="pkg-subview-btn px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white">
+                  3. Monthly COGS Ledger
+                </button>
+              </div>
+              <button type="button" onclick="toggleQuickForm('pkg-bulk-importer')" class="px-3 py-2 rounded-xl bg-gunmetal border border-sovereign/50 text-sovereign text-xs font-bold transition">
+                📥 Bulk CSV / Paste Importer
+              </button>
+              <button type="button" onclick="exportPackagingCsv()" class="px-3 py-2 rounded-xl bg-gunmetal border border-titanium hover:border-white text-slate-200 text-xs font-semibold transition">
+                ⬇️ Export CSV
+              </button>
+              <button type="button" onclick="window.print()" class="px-3 py-2 rounded-xl bg-gunmetal border border-titanium hover:border-white text-slate-200 text-xs font-semibold transition">
+                🖨️ Print / PDF
+              </button>
+            </div>
+          </div>
+
+          <!-- Collapsible Bulk CSV / Paste Importer -->
+          <div id="pkg-bulk-importer" class="hidden carbon-subcard rounded-xl p-4 space-y-3 no-print">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <h4 class="text-xs font-bold text-sovereign uppercase tracking-wider">Bulk Extended Inventory &amp; Packaging Paste / CSV Importer</h4>
+                <p class="text-[11px] text-slate-400">Format: <code class="text-slate-200">sku_code, item_name, packaging_category, unit_cogs, par_level, opening_stock, vendor_deliveries, pos_theoretical_burn, physical_shelf_count</code></p>
+              </div>
+              <button type="button" onclick="loadStarterPackagingTemplate()" class="px-2.5 py-1 rounded bg-obsidian border border-titanium text-[11px] text-slate-300 hover:text-white">
+                Load 10-SKU Canonical Template
+              </button>
+            </div>
+            <textarea id="pkg-bulk-textarea" rows="5" class="carbon-input w-full rounded-xl p-3 font-mono text-xs" placeholder="PKG-RAM-2OZ, 2oz Souffle Portion Ramekin, RAMEKINS_LIDS, 0.0185, 2500, 4000, 1000, 1850, 2980"></textarea>
+            <div class="flex justify-end gap-2">
+              <button type="button" onclick="importBulkPackagingRows()" class="px-4 py-2 rounded-xl bg-emeraldVault text-obsidian font-extrabold text-xs uppercase tracking-wider">
+                ✓ Upsert SKUs to Supabase Vault
+              </button>
+            </div>
+          </div>
+
+          <!-- SUBVIEW 1: DAILY BURN & LOW-PAR REORDER WARNINGS -->
+          <div id="pkg-subview-daily" class="space-y-4">
+            <div id="low-par-banner" class="rounded-xl bg-crimsonDark/25 border border-crimson/50 p-3.5 flex flex-wrap items-center justify-between gap-2 text-xs">
+              <span id="low-par-summary" class="font-semibold text-red-200">Scanning BOH packaging par thresholds...</span>
+              <span class="font-mono text-[11px] text-crimson font-bold">LAYER 1 (BOM MODS) + LAYER 2 (DINE-IN / TO-GO)</span>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b border-titanium text-[10px] uppercase tracking-wider text-slate-400">
+                    <th class="py-2.5 px-3">SKU</th>
+                    <th class="py-2.5 px-3">Disposable / Packaging Item</th>
+                    <th class="py-2.5 px-3 text-right">Unit COGS</th>
+                    <th class="py-2.5 px-3 text-right">Layer 1 BOM</th>
+                    <th class="py-2.5 px-3 text-right">Layer 2 Mode</th>
+                    <th class="py-2.5 px-3 text-right">Daily Burn</th>
+                    <th class="py-2.5 px-3 text-right">Daily COGS $</th>
+                    <th class="py-2.5 px-3 text-right">Est. On-Hand / Par</th>
+                    <th class="py-2.5 px-3">Reorder Status</th>
+                  </tr>
+                </thead>
+                <tbody id="pkg-daily-tbody" class="divide-y divide-titanium/50 font-mono"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- SUBVIEW 2: WEEKLY THEORETICAL VS. PHYSICAL SHELF SCRUB -->
+          <div id="pkg-subview-weekly" class="hidden space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 bg-obsidian p-3.5 rounded-xl border border-titanium text-xs">
+              <span class="text-slate-300">Formula: <strong class="text-white font-mono">(Opening Stock + Vendor Deliveries &minus; POS Theoretical Burn) vs. Actual Physical Shelf Count</strong></span>
+              <button type="button" onclick="saveOwnerShelfScrubEdits()" class="px-3.5 py-1.5 rounded-lg bg-crimson hover:bg-red-500 text-white font-bold uppercase text-[11px] no-print">
+                💾 Commit Physical Shelf Counts to Vault
+              </button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b border-titanium text-[10px] uppercase tracking-wider text-slate-400">
+                    <th class="py-2.5 px-3">Packaging Item</th>
+                    <th class="py-2.5 px-3 text-right">Opening</th>
+                    <th class="py-2.5 px-3 text-right">+ Deliveries</th>
+                    <th class="py-2.5 px-3 text-right">&minus; POS Theo Burn</th>
+                    <th class="py-2.5 px-3 text-right">= Expected End</th>
+                    <th class="py-2.5 px-3 text-right">Physical Shelf</th>
+                    <th class="py-2.5 px-3 text-right">Unit Var</th>
+                    <th class="py-2.5 px-3 text-right">Shrinkage $</th>
+                    <th class="py-2.5 px-3">Audit Verdict</th>
+                  </tr>
+                </thead>
+                <tbody id="pkg-weekly-tbody" class="divide-y divide-titanium/50 font-mono"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- SUBVIEW 3: MONTHLY EXTENDED INVENTORY & PACKAGING COGS REPORT -->
+          <div id="pkg-subview-monthly" class="hidden space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div class="carbon-subcard rounded-xl p-4">
+                <span class="text-[10px] uppercase text-slate-400 font-semibold">30-Day Gross Venue Sales</span>
+                <div class="flex items-center gap-1 mt-1">
+                  <span class="text-sm font-mono text-slate-400">$</span>
+                  <input id="monthly-gross-sales-input" type="number" step="100" value="185000" onchange="renderPackagingVault()" class="bg-transparent font-mono text-xl font-extrabold text-white w-full focus:outline-none" />
+                </div>
+              </div>
+              <div class="carbon-subcard rounded-xl p-4">
+                <span class="text-[10px] uppercase text-slate-400 font-semibold">30-Day Packaging Units Burned</span>
+                <div id="monthly-total-units" class="text-xl font-extrabold font-mono text-white mt-1">0</div>
+              </div>
+              <div class="carbon-subcard rounded-xl p-4">
+                <span class="text-[10px] uppercase text-slate-400 font-semibold">30-Day Packaging COGS ($)</span>
+                <div id="monthly-total-cogs" class="text-xl font-extrabold font-mono text-sovereign mt-1">$0.00</div>
+              </div>
+              <div class="carbon-subcard rounded-xl p-4">
+                <span class="text-[10px] uppercase text-slate-400 font-semibold">Packaging % of Gross Sales</span>
+                <div id="monthly-pct-sales" class="text-xl font-extrabold font-mono text-emeraldVault mt-1">0.00%</div>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b border-titanium text-[10px] uppercase tracking-wider text-slate-400">
+                    <th class="py-2.5 px-3">Category Bucket</th>
+                    <th class="py-2.5 px-3">SKU Breakdown</th>
+                    <th class="py-2.5 px-3 text-right">30-Day Units Consumed</th>
+                    <th class="py-2.5 px-3 text-right">30-Day COGS ($)</th>
+                    <th class="py-2.5 px-3 text-right">30-Day Unexplained Shrink $</th>
+                    <th class="py-2.5 px-3 text-right">% of Gross Sales</th>
+                  </tr>
+                </thead>
+                <tbody id="pkg-monthly-tbody" class="divide-y divide-titanium/50 font-mono"></tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- SETTINGS & SUPABASE CONNECTION VAULT MODAL                                -->
+  <!-- ========================================================================= -->
+  <div id="settings-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm items-center justify-center p-4 no-print">
+    <div class="w-full max-w-xl carbon-card rounded-2xl p-6 space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-titanium pb-3">
+        <div>
+          <h3 class="text-base font-extrabold text-white">REHG Carbon™ Vault &amp; PIN Configuration</h3>
+          <p class="text-xs text-slate-400">Pre-wired to <code class="text-emeraldVault">rehg-pos-core</code> • Scoped by <code class="text-crimson">venue_id</code></p>
+        </div>
+        <button type="button" onclick="closeSettingsModal()" class="text-slate-400 hover:text-white text-lg font-bold">&times;</button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div>
+          <label class="block text-slate-400 font-semibold mb-1">Supabase Project URL (<code class="text-slate-300">rehg-pos-core</code>)</label>
+          <input id="cfg-supabase-url" type="url" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+        </div>
+        <div>
+          <label class="block text-slate-400 font-semibold mb-1">Supabase Publishable / Anon Key</label>
+          <input id="cfg-supabase-key" type="text" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-slate-400 font-semibold mb-1">Active <code class="text-crimson">venue_id</code></label>
+            <input id="cfg-venue-id" type="text" class="carbon-input w-full rounded-lg px-3 py-2 font-mono uppercase" />
+          </div>
+          <div>
+            <label class="block text-sovereign font-semibold mb-1">Owner Sovereign PIN</label>
+            <input id="cfg-owner-pin" type="password" maxlength="6" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+          </div>
+          <div>
+            <label class="block text-crimson font-semibold mb-1">Night MOD Blind PIN</label>
+            <input id="cfg-mod-pin" type="password" maxlength="6" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-400 font-semibold mb-1">Single Comp/Void Tripwire ($X)</label>
+            <input id="cfg-single-limit" type="number" step="5" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+          </div>
+          <div>
+            <label class="block text-slate-400 font-semibold mb-1">Shift Comp/Void Ceiling ($Y)</label>
+            <input id="cfg-shift-ceiling" type="number" step="10" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-slate-400 font-semibold mb-1">Optional 4.0 Sovereign Provisioner Webhook URL</label>
+          <input id="cfg-sovereign-webhook" type="url" placeholder="https://script.google.com/macros/s/.../exec" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
+        </div>
+
+        <!-- Enterprise Commercial Provisioning Card -->
+        <div class="rounded-xl bg-obsidian border border-sovereign/40 p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-sovereign">Enterprise Cloud Provisioning Tier</span>
+            <p class="text-xs text-slate-300 font-semibold mt-0.5">$999.00 Provisioning &amp; Setup + $49.99/mo Live Cloud Subscription</p>
+            <p class="text-[11px] text-slate-500">Includes Sovereign Portal Pass &amp; real-time Carbon POS Autopilot sync.</p>
+          </div>
+          <a href="https://buy.stripe.com/7sY3cneLDe1i6S94aT5Ne0n" target="_blank" rel="noopener" class="px-3.5 py-2 rounded-lg bg-sovereign text-obsidian font-extrabold text-xs whitespace-nowrap text-center">
+            Activate Cloud Pass &rarr;
+          </a>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between pt-2 border-t border-titanium">
+        <button type="button" onclick="restoreDefaultConnection()" class="px-3 py-2 rounded-lg bg-obsidian border border-titanium text-slate-400 hover:text-white text-xs font-semibold">
+          Restore rehg-pos-core Defaults
+        </button>
+        <div class="flex gap-2">
+          <button type="button" onclick="closeSettingsModal()" class="px-4 py-2 rounded-lg bg-gunmetal border border-titanium text-slate-300 text-xs font-semibold">Cancel</button>
+          <button type="button" onclick="saveVaultConfig()" class="px-4 py-2 rounded-lg bg-crimson hover:bg-red-500 text-white text-xs font-bold uppercase">Save &amp; Reconnect</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- LOCKED PROPRIETARY FOOTER                                                 -->
+  <!-- ========================================================================= -->
+  <footer class="border-t border-titanium bg-obsidian py-4 px-4 text-center text-[11px] text-slate-400 no-print">
+    <div class="max-w-[1600px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <p class="font-medium">&copy; 2026&ndash;2027 Ricks Executive Hospitality Group LLC &bull; REHG Carbon&trade; Loss Engine &bull; Proprietary &amp; Confidential</p>
+      <p class="font-mono text-[10px] text-slate-500">loss.rehgexec.com &bull; Enterprise Extension ($999 Provisioning + $49.99/mo Cloud Sync)</p>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- APPLICATION ENGINE SCRIPT (ZERO LEGACY GAS / 100% SUPABASE + PWA)         -->
+  <!-- ========================================================================= -->
+  <script>
+    // =========================================================================
+    // 1. PRE-WIRED LIVE SUPABASE DEFAULTS (`rehg-pos-core`) & STATE
+    // =========================================================================
+    const DEFAULT_SUPABASE_URL = 'https://ruvyxmpokjdzkagbltac.supabase.co';
+    const DEFAULT_SUPABASE_ANON_KEY = 'sb_publishable_VqSVbTVwxowgrMeRH3xWLw_UgcJohXH';
+    const MASTER_OVERRIDE_PIN = '2424';
+
+    const CANONICAL_PACKAGING_SKUS = [
+      { sku_code: 'PKG-RAM-2OZ', item_name: '2oz Souffle Portion Ramekin', packaging_category: 'RAMEKINS_LIDS', unit_cogs: 0.0185, par_level: 2500, opening_stock: 4200, vendor_deliveries: 2000, layer1_item_mod_burn: 1940, layer2_ordermode_burn: 410 },
+      { sku_code: 'PKG-LID-2OZ', item_name: '2oz Clear Leakproof Ramekin Lid', packaging_category: 'RAMEKINS_LIDS', unit_cogs: 0.0160, par_level: 2500, opening_stock: 4100, vendor_deliveries: 2000, layer1_item_mod_burn: 1910, layer2_ordermode_burn: 410 },
+      { sku_code: 'PKG-UTN-KIT', item_name: 'Heavyweight Wrapped Utensil & Napkin Kit', packaging_category: 'UTENSIL_NAPKIN_KITS', unit_cogs: 0.0890, par_level: 1000, opening_stock: 1800, vendor_deliveries: 1000, layer1_item_mod_burn: 180, layer2_ordermode_burn: 1120 },
+      { sku_code: 'PKG-CUP-12OZ', item_name: '12oz Clear Rocks / Cocktail Cup', packaging_category: 'CUPS_STRAWS', unit_cogs: 0.0640, par_level: 2000, opening_stock: 3500, vendor_deliveries: 2000, layer1_item_mod_burn: 2890, layer2_ordermode_burn: 0 },
+      { sku_code: 'PKG-CUP-16OZ', item_name: '16oz Highball / Mixed Drink Cup', packaging_category: 'CUPS_STRAWS', unit_cogs: 0.0780, par_level: 1800, opening_stock: 3000, vendor_deliveries: 1500, layer1_item_mod_burn: 2140, layer2_ordermode_burn: 220 },
+      { sku_code: 'PKG-STR-BLK', item_name: '7.75" Unwrapped Black Cocktail Straw', packaging_category: 'CUPS_STRAWS', unit_cogs: 0.0065, par_level: 4000, opening_stock: 6000, vendor_deliveries: 4000, layer1_item_mod_burn: 4320, layer2_ordermode_burn: 210 },
+      { sku_code: 'PKG-NAP-BEV', item_name: 'Black 2-Ply Beverage Napkin', packaging_category: 'CUPS_STRAWS', unit_cogs: 0.0082, par_level: 5000, opening_stock: 8000, vendor_deliveries: 5000, layer1_item_mod_burn: 5400, layer2_ordermode_burn: 0 },
+      { sku_code: 'PKG-LIN-CHK', item_name: 'Dine-In Greaseproof Basket Liner', packaging_category: 'DINEIN_LINERS', unit_cogs: 0.0320, par_level: 1500, opening_stock: 2600, vendor_deliveries: 1000, layer1_item_mod_burn: 0, layer2_ordermode_burn: 1980 },
+      { sku_code: 'PKG-CLM-9X9', item_name: '9x9 Hinged Vented To-Go Clamshell', packaging_category: 'TOGO_CLAMSHELLS', unit_cogs: 0.2450, par_level: 600, opening_stock: 1100, vendor_deliveries: 500, layer1_item_mod_burn: 0, layer2_ordermode_burn: 1090 },
+      { sku_code: 'PKG-BAG-TSH', item_name: 'Heavy-Duty Carryout T-Shirt Bag (1/3 Items)', packaging_category: 'CARRYOUT_BAGS', unit_cogs: 0.0520, par_level: 800, opening_stock: 1400, vendor_deliveries: 500, layer1_item_mod_burn: 0, layer2_ordermode_burn: 640 }
+    ];
+
+    const state = {
+      supabaseUrl: localStorage.getItem('carbon_loss_sb_url') || DEFAULT_SUPABASE_URL,
+      supabaseKey: localStorage.getItem('carbon_loss_sb_key') || DEFAULT_SUPABASE_ANON_KEY,
+      venueId: localStorage.getItem('carbon_loss_venue_id') || 'ELEVEN11_ATL',
+      ownerPin: localStorage.getItem('carbon_loss_owner_pin') || '9999',
+      modPin: localStorage.getItem('carbon_loss_mod_pin') || '7777',
+      singleLimit: parseFloat(localStorage.getItem('carbon_loss_single_limit') || '50'),
+      shiftCeiling: parseFloat(localStorage.getItem('carbon_loss_shift_ceiling') || '250'),
+      sovereignWebhook: localStorage.getItem('carbon_loss_webhook') || '',
+      ingestionMode: localStorage.getItem('carbon_loss_mode') || 'CARBON_POS_LIVE',
+      role: null, // 'OWNER' | 'MOD'
+      enteredPin: '',
+      activeTab: 'tab-41',
+      pkgSubview: 'daily',
+      demoActive: false,
+      sb: null,
+      realtimeChannel: null,
+      deferredInstallPrompt: null,
+      // Telemetry Collections
+      orders: [],
+      governanceAudits: [],
+      depletionLogs: [],
+      blindDrops: [],
+      doorRecons: [],
+      vipSwaps: [],
+      securitySeals: [],
+      shelfAudits: []
+    };
+
+    // =========================================================================
+    // 2. INLINE PWA MANIFEST + INSTALL HANDLER
+    // =========================================================================
+    function initPwaEngine() {
+      const originBase = window.location.href.split('?')[0].split('#')[0].replace(/index\.html$/, '');
+      const iconUrl = new URL('./carbon-loss-logo.jpg', originBase).href;
+
+      const manifestObj = {
+        name: 'REHG Carbon™ Loss Engine',
+        short_name: 'CARBON | LOSS',
+        description: 'Enterprise Physical & Financial Shrinkage Vault by Ricks Executive Hospitality Group',
+        start_url: originBase,
+        scope: originBase,
+        display: 'standalone',
+        orientation: 'any',
+        background_color: '#050811',
+        theme_color: '#050811',
+        icons: [
+          { src: iconUrl, sizes: '192x192', type: 'image/jpeg', purpose: 'any maskable' },
+          { src: iconUrl, sizes: '512x512', type: 'image/jpeg', purpose: 'any maskable' }
+        ]
+      };
+      const blob = new Blob([JSON.stringify(manifestObj)], { type: 'application/manifest+json' });
+      document.getElementById('dynamic-manifest').setAttribute('href', URL.createObjectURL(blob));
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        state.deferredInstallPrompt = e;
+      });
+    }
+
+    async function triggerPwaInstall() {
+      if (state.deferredInstallPrompt) {
+        state.deferredInstallPrompt.prompt();
+        const choice = await state.deferredInstallPrompt.userChoice;
+        if (choice.outcome === 'accepted') {
+          showToast('CARBON | LOSS installed to device home screen.', 'emerald');
+        }
+        state.deferredInstallPrompt = null;
+      } else {
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        if (isIOS) {
+          showToast('iOS Safari: Tap Share (↑) → "Add to Home Screen" for full-screen standalone app.', 'gold');
+        } else {
+          showToast('Use browser menu (⋮) → "Install App / Add to Home Screen" for standalone terminal mode.', 'gold');
+        }
+      }
+    }
+
+    // =========================================================================
+    // 3. SUPABASE INITIALIZATION & REALTIME SUBSCRIPTION
+    // =========================================================================
+    function initSupabaseClient() {
+      try {
+        state.sb = window.supabase.createClient(state.supabaseUrl, state.supabaseKey);
+        updateConnectionPill(true);
+        subscribeRealtimeVault();
+      } catch (err) {
+        console.error('Supabase init error:', err);
+        updateConnectionPill(false);
+      }
+    }
+
+    function updateConnectionPill(ok) {
+      const pill = document.getElementById('supabase-conn-pill');
+      if (!pill) return;
+      if (ok) {
+        pill.className = 'inline-flex items-center gap-1.5 font-mono text-[10px] text-emeraldVault';
+        pill.innerHTML = '<span class="w-2 h-2 rounded-full bg-emeraldVault animate-pulse"></span>rehg-pos-core LIVE';
+      } else {
+        pill.className = 'inline-flex items-center gap-1.5 font-mono text-[10px] text-crimson';
+        pill.innerHTML = '<span class="w-2 h-2 rounded-full bg-crimson"></span>OFFLINE / CHECK KEY';
+      }
+    }
+
+    function subscribeRealtimeVault() {
+      if (!state.sb) return;
+      if (state.realtimeChannel) {
+        state.sb.removeChannel(state.realtimeChannel);
+      }
+      state.realtimeChannel = state.sb
+        .channel('carbon-loss-live-' + state.venueId)
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'loss_blind_drops' }, () => !state.demoActive && refreshAllData())
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'loss_door_reconciliations' }, () => !state.demoActive && refreshAllData())
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'loss_vip_bottle_swaps' }, () => !state.demoActive && refreshAllData())
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'loss_security_seals' }, () => !state.demoActive && refreshAllData())
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'loss_shelf_audits' }, () => !state.demoActive && refreshAllData())
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'governance_audits' }, () => !state.demoActive && refreshAllData())
+        .subscribe();
+    }
+
+    // =========================================================================
+    // 4. ROLE-ISOLATED PIN GATE GOVERNANCE
+    // =========================================================================
+    function pressPinDigit(d) {
+      if (state.enteredPin.length >= 4) return;
+      state.enteredPin += d;
+      document.getElementById('pin-error-msg').classList.add('hidden');
+      renderPinDots();
+      if (state.enteredPin.length === 4) {
+        setTimeout(submitPinGate, 120);
+      }
+    }
+
+    function clearPinDigits() {
+      state.enteredPin = '';
+      renderPinDots();
+    }
+
+    function renderPinDots() {
+      const dots = document.querySelectorAll('#pin-dots > div');
+      dots.forEach((dot, idx) => {
+        if (idx < state.enteredPin.length) {
+          dot.className = 'h-3.5 rounded-full bg-crimson shadow shadow-crimson/50 transition-all';
+        } else {
+          dot.className = 'h-3.5 rounded-full bg-titanium/50 transition-all';
+        }
+      });
+    }
+
+    async function submitPinGate() {
+      const venueInput = document.getElementById('gate-venue-id').value.trim().toUpperCase() || 'DEFAULT_VENUE';
+      state.venueId = venueInput;
+      localStorage.setItem('carbon_loss_venue_id', state.venueId);
+      document.getElementById('header-venue-label').textContent = state.venueId;
+
+      const pin = state.enteredPin;
+      let matchedRole = null;
+
+      if (pin === state.ownerPin || pin === MASTER_OVERRIDE_PIN) {
+        matchedRole = 'OWNER';
+      } else if (pin === state.modPin) {
+        matchedRole = 'MOD';
+      } else if (state.sb) {
+        try {
+          const { data } = await state.sb
+            .from('staff_users')
+            .select('role, full_name, pin_code')
+            .eq('pin_code', pin)
+            .limit(1);
+          if (data && data.length > 0) {
+            const r = String(data[0].role || '').toUpperCase();
+            if (r === 'OWNER' || r === 'ADMIN') matchedRole = 'OWNER';
+            else if (r === 'MANAGER' || r === 'MOD') matchedRole = 'MOD';
+          }
+        } catch (_) {}
+      }
+
+      if (!matchedRole) {
+        state.enteredPin = '';
+        renderPinDots();
+        document.getElementById('pin-error-msg').classList.remove('hidden');
+        showToast('Access Denied: Unrecognized Governance PIN.', 'crimson');
+        return;
+      }
+
+      state.role = matchedRole;
+      state.enteredPin = '';
+      renderPinDots();
+      document.getElementById('pin-gate-overlay').classList.add('hidden');
+      applyRoleIsolationUI();
+      await refreshAllData();
+      showToast(
+        matchedRole === 'OWNER'
+          ? `Sovereign Owner Unredacted Access Unlocked (${state.venueId})`
+          : `Night MOD One-Way Blind Drop-Slot Active (${state.venueId})`,
+        matchedRole === 'OWNER' ? 'gold' : 'crimson'
+      );
+    }
+
+    function applyRoleIsolationUI() {
+      const badge = document.getElementById('role-badge');
+      const ownerNav = document.getElementById('owner-tab-bar');
+      const ownerWorkspace = document.getElementById('owner-forensic-workspace');
+      const modWorkspace = document.getElementById('mod-blind-workspace');
+      const demoBtn = document.getElementById('demo-seed-btn');
+
+      if (state.role === 'MOD') {
+        badge.textContent = 'NIGHT MOD • BLIND DROP ONLY';
+        badge.className = 'ml-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-crimson/20 text-crimson border border-crimson/50';
+        ownerNav.classList.add('hidden');
+        ownerWorkspace.classList.add('hidden');
+        modWorkspace.classList.remove('hidden');
+        demoBtn.classList.add('hidden');
+        document.getElementById('csv-bridge-banner').classList.add('hidden');
+        renderModBlindShelfGrid();
+      } else {
+        badge.textContent = 'SOVEREIGN OWNER • UNREDACTED';
+        badge.className = 'ml-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-sovereign/15 text-sovereign border border-sovereign/40';
+        ownerNav.classList.remove('hidden');
+        ownerWorkspace.classList.remove('hidden');
+        modWorkspace.classList.add('hidden');
+        demoBtn.classList.remove('hidden');
+        updateIngestionModeUI();
+      }
+    }
+
+    function lockSession() {
+      state.role = null;
+      state.enteredPin = '';
+      renderPinDots();
+      document.getElementById('pin-gate-overlay').classList.remove('hidden');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      const gateVisible = !document.getElementById('pin-gate-overlay').classList.contains('hidden');
+      const modalOpen = !document.getElementById('settings-modal').classList.contains('hidden');
+      if (!gateVisible || modalOpen) return;
+      if (document.activeElement && document.activeElement.tagName === 'INPUT') return;
+      if (/^[0-9]$/.test(e.key)) pressPinDigit(e.key);
+      else if (e.key === 'Backspace') clearPinDigits();
+      else if (e.key === 'Enter') submitPinGate();
+    });
+
+    // =========================================================================
+    // 5. DUAL-MODE INGESTION SWITCH & DATA LOADING (`rehg-pos-core`)
+    // =========================================================================
+    function setIngestionMode(mode) {
+      state.ingestionMode = mode;
+      localStorage.setItem('carbon_loss_mode', mode);
+      updateIngestionModeUI();
+      showToast(
+        mode === 'CARBON_POS_LIVE'
+          ? 'Switched to CARBON POS LIVE AUTOPILOT (rehg-pos-core).'
+          : 'Switched to STANDALONE / CSV BRIDGE MODE.',
+        'gold'
+      );
+    }
+
+    function updateIngestionModeUI() {
+      const btnLive = document.getElementById('mode-btn-live');
+      const btnCsv = document.getElementById('mode-btn-csv');
+      const banner = document.getElementById('csv-bridge-banner');
+
+      if (state.ingestionMode === 'CARBON_POS_LIVE') {
+        btnLive.className = 'px-3 py-1.5 rounded-lg text-[11px] font-bold tracking-wide transition bg-crimson text-white shadow';
+        btnCsv.className = 'px-3 py-1.5 rounded-lg text-[11px] font-bold tracking-wide transition text-slate-400 hover:text-white';
+        banner.classList.add('hidden');
+      } else {
+        btnCsv.className = 'px-3 py-1.5 rounded-lg text-[11px] font-bold tracking-wide transition bg-sovereign text-obsidian shadow';
+        btnLive.className = 'px-3 py-1.5 rounded-lg text-[11px] font-bold tracking-wide transition text-slate-400 hover:text-white';
+        if (state.role === 'OWNER') banner.classList.remove('hidden');
+      }
+    }
+
+    async function safeFetchTable(table, shiftDateCol = null) {
+      if (!state.sb) return [];
+      try {
+        let q = state.sb.from(table).select('*').eq('venue_id', state.venueId);
+        const shiftDate = document.getElementById('active-shift-date').value;
+        if (shiftDateCol && shiftDate) {
+          q = q.eq(shiftDateCol, shiftDate);
+        }
+        const { data, error } = await q.order('created_at', { ascending: false }).limit(250);
+        if (error) return [];
+        return data || [];
+      } catch (_) {
+        return [];
+      }
+    }
+
+    async function refreshAllData() {
+      if (state.demoActive) {
+        renderAllForensicViews();
+        return;
+      }
+      if (!state.sb) return;
+
+      try {
+        const { data: alertCfg } = await state.sb
+          .from('venue_alert_settings')
+          .select('*')
+          .eq('venue_id', state.venueId)
+          .limit(1);
+        if (alertCfg && alertCfg[0]) {
+          if (alertCfg[0].single_override_limit) state.singleLimit = Number(alertCfg[0].single_override_limit);
+          if (alertCfg[0].shift_override_ceiling) state.shiftCeiling = Number(alertCfg[0].shift_override_ceiling);
+        }
+      } catch (_) {}
+
+      const [
+        blindDrops,
+        doorRecons,
+        vipSwaps,
+        securitySeals,
+        shelfAudits,
+        orders,
+        govAudits,
+        depletionLogs
+      ] = await Promise.all([
+        safeFetchTable('loss_blind_drops', 'shift_date'),
+        safeFetchTable('loss_door_reconciliations', 'shift_date'),
+        safeFetchTable('loss_vip_bottle_swaps', 'shift_date'),
+        safeFetchTable('loss_security_seals', 'shift_date'),
+        safeFetchTable('loss_shelf_audits'),
+        safeFetchTable('orders'),
+        safeFetchTable('governance_audits'),
+        safeFetchTable('inventory_depletion_log')
+      ]);
+
+      state.blindDrops = blindDrops;
+      state.doorRecons = doorRecons;
+      state.vipSwaps = vipSwaps;
+      state.securitySeals = securitySeals;
+      state.shelfAudits = shelfAudits.length > 0 ? shelfAudits : buildDefaultShelfState();
+      state.orders = orders;
+      state.governanceAudits = govAudits;
+      state.depletionLogs = depletionLogs;
+
+      renderAllForensicViews();
+    }
+
+    function buildDefaultShelfState() {
+      return CANONICAL_PACKAGING_SKUS.map((sku) => {
+        const posBurn = sku.layer1_item_mod_burn + sku.layer2_ordermode_burn;
+        const expected = sku.opening_stock + sku.vendor_deliveries - posBurn;
+        return {
+          ...sku,
+          pos_theoretical_burn: posBurn,
+          expected_ending_stock: expected,
+          physical_shelf_count: null,
+          unit_variance: null,
+          dollar_variance: null,
+          actual_units_consumed: posBurn,
+          actual_packaging_cogs: Number((posBurn * sku.unit_cogs).toFixed(2)),
+          low_par_alert: expected < sku.par_level,
+          audit_status: expected < sku.par_level ? 'LOW_PAR_REORDER' : 'PENDING_COUNT'
+        };
+      });
+    }
+
+    // =========================================================================
+    // 6. FORENSIC FORMULA ENGINES & RENDERERS (TABS 4.1 -> 4.5)
+    // =========================================================================
+    function renderAllForensicViews() {
+      document.getElementById('label-single-limit').textContent = fmtCurrency(state.singleLimit);
+      document.getElementById('label-shift-ceiling').textContent = fmtCurrency(state.shiftCeiling);
+
+      const modTotal = state.blindDrops.length + state.doorRecons.length + state.vipSwaps.length + state.securitySeals.length;
+      const modCounter = document.getElementById('mod-submission-counter');
+      if (modCounter) modCounter.textContent = `${modTotal} Packets Logged Tonight`;
+
+      if (state.role === 'MOD') {
+        renderModBlindShelfGrid();
+        return;
+      }
+
+      renderWagonWheelMatrix();
+      renderTab42Reconciliations();
+      renderSecurityAndDvrQueue();
+      renderPhantomGuestEngine();
+      renderPackagingVault();
+      updateExecutiveKpiStrip();
+    }
+
+    // -------------------------------------------------------------------------
+    // TAB 4.1: WAGON WHEEL ANOMALY MATRIX™ + COLLUSION + TRIPWIRE STREAM
+    // -------------------------------------------------------------------------
+    function computeWagonWheelAnalytics() {
+      const staffMap = {};
+      const collusionMap = {};
+      let cumulativeOverrides = 0;
+      let breachCount = 0;
+
+      const ensureStaff = (name) => {
+        const key = name || 'Unassigned Staff';
+        if (!staffMap[key]) {
+          staffMap[key] = {
+            staff: key,
+            checks: 0,
+            maxTransfersOnCheck: 0,
+            totalTransfers: 0,
+            postPrintCashVoids: 0,
+            closingWindowVoids: 0,
+            sodaWaterCount: 0,
+            liquorCount: 0,
+            overrideDollars: 0
+          };
+        }
+        return staffMap[key];
+      };
+
+      state.orders.forEach((o) => {
+        const st = ensureStaff(o.staff_name || o.server_name || o.bartender || 'Bar Well #1');
+        st.checks += 1;
+        st.sodaWaterCount += Number(o.soda_water_items || 0);
+        st.liquorCount += Number(o.liquor_items || o.beverage_count || 2);
+        if (Number(o.transfer_count || 0) > st.maxTransfersOnCheck) {
+          st.maxTransfersOnCheck = Number(o.transfer_count || 0);
+        }
+      });
+
+      const enrichedAudits = state.governanceAudits.map((a) => {
+        const staff = a.staff_requester || a.staff_name || 'Bartender';
+        const manager = a.manager_approver || a.approved_by || 'MOD';
+        const action = String(a.action_type || a.event_type || 'VOID_TICKET').toUpperCase();
+        const amt = Math.abs(Number(a.amount || a.void_amount || 0));
+        const ts = a.created_at || a.timestamp || new Date().toISOString();
+        const d = new Date(ts);
+        const hr = d.getHours() + d.getMinutes() / 60;
+        const isClosingCluster = hr >= 1.5 && hr <= 3.5;
+        const isPostPrintVoid = Boolean(a.post_print_cash_void) || (action.includes('VOID') && String(a.notes || '').toLowerCase().includes('print'));
+        const xferCount = Number(a.transfer_count || (action.includes('TRANSFER') ? 4 : 0));
+
+        const st = ensureStaff(staff);
+        if (action.includes('TRANSFER')) {
+          st.totalTransfers += Math.max(1, xferCount);
+          st.maxTransfersOnCheck = Math.max(st.maxTransfersOnCheck, xferCount);
+        }
+        if (action.includes('VOID') || action.includes('COMP')) {
+          st.overrideDollars += amt;
+          cumulativeOverrides += amt;
+          if (isClosingCluster) st.closingWindowVoids += 1;
+          if (isPostPrintVoid) st.postPrintCashVoids += 1;
+        }
+
+        const pairKey = `${manager} × ${staff}`;
+        if (!collusionMap[pairKey]) {
+          collusionMap[pairKey] = { manager, staff, count: 0, dollars: 0 };
+        }
+        collusionMap[pairKey].count += 1;
+        collusionMap[pairKey].dollars += amt;
+
+        const triggers = [];
+        if (amt > state.singleLimit) triggers.push(`>$X LIMIT (${fmtCurrency(state.singleLimit)})`);
+        if (isPostPrintVoid) triggers.push('POST-PRINT CASH VOID');
+        if (isClosingCluster && action.includes('VOID')) triggers.push('1:30–3:30a CLOSING CLUSTER');
+        if (xferCount >= 4) triggers.push(`WAGON WHEEL (${xferCount} XFERS)`);
+        if (triggers.length > 0) breachCount += 1;
+
+        return {
+          ts,
+          action,
+          checkNum: a.check_number || a.order_id || 'CHK-LIVE',
+          staff,
+          manager,
+          amt,
+          triggers,
+          isClosingCluster,
+          isPostPrintVoid,
+          xferCount
+        };
+      });
+
+      const staffRows = Object.values(staffMap).map((s) => {
+        const sodaRatio = s.liquorCount > 0 ? (s.sodaWaterCount / s.liquorCount) * 100 : 0;
+        let risk = 0;
+        if (s.maxTransfersOnCheck >= 4) risk += 38 + (s.maxTransfersOnCheck - 4) * 6;
+        risk += s.postPrintCashVoids * 28;
+        risk += s.closingWindowVoids * 18;
+        if (sodaRatio > 12) risk += Math.round((sodaRatio - 12) * 2.2);
+        if (s.overrideDollars > state.singleLimit) risk += 14;
+        risk = Math.min(100, risk);
+
+        return { ...s, sodaRatio, risk };
+      }).sort((a, b) => b.risk - a.risk);
+
+      const shiftBreached = cumulativeOverrides > state.shiftCeiling;
+      if (shiftBreached) breachCount += 1;
+
+      return {
+        staffRows,
+        collusionRows: Object.values(collusionMap).sort((a, b) => b.dollars - a.dollars || b.count - a.count),
+        enrichedAudits,
+        cumulativeOverrides,
+        shiftBreached,
+        breachCount
+      };
+    }
+
+    function renderWagonWheelMatrix() {
+      const { staffRows, collusionRows, enrichedAudits, breachCount } = computeWagonWheelAnalytics();
+      const tbody = document.getElementById('wagon-wheel-tbody');
+
+      if (staffRows.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" class="py-6 text-center text-slate-500">No POS check transfers or override anomalies recorded for this shift. Click "🧪 Seed Forensic Demo" to inspect full Wagon Wheel telemetry.</td></tr>`;
+      } else {
+        tbody.innerHTML = staffRows.map((r) => {
+          const badge = r.risk >= 70
+            ? `<span class="px-2 py-0.5 rounded bg-crimson text-white font-bold">${r.risk} CRITICAL</span>`
+            : r.risk >= 40
+              ? `<span class="px-2 py-0.5 rounded bg-sovereign/20 text-sovereign font-bold">${r.risk} WATCH</span>`
+              : `<span class="px-2 py-0.5 rounded bg-emeraldVault/15 text-emeraldVault font-bold">${r.risk} CLEAN</span>`;
+          return `
+            <tr class="hover:bg-white/[0.02]">
+              <td class="py-2.5 px-3 font-sans font-semibold text-white">${esc(r.staff)}</td>
+              <td class="py-2.5 px-3 text-right text-slate-300">${r.checks}</td>
+              <td class="py-2.5 px-3 text-right ${r.maxTransfersOnCheck >= 4 ? 'text-crimson font-bold' : 'text-slate-400'}">${r.totalTransfers} (Max ${r.maxTransfersOnCheck})</td>
+              <td class="py-2.5 px-3 text-right ${r.postPrintCashVoids > 0 ? 'text-crimson font-bold' : 'text-slate-400'}">${r.postPrintCashVoids}</td>
+              <td class="py-2.5 px-3 text-right ${r.closingWindowVoids > 0 ? 'text-sovereign font-bold' : 'text-slate-400'}">${r.closingWindowVoids}</td>
+              <td class="py-2.5 px-3 text-right ${r.sodaRatio > 12 ? 'text-crimson font-bold' : 'text-slate-300'}">${r.sodaRatio.toFixed(1)}%</td>
+              <td class="py-2.5 px-3 text-right text-white">${fmtCurrency(r.overrideDollars)}</td>
+              <td class="py-2.5 px-3 text-right">${badge}</td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      const colContainer = document.getElementById('collusion-matrix-container');
+      if (collusionRows.length === 0) {
+        colContainer.innerHTML = `<div class="p-4 rounded-xl bg-obsidian border border-titanium text-slate-500 text-center">Zero Manager &times; Bartender override pairings logged tonight.</div>`;
+      } else {
+        colContainer.innerHTML = collusionRows.slice(0, 6).map((c) => {
+          const hot = c.count >= 3 || c.dollars >= state.singleLimit * 2;
+          return `
+            <div class="p-3 rounded-xl border ${hot ? 'bg-crimsonDark/25 border-crimson/60' : 'bg-obsidian border-titanium'} flex items-center justify-between gap-2">
+              <div>
+                <div class="font-semibold text-white">${esc(c.manager)} <span class="text-slate-500">&rarr;</span> ${esc(c.staff)}</div>
+                <div class="text-[11px] text-slate-400 font-mono">${c.count} PIN Approvals Tonight</div>
+              </div>
+              <div class="text-right font-mono">
+                <div class="font-bold ${hot ? 'text-crimson' : 'text-sovereign'}">${fmtCurrency(c.dollars)}</div>
+                <div class="text-[10px] ${hot ? 'text-crimson' : 'text-slate-500'}">${hot ? 'COLLUSION WATCH' : 'NORMAL'}</div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      document.getElementById('tripwire-breach-count').textContent = `${breachCount} Tripwire Breaches`;
+      const govTbody = document.getElementById('governance-feed-tbody');
+      if (enrichedAudits.length === 0) {
+        govTbody.innerHTML = `<tr><td colspan="7" class="py-6 text-center text-slate-500">Awaiting live COMP_DISC / VOID_TICKET / TRANSFER_CHECK events...</td></tr>`;
+      } else {
+        govTbody.innerHTML = enrichedAudits.map((e) => `
+          <tr class="hover:bg-white/[0.02]">
+            <td class="py-2.5 px-3 text-slate-400">${fmtTime(e.ts)}</td>
+            <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-obsidian border border-titanium text-slate-200">${esc(e.action)}</span></td>
+            <td class="py-2.5 px-3 text-slate-300">${esc(e.checkNum)}</td>
+            <td class="py-2.5 px-3 font-sans text-white">${esc(e.staff)}</td>
+            <td class="py-2.5 px-3 font-sans text-sovereign">${esc(e.manager)}</td>
+            <td class="py-2.5 px-3 text-right font-bold text-white">${fmtCurrency(e.amt)}</td>
+            <td class="py-2.5 px-3">
+              ${e.triggers.length
+                ? e.triggers.map((t) => `<span class="inline-block mr-1 mb-0.5 px-2 py-0.5 rounded bg-crimson/20 text-crimson text-[10px] font-bold">${esc(t)}</span>`).join('')
+                : `<span class="text-emeraldVault text-[10px]">WITHIN GUARDRAIL</span>`}
+            </td>
+          </tr>
+        `).join('');
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // TAB 4.2: BLIND DROPS, DOOR WRISTBANDS & VIP BOTTLE CAGE
+    // -------------------------------------------------------------------------
+    function renderTab42Reconciliations() {
+      const dropsTbody = document.getElementById('blind-drops-tbody');
+      if (state.blindDrops.length === 0) {
+        dropsTbody.innerHTML = `<tr><td colspan="9" class="py-6 text-center text-slate-500">No blind cash drops submitted for this shift date.</td></tr>`;
+      } else {
+        dropsTbody.innerHTML = state.blindDrops.map((d) => {
+          const bank = Number(d.starting_bank || 300);
+          const skim = Number(d.skim_1130_amount || 0);
+          const counted = Number(d.blind_drawer_cash || 0);
+          const netDrop = Number(d.net_cash_drop ?? (counted - bank + skim));
+          const hasExpected = d.pos_expected_cash !== null && d.pos_expected_cash !== undefined && d.pos_expected_cash !== '';
+          const expected = hasExpected ? Number(d.pos_expected_cash) : null;
+          const variance = expected !== null ? Number((netDrop - expected).toFixed(2)) : null;
+
+          let verdictBadge = `<span class="px-2 py-0.5 rounded bg-sovereign/20 text-sovereign text-[10px] font-bold">AWAITING POS Z</span>`;
+          if (variance !== null) {
+            if (Math.abs(variance) > 2.0) {
+              verdictBadge = `<span class="px-2 py-0.5 rounded bg-crimson text-white text-[10px] font-bold">BREACH (&gt;&plusmn;$2)</span>`;
+            } else if (Math.abs(variance) === 0) {
+              verdictBadge = `<span class="px-2 py-0.5 rounded bg-sovereign/25 text-sovereign text-[10px] font-bold">EXACT $0.00 CLUSTER</span>`;
+            } else {
+              verdictBadge = `<span class="px-2 py-0.5 rounded bg-emeraldVault/20 text-emeraldVault text-[10px] font-bold">CLEAN PASS</span>`;
+            }
+          }
+          if (netDrop >= 500 && skim === 0) {
+            verdictBadge += ` <span class="px-1.5 py-0.5 rounded bg-crimson/20 text-crimson text-[10px] font-bold">MISSED 11:30p SKIM</span>`;
+          }
+
+          return `
+            <tr class="hover:bg-white/[0.02]">
+              <td class="py-2.5 px-3 font-sans font-semibold text-white">${esc(d.station_name)} <span class="text-[10px] text-slate-500">(${esc(d.drawer_type)})</span></td>
+              <td class="py-2.5 px-3 font-sans text-slate-300">${esc(d.staff_custodian)} / <span class="text-slate-400">${esc(d.mod_witness)}</span></td>
+              <td class="py-2.5 px-3 text-right text-slate-400">${fmtCurrency(bank)}</td>
+              <td class="py-2.5 px-3 text-right ${skim > 0 ? 'text-sovereign' : 'text-slate-500'}">${fmtCurrency(skim)}</td>
+              <td class="py-2.5 px-3 text-right text-white">${fmtCurrency(counted)}</td>
+              <td class="py-2.5 px-3 text-right font-bold text-white">${fmtCurrency(netDrop)}</td>
+              <td class="py-2.5 px-3 text-right text-slate-300">${expected !== null ? fmtCurrency(expected) : '—'}</td>
+              <td class="py-2.5 px-3 text-right font-bold ${variance !== null && Math.abs(variance) > 2 ? 'text-crimson' : 'text-emeraldVault'}">${variance !== null ? fmtSignedCurrency(variance) : '—'}</td>
+              <td class="py-2.5 px-3">${verdictBadge}</td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      const doorTbody = document.getElementById('door-recon-tbody');
+      if (state.doorRecons.length === 0) {
+        doorTbody.innerHTML = `<tr><td colspan="6" class="py-5 text-center text-slate-500">No front door wristband packets logged tonight.</td></tr>`;
+      } else {
+        doorTbody.innerHTML = state.doorRecons.map((r) => {
+          const netBands = Math.max(0, Number(r.ending_serial) - Number(r.starting_serial) - Number(r.stapled_spoiled_bands || 0));
+          const expectedRev = netBands * Number(r.tier_cover_price || 0);
+          const actualRev = Number(r.door_cash_collected || 0) + Number(r.door_cc_batch_total || 0);
+          const clickerDelta = Number(r.clicker_headcount || 0) - netBands;
+          const revDelta = actualRev - expectedRev;
+          const breach = Math.abs(clickerDelta) > 3 || Math.abs(revDelta) > 2;
+
+          return `
+            <tr class="hover:bg-white/[0.02]">
+              <td class="py-2 px-2.5 font-sans text-white font-semibold">${esc(r.tier_bucket.replace(/_/g, ' '))}</td>
+              <td class="py-2 px-2.5 text-right text-slate-200">${netBands}</td>
+              <td class="py-2 px-2.5 text-right ${Math.abs(clickerDelta) > 3 ? 'text-crimson font-bold' : 'text-slate-300'}">${r.clicker_headcount} (${clickerDelta >= 0 ? '+' : ''}${clickerDelta})</td>
+              <td class="py-2 px-2.5 text-right text-slate-300">${fmtCurrency(expectedRev)}</td>
+              <td class="py-2 px-2.5 text-right ${Math.abs(revDelta) > 2 ? 'text-crimson font-bold' : 'text-emeraldVault'}">${fmtCurrency(actualRev)}</td>
+              <td class="py-2 px-2.5">
+                ${breach
+                  ? `<span class="px-2 py-0.5 rounded bg-crimson text-white text-[10px] font-bold">DOOR BREACH</span>`
+                  : `<span class="px-2 py-0.5 rounded bg-emeraldVault/20 text-emeraldVault text-[10px] font-bold">3-WAY PASS</span>`}
+              </td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      const vipTbody = document.getElementById('vip-bottle-tbody');
+      if (state.vipSwaps.length === 0) {
+        vipTbody.innerHTML = `<tr><td colspan="5" class="py-5 text-center text-slate-500">No VIP foil-sticker bottles issued tonight.</td></tr>`;
+      } else {
+        const sortedSwaps = [...state.vipSwaps].sort((a, b) => String(a.foil_sticker_serial).localeCompare(String(b.foil_sticker_serial)));
+        let prevNum = null;
+
+        vipTbody.innerHTML = sortedSwaps.map((v) => {
+          const match = String(v.foil_sticker_serial || '').match(/(\d+)$/);
+          const currNum = match ? parseInt(match[1], 10) : null;
+          const gap = prevNum !== null && currNum !== null && currNum - prevNum > 1;
+          if (currNum !== null) prevNum = currNum;
+
+          const unrung = !v.pos_check_number || String(v.pos_check_number).trim() === '';
+          let statusHtml = `<span class="px-2 py-0.5 rounded bg-emeraldVault/20 text-emeraldVault text-[10px] font-bold">RECONCILED</span>`;
+          if (gap) statusHtml = `<span class="px-2 py-0.5 rounded bg-crimson text-white text-[10px] font-bold">FOIL SERIAL GAP</span>`;
+          else if (unrung) statusHtml = `<span class="px-2 py-0.5 rounded bg-crimson text-white text-[10px] font-bold">UNRUNG BOTTLE</span>`;
+          else if (!v.dead_soldier_returned) statusHtml = `<span class="px-2 py-0.5 rounded bg-sovereign/20 text-sovereign text-[10px] font-bold">MISSING EMPTY</span>`;
+
+          return `
+            <tr class="hover:bg-white/[0.02]">
+              <td class="py-2 px-2.5 font-bold text-white">${esc(v.foil_sticker_serial)}</td>
+              <td class="py-2 px-2.5 font-sans text-slate-200">${esc(v.bottle_sku_name)} <span class="text-slate-500">(${esc(v.vip_booth_section)})</span></td>
+              <td class="py-2 px-2.5 ${unrung ? 'text-crimson font-bold' : 'text-slate-300'}">${unrung ? 'NONE' : esc(v.pos_check_number)}</td>
+              <td class="py-2 px-2.5 text-center">${v.dead_soldier_returned ? '✅' : '⚠️'}</td>
+              <td class="py-2 px-2.5">${statusHtml}</td>
+            </tr>
+          `;
+        }).join('');
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // TAB 4.3: TUESDAY 10:00 AM DVR SPOT-CHECK QUEUE & VAULT SEAL
+    // -------------------------------------------------------------------------
+    function buildTop5DvrQueue() {
+      const candidates = [];
+
+      state.governanceAudits.forEach((a) => {
+        const amt = Math.abs(Number(a.amount || 0));
+        const action = String(a.action_type || 'VOID_TICKET').toUpperCase();
+        const ts = a.created_at || new Date().toISOString();
+        const hr = new Date(ts).getHours() + new Date(ts).getMinutes() / 60;
+        let priority = amt;
+        if (hr >= 1.5 && hr <= 3.5) priority += 75;
+        if (a.post_print_cash_void) priority += 110;
+        if (action.includes('NO_SALE')) priority += 90;
+        candidates.push({
+          priority,
+          camera: a.camera_channel || 'CAM-01 Overhead Main Bar Well',
+          timestamp: fmtTime(ts),
+          reason: `${action} (${fmtCurrency(amt)}) — ${a.staff_requester || 'Staff'} / Approver: ${a.manager_approver || 'MOD'}`,
+          severity: priority >= 120 ? 'CRITICAL' : 'HIGH'
+        });
+      });
+
+      state.vipSwaps.forEach((v) => {
+        if (!v.pos_check_number || !v.dead_soldier_returned) {
+          candidates.push({
+            priority: 150,
+            camera: 'CAM-06 Liquor Cage & VIP Service Pass',
+            timestamp: fmtTime(v.created_at || new Date().toISOString()),
+            reason: `VIP Foil ${v.foil_sticker_serial} (${v.bottle_sku_name}) — ${!v.pos_check_number ? 'Missing POS Check #' : 'Missing Dead Soldier Return'}`,
+            severity: 'CRITICAL'
+          });
+        }
+      });
+
+      state.doorRecons.forEach((d) => {
+        const net = Math.max(0, Number(d.ending_serial) - Number(d.starting_serial) - Number(d.stapled_spoiled_bands || 0));
+        const delta = Number(d.clicker_headcount || 0) - net;
+        if (Math.abs(delta) > 3) {
+          candidates.push({
+            priority: 130,
+            camera: 'CAM-02 Front Door Podium & Turnstile',
+            timestamp: 'Peak Entry Window (11:30 PM – 1:30 AM)',
+            reason: `Clicker vs. Wristband Breach (${delta >= 0 ? '+' : ''}${delta} Guests Unbanded on ${d.tier_bucket})`,
+            severity: 'CRITICAL'
+          });
+        }
+      });
+
+      return candidates.sort((a, b) => b.priority - a.priority).slice(0, 5);
+    }
+
+    function renderSecurityAndDvrQueue() {
+      const top5 = buildTop5DvrQueue();
+      const qContainer = document.getElementById('dvr-top5-queue-list');
+      if (top5.length === 0) {
+        qContainer.innerHTML = `<div class="p-4 rounded-xl bg-obsidian border border-titanium text-xs text-slate-400">Zero high-risk DVR camera exceptions queued for Tuesday 10:00 AM review.</div>`;
+      } else {
+        qContainer.innerHTML = top5.map((item, idx) => `
+          <div class="p-3.5 rounded-xl bg-obsidian border ${item.severity === 'CRITICAL' ? 'border-crimson/70' : 'border-titanium'} flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-lg bg-crimson/20 border border-crimson text-crimson font-mono text-xs font-extrabold flex items-center justify-center shrink-0">#${idx + 1}</span>
+              <div>
+                <div class="text-xs font-bold text-white">${esc(item.camera)} <span class="font-mono text-sovereign ml-1">@ ${esc(item.timestamp)}</span></div>
+                <div class="text-xs text-slate-400 mt-0.5">${esc(item.reason)}</div>
+              </div>
+            </div>
+            <span class="px-2.5 py-1 rounded bg-crimson/20 text-crimson font-mono text-[10px] font-bold uppercase shrink-0">10-MIN NVR VERIFY</span>
+          </div>
+        `).join('');
+      }
+
+      const secTbody = document.getElementById('security-incidents-tbody');
+      if (state.securitySeals.length === 0) {
+        secTbody.innerHTML = `<tr><td colspan="6" class="py-5 text-center text-slate-500">No floor ejections or vault seals logged for this shift yet.</td></tr>`;
+      } else {
+        secTbody.innerHTML = state.securitySeals.map((s) => `
+          <tr class="hover:bg-white/[0.02]">
+            <td class="py-2.5 px-3 text-slate-400">${fmtTime(s.incident_time || s.created_at)}</td>
+            <td class="py-2.5 px-3 font-sans text-white font-semibold">${esc(s.record_type)} • <span class="text-sovereign">${esc(s.incident_category)}</span></td>
+            <td class="py-2.5 px-3 text-slate-300">${esc(s.dvr_camera_channel || 'VAULT')} <span class="text-slate-500">${esc(s.dvr_timestamp_window || '')}</span></td>
+            <td class="py-2.5 px-3 font-sans text-slate-200">${esc(s.mod_on_duty)}</td>
+            <td class="py-2.5 px-3 font-sans text-slate-300">${esc(s.narrative || s.seal_hash || '')}</td>
+            <td class="py-2.5 px-3">
+              ${s.sealed_to_vault
+                ? `<span class="px-2.5 py-0.5 rounded bg-emeraldVault/20 border border-emeraldVault/50 text-emeraldVault font-bold text-[10px]">✓ SEALED TO VAULT</span>`
+                : `<span class="px-2 py-0.5 rounded bg-obsidian border border-titanium text-slate-300 text-[10px]">LOGGED</span>`}
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      const sealedEntry = state.securitySeals.find((s) => s.record_type === 'SHIFT_VAULT_SEAL' && s.sealed_to_vault);
+      const receiptEl = document.getElementById('last-seal-receipt');
+      if (sealedEntry) {
+        receiptEl.innerHTML = `<span class="text-emeraldVault font-bold">✓ SEALED TO VAULT</span> • Hash <code class="text-white">${esc(sealedEntry.seal_hash || 'SHA256-VERIFIED')}</code> by ${esc(sealedEntry.mod_on_duty)} at ${fmtTime(sealedEntry.sealed_at || sealedEntry.created_at)}`;
+      } else {
+        receiptEl.textContent = 'Shift currently open. Verify attestations and click SEAL SHIFT TO SOVEREIGN VAULT.';
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // TAB 4.4: MODEL A VS. MODEL B "PHANTOM GUEST" ANTI-THEFT ENGINE
+    // -------------------------------------------------------------------------
+    function computePhantomGuestStations() {
+      const avgSpend = Math.max(5, Number(document.getElementById('phantom-avg-spend')?.value || 28));
+      const stationMap = {};
+
+      const ensureStation = (station, staff) => {
+        const key = station || 'Main Bar Well #1';
+        if (!stationMap[key]) {
+          stationMap[key] = {
+            station: key,
+            staff: staff || 'Assigned Bartender',
+            modelAGuests: 0,
+            rungItems: 0,
+            cupsBurned: 0,
+            linersClamshellsBurned: 0,
+            utensilKitsBurned: 0
+          };
+        }
+        return stationMap[key];
+      };
+
+      state.orders.forEach((o) => {
+        const st = ensureStation(o.station_name || o.terminal_zone || 'Main Bar Well #1', o.staff_name || o.bartender);
+        st.modelAGuests += Math.max(1, Number(o.guest_count || o.stated_guests || 1));
+        st.rungItems += Number(o.item_count || o.beverage_count || 2);
+      });
+
+      state.depletionLogs.forEach((l) => {
+        const st = ensureStation(l.station_name || l.zone || 'Main Bar Well #1', l.staff_name);
+        const qty = Math.abs(Number(l.quantity_depleted || l.units_burned || 0));
+        const sku = String(l.sku_code || l.item_name || '').toUpperCase();
+        if (sku.includes('CUP')) st.cupsBurned += qty;
+        else if (sku.includes('LIN') || sku.includes('CLM') || sku.includes('BOAT')) st.linersClamshellsBurned += qty;
+        else if (sku.includes('UTN') || sku.includes('KIT')) st.utensilKitsBurned += qty;
+      });
+
+      const rows = Object.values(stationMap).map((s) => {
+        const impliedFromCups = Math.round(s.cupsBurned / 1.85);
+        const impliedFromFoodWare = Math.max(s.linersClamshellsBurned, s.utensilKitsBurned);
+        const modelBGuests = Math.max(impliedFromCups, impliedFromFoodWare, Math.round(impliedFromCups * 0.72 + impliedFromFoodWare * 0.65));
+        const phantomDelta = modelBGuests - s.modelAGuests;
+        const unrungExposure = phantomDelta > 2 ? phantomDelta * avgSpend : 0;
+
+        return {
+          ...s,
+          totalDisposables: s.cupsBurned + s.linersClamshellsBurned + s.utensilKitsBurned,
+          modelBGuests,
+          phantomDelta,
+          unrungExposure
+        };
+      }).sort((a, b) => b.unrungExposure - a.unrungExposure);
+
+      return rows;
+    }
+
+    function renderPhantomGuestEngine() {
+      const rows = computePhantomGuestStations();
+      const totA = rows.reduce((s, r) => s + r.modelAGuests, 0);
+      const totB = rows.reduce((s, r) => s + r.modelBGuests, 0);
+      const totPhantom = rows.reduce((s, r) => s + Math.max(0, r.phantomDelta), 0);
+      const totDollars = rows.reduce((s, r) => s + r.unrungExposure, 0);
+
+      document.getElementById('phantom-model-a-total').textContent = totA.toLocaleString();
+      document.getElementById('phantom-model-b-total').textContent = totB.toLocaleString();
+      document.getElementById('phantom-delta-total').textContent = `+${totPhantom.toLocaleString()}`;
+      document.getElementById('phantom-dollar-total').textContent = fmtCurrency(totDollars);
+
+      const tbody = document.getElementById('phantom-station-tbody');
+      if (rows.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" class="py-6 text-center text-slate-500">No live station orders + packaging depletion logs ingested yet. Seed Demo Telemetry or connect Carbon POS Autopilot.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = rows.map((r) => {
+        const flag = r.phantomDelta > 6
+          ? `<span class="px-2.5 py-0.5 rounded bg-crimson text-white text-[10px] font-bold">PHANTOM THEFT ALERT</span>`
+          : r.phantomDelta > 2
+            ? `<span class="px-2.5 py-0.5 rounded bg-sovereign/20 text-sovereign text-[10px] font-bold">UNRUNG POUR WATCH</span>`
+            : `<span class="px-2.5 py-0.5 rounded bg-emeraldVault/20 text-emeraldVault text-[10px] font-bold">ALIGNED</span>`;
+        return `
+          <tr class="hover:bg-white/[0.02]">
+            <td class="py-2.5 px-3 font-sans font-bold text-white">${esc(r.station)}</td>
+            <td class="py-2.5 px-3 font-sans text-slate-300">${esc(r.staff)}</td>
+            <td class="py-2.5 px-3 text-right text-slate-200">${r.modelAGuests} Guests (${r.rungItems} Items)</td>
+            <td class="py-2.5 px-3 text-right text-slate-300">${r.cupsBurned} Cups / ${r.linersClamshellsBurned} Boxes / ${r.utensilKitsBurned} Kits</td>
+            <td class="py-2.5 px-3 text-right font-bold text-sovereign">${r.modelBGuests} Guests</td>
+            <td class="py-2.5 px-3 text-right font-bold ${r.phantomDelta > 2 ? 'text-crimson' : 'text-emeraldVault'}">${r.phantomDelta >= 0 ? '+' : ''}${r.phantomDelta}</td>
+            <td class="py-2.5 px-3 text-right font-bold ${r.unrungExposure > 0 ? 'text-crimson' : 'text-slate-400'}">${fmtCurrency(r.unrungExposure)}</td>
+            <td class="py-2.5 px-3">${flag}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // -------------------------------------------------------------------------
+    // TAB 4.5: EXTENDED INVENTORY & BOH MICRO-DEPLETION PACKAGING VAULT
+    // -------------------------------------------------------------------------
+    function renderPackagingVault() {
+      const items = state.shelfAudits.length > 0 ? state.shelfAudits : buildDefaultShelfState();
+
+      let lowParCount = 0;
+      const dailyTbody = document.getElementById('pkg-daily-tbody');
+      dailyTbody.innerHTML = items.map((item) => {
+        const l1 = Math.round(Number(item.layer1_item_mod_burn || 0) / 7) || Math.round(Number(item.pos_theoretical_burn || 0) / 7);
+        const l2 = Math.round(Number(item.layer2_ordermode_burn || 0) / 7);
+        const dailyUnits = l1 + l2;
+        const unitCogs = Number(item.unit_cogs || 0);
+        const dailyCost = dailyUnits * unitCogs;
+        const onHand = item.physical_shelf_count !== null && item.physical_shelf_count !== undefined
+          ? Number(item.physical_shelf_count)
+          : Number(item.opening_stock || 0) + Number(item.vendor_deliveries || 0) - Number(item.pos_theoretical_burn || 0);
+        const par = Number(item.par_level || 1000);
+        const isLow = onHand < par;
+        if (isLow) lowParCount += 1;
+
+        return `
+          <tr class="hover:bg-white/[0.02]">
+            <td class="py-2.5 px-3 text-slate-400">${esc(item.sku_code)}</td>
+            <td class="py-2.5 px-3 font-sans font-semibold text-white">${esc(item.item_name)}</td>
+            <td class="py-2.5 px-3 text-right text-sovereign">$${unitCogs.toFixed(4)}</td>
+            <td class="py-2.5 px-3 text-right text-slate-300">${l1.toLocaleString()}</td>
+            <td class="py-2.5 px-3 text-right text-slate-300">${l2.toLocaleString()}</td>
+            <td class="py-2.5 px-3 text-right font-bold text-white">${dailyUnits.toLocaleString()}</td>
+            <td class="py-2.5 px-3 text-right text-white">${fmtCurrency(dailyCost)}</td>
+            <td class="py-2.5 px-3 text-right ${isLow ? 'text-crimson font-bold' : 'text-slate-300'}">${onHand.toLocaleString()} / ${par.toLocaleString()}</td>
+            <td class="py-2.5 px-3">
+              ${isLow
+                ? `<span class="px-2 py-0.5 rounded bg-crimson text-white text-[10px] font-bold">REORDER NOW</span>`
+                : `<span class="px-2 py-0.5 rounded bg-emeraldVault/20 text-emeraldVault text-[10px] font-bold">ABOVE PAR</span>`}
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      document.getElementById('low-par-summary').innerHTML = lowParCount > 0
+        ? `⚠️ <strong>${lowParCount} Packaging SKUs Below Par Threshold</strong> — Reorder before Friday/Saturday volume rush.`
+        : `✅ All 10 BOH Disposable & Packaging SKUs currently stocked above weekend par levels.`;
+
+      const weeklyTbody = document.getElementById('pkg-weekly-tbody');
+      weeklyTbody.innerHTML = items.map((item, idx) => {
+        const open = Number(item.opening_stock || 0);
+        const deliv = Number(item.vendor_deliveries || 0);
+        const theo = Number(item.pos_theoretical_burn || (Number(item.layer1_item_mod_burn || 0) + Number(item.layer2_ordermode_burn || 0)));
+        const expectedEnd = open + deliv - theo;
+        const hasPhys = item.physical_shelf_count !== null && item.physical_shelf_count !== undefined && item.physical_shelf_count !== '';
+        const phys = hasPhys ? Number(item.physical_shelf_count) : '';
+        const unitVar = hasPhys ? phys - expectedEnd : null;
+        const shrinkDollars = unitVar !== null ? unitVar * Number(item.unit_cogs || 0) : null;
+
+        let badge = `<span class="px-2 py-0.5 rounded bg-obsidian border border-titanium text-slate-400 text-[10px]">ENTER SHELF COUNT</span>`;
+        if (shrinkDollars !== null) {
+          if (shrinkDollars < -10 || (expectedEnd > 0 && unitVar / expectedEnd < -0.05)) {
+            badge = `<span class="px-2 py-0.5 rounded bg-crimson text-white text-[10px] font-bold">PILFERAGE / SHORT</span>`;
+          } else {
+            badge = `<span class="px-2 py-0.5 rounded bg-emeraldVault/20 text-emeraldVault text-[10px] font-bold">SCRUB PASS</span>`;
+          }
+        }
+
+        return `
+          <tr class="hover:bg-white/[0.02]">
+            <td class="py-2.5 px-3 font-sans font-semibold text-white">${esc(item.item_name)}</td>
+            <td class="py-2.5 px-3 text-right text-slate-300">${open.toLocaleString()}</td>
+            <td class="py-2.5 px-3 text-right text-slate-300">+${deliv.toLocaleString()}</td>
+            <td class="py-2.5 px-3 text-right text-sovereign">&minus;${theo.toLocaleString()}</td>
+            <td class="py-2.5 px-3 text-right font-bold text-white">${expectedEnd.toLocaleString()}</td>
+            <td class="py-2.5 px-3 text-right">
+              <input type="number" data-shelf-idx="${idx}" value="${phys}" placeholder="${expectedEnd}" class="carbon-input w-24 rounded px-2 py-1 text-right font-mono text-xs" />
+            </td>
+            <td class="py-2.5 px-3 text-right ${unitVar !== null && unitVar < 0 ? 'text-crimson font-bold' : 'text-emeraldVault'}">${unitVar !== null ? (unitVar >= 0 ? '+' : '') + unitVar.toLocaleString() : '—'}</td>
+            <td class="py-2.5 px-3 text-right ${shrinkDollars !== null && shrinkDollars < -10 ? 'text-crimson font-bold' : 'text-slate-300'}">${shrinkDollars !== null ? fmtSignedCurrency(shrinkDollars) : '—'}</td>
+            <td class="py-2.5 px-3">${badge}</td>
+          </tr>
+        `;
+      }).join('');
+
+      const grossSales = Math.max(1000, Number(document.getElementById('monthly-gross-sales-input')?.value || 185000));
+      const catBuckets = {};
+      let totalMonthlyUnits = 0;
+      let totalMonthlyCogs = 0;
+
+      items.forEach((item) => {
+        const open = Number(item.opening_stock || 0);
+        const deliv = Number(item.vendor_deliveries || 0);
+        const theo = Number(item.pos_theoretical_burn || (Number(item.layer1_item_mod_burn || 0) + Number(item.layer2_ordermode_burn || 0)));
+        const expectedEnd = open + deliv - theo;
+        const hasPhys = item.physical_shelf_count !== null && item.physical_shelf_count !== undefined && item.physical_shelf_count !== '';
+        const weeklyActual = hasPhys ? Math.max(0, open + deliv - Number(item.physical_shelf_count)) : theo;
+        const weeklyShrink = hasPhys ? Math.min(0, (Number(item.physical_shelf_count) - expectedEnd) * Number(item.unit_cogs || 0)) : 0;
+
+        const mUnits = Math.round(weeklyActual * 4.33);
+        const mCogs = mUnits * Number(item.unit_cogs || 0);
+        const mShrink = Math.abs(weeklyShrink * 4.33);
+
+        totalMonthlyUnits += mUnits;
+        totalMonthlyCogs += mCogs;
+
+        const cat = item.packaging_category || 'DISPOSABLES';
+        if (!catBuckets[cat]) catBuckets[cat] = { cat, skus: [], units: 0, cogs: 0, shrink: 0 };
+        catBuckets[cat].skus.push(item.sku_code);
+        catBuckets[cat].units += mUnits;
+        catBuckets[cat].cogs += mCogs;
+        catBuckets[cat].shrink += mShrink;
+      });
+
+      const pctOfSales = (totalMonthlyCogs / grossSales) * 100;
+      document.getElementById('monthly-total-units').textContent = totalMonthlyUnits.toLocaleString();
+      document.getElementById('monthly-total-cogs').textContent = fmtCurrency(totalMonthlyCogs);
+      const pctEl = document.getElementById('monthly-pct-sales');
+      pctEl.textContent = `${pctOfSales.toFixed(2)}%`;
+      pctEl.className = `text-xl font-extrabold font-mono mt-1 ${pctOfSales <= 1.5 ? 'text-emeraldVault' : 'text-crimson'}`;
+
+      document.getElementById('pkg-monthly-tbody').innerHTML = Object.values(catBuckets).map((b) => `
+        <tr class="hover:bg-white/[0.02]">
+          <td class="py-2.5 px-3 font-sans font-bold text-white">${esc(b.cat.replace(/_/g, ' '))}</td>
+          <td class="py-2.5 px-3 text-slate-400">${esc(b.skus.join(', '))}</td>
+          <td class="py-2.5 px-3 text-right text-slate-200">${b.units.toLocaleString()}</td>
+          <td class="py-2.5 px-3 text-right font-bold text-sovereign">${fmtCurrency(b.cogs)}</td>
+          <td class="py-2.5 px-3 text-right ${b.shrink > 25 ? 'text-crimson font-bold' : 'text-slate-400'}">${fmtCurrency(b.shrink)}</td>
+          <td class="py-2.5 px-3 text-right text-white">${((b.cogs / grossSales) * 100).toFixed(2)}%</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderModBlindShelfGrid() {
+      const grid = document.getElementById('mod-shelf-grid');
+      if (!grid) return;
+      const items = state.shelfAudits.length > 0 ? state.shelfAudits : buildDefaultShelfState();
+      grid.innerHTML = items.map((item, idx) => `
+        <div class="carbon-subcard rounded-xl p-3 space-y-1.5">
+          <div class="font-mono text-[10px] text-sovereign">${esc(item.sku_code)}</div>
+          <div class="font-semibold text-white text-xs leading-snug">${esc(item.item_name)}</div>
+          <input type="number" data-mod-shelf-idx="${idx}" value="${item.physical_shelf_count ?? ''}" placeholder="Counted Units" class="carbon-input w-full rounded-lg px-2.5 py-1.5 font-mono text-xs" />
+        </div>
+      `).join('');
+    }
+
+    function updateExecutiveKpiStrip() {
+      const ww = computeWagonWheelAnalytics();
+      const criticalStaff = ww.staffRows.filter((s) => s.risk >= 70).length;
+      document.getElementById('kpi-wagon-flags').textContent = criticalStaff;
+      document.getElementById('kpi-override-dollars').textContent = fmtCurrency(ww.cumulativeOverrides);
+
+      const tripPill = document.getElementById('kpi-tripwire-pill');
+      if (ww.breachCount > 0) {
+        tripPill.textContent = `${ww.breachCount} BREACH`;
+        tripPill.className = 'text-[10px] font-mono px-1.5 py-0.5 rounded bg-crimson text-white font-bold';
+      } else {
+        tripPill.textContent = 'PASS';
+        tripPill.className = 'text-[10px] font-mono px-1.5 py-0.5 rounded bg-emeraldVault/15 text-emeraldVault font-bold';
+      }
+
+      let netVar = 0;
+      state.blindDrops.forEach((d) => {
+        if (d.pos_expected_cash !== null && d.pos_expected_cash !== undefined && d.pos_expected_cash !== '') {
+          const netDrop = Number(d.net_cash_drop ?? (Number(d.blind_drawer_cash) - Number(d.starting_bank) + Number(d.skim_1130_amount || 0)));
+          netVar += netDrop - Number(d.pos_expected_cash);
+        }
+      });
+      state.doorRecons.forEach((r) => {
+        const netBands = Math.max(0, Number(r.ending_serial) - Number(r.starting_serial) - Number(r.stapled_spoiled_bands || 0));
+        const exp = netBands * Number(r.tier_cover_price || 0);
+        const act = Number(r.door_cash_collected || 0) + Number(r.door_cc_batch_total || 0);
+        netVar += act - exp;
+      });
+      const cashEl = document.getElementById('kpi-cash-door-var');
+      cashEl.textContent = fmtSignedCurrency(netVar);
+      cashEl.className = `text-2xl font-extrabold font-mono ${Math.abs(netVar) > 4 ? 'text-crimson' : 'text-emeraldVault'}`;
+
+      const phantomRows = computePhantomGuestStations();
+      const phantomDollars = phantomRows.reduce((s, r) => s + r.unrungExposure, 0);
+      const phantomGuests = phantomRows.reduce((s, r) => s + Math.max(0, r.phantomDelta), 0);
+      document.getElementById('kpi-phantom-exposure').textContent = fmtCurrency(phantomDollars);
+      document.getElementById('kpi-phantom-guests').textContent = `+${phantomGuests} Unrung`;
+
+      const pctText = document.getElementById('monthly-pct-sales')?.textContent || '0.00%';
+      document.getElementById('kpi-pkg-cogs-pct').textContent = pctText;
+
+      const sealed = state.securitySeals.some((s) => s.record_type === 'SHIFT_VAULT_SEAL' && s.sealed_to_vault);
+      const sealBadge = document.getElementById('kpi-vault-seal-badge');
+      if (sealed) {
+        sealBadge.textContent = '✓ SEALED TO VAULT';
+        sealBadge.className = 'px-2.5 py-1 rounded-lg font-mono text-xs font-extrabold bg-emeraldVault/20 border border-emeraldVault text-emeraldVault';
+      } else {
+        sealBadge.textContent = 'UNSEALED SHIFT';
+        sealBadge.className = 'px-2.5 py-1 rounded-lg font-mono text-xs font-bold bg-titanium/60 text-slate-300';
+      }
+    }
+
+    // =========================================================================
+    // 7. FORM SUBMISSIONS TO SUPABASE (`rehg-pos-core`)
+    // =========================================================================
+    function autoBankByDrawerType(sel) {
+      const form = sel.closest('form');
+      if (!form) return;
+      const bankInput = form.querySelector('[name="starting_bank"]');
+      if (bankInput) bankInput.value = sel.value === 'DOOR' ? '200.00' : '300.00';
+    }
+
+    async function submitBlindDrop(e, sourceRole) {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const shiftDate = document.getElementById('active-shift-date').value;
+      const skimAmt = parseFloat(fd.get('skim_1130_amount') || '0');
+      const rawExpected = fd.get('pos_expected_cash');
+
+      const payload = {
+        venue_id: state.venueId,
+        shift_date: shiftDate,
+        station_name: fd.get('station_name'),
+        drawer_type: fd.get('drawer_type') || 'BAR',
+        starting_bank: parseFloat(fd.get('starting_bank') || '300'),
+        skim_1130_triggered: skimAmt > 0,
+        skim_1130_amount: skimAmt,
+        blind_drawer_cash: parseFloat(fd.get('blind_drawer_cash') || '0'),
+        pos_expected_cash: sourceRole === 'OWNER' && rawExpected !== null && rawExpected !== '' ? parseFloat(rawExpected) : null,
+        safe_drop_envelope_id: fd.get('safe_drop_envelope_id'),
+        staff_custodian: fd.get('staff_custodian'),
+        mod_witness: fd.get('mod_witness'),
+        ingestion_mode: state.ingestionMode
+      };
+
+      await persistRecord('loss_blind_drops', payload, 'blindDrops');
+      e.target.reset();
+      showToast(
+        sourceRole === 'MOD'
+          ? 'Blind Cash Drop sealed into vault. Expected POS totals remain hidden.'
+          : 'Blind Cash Drop logged & reconciled against POS expected cash.',
+        'emerald'
+      );
+    }
+
+    async function submitDoorRecon(e, sourceRole) {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const shiftDate = document.getElementById('active-shift-date').value;
+
+      const payload = {
+        venue_id: state.venueId,
+        shift_date: shiftDate,
+        tier_bucket: fd.get('tier_bucket'),
+        tier_label: fd.get('tier_bucket').replace(/_/g, ' '),
+        tier_cover_price: parseFloat(fd.get('tier_cover_price') || '20'),
+        starting_serial: parseInt(fd.get('starting_serial') || '0', 10),
+        ending_serial: parseInt(fd.get('ending_serial') || '0', 10),
+        stapled_spoiled_bands: parseInt(fd.get('stapled_spoiled_bands') || '0', 10),
+        clicker_headcount: parseInt(fd.get('clicker_headcount') || '0', 10),
+        door_cash_collected: parseFloat(fd.get('door_cash_collected') || '0'),
+        door_cc_batch_total: parseFloat(fd.get('door_cc_batch_total') || '0'),
+        door_cashier: fd.get('door_cashier'),
+        security_clicker_lead: fd.get('security_clicker_lead'),
+        mod_verifier: fd.get('mod_verifier') || sourceRole,
+        ingestion_mode: state.ingestionMode
+      };
+
+      await persistRecord('loss_door_reconciliations', payload, 'doorRecons');
+      e.target.reset();
+      showToast('Front Door Wristband & Security Clicker packet saved to Vault.', 'emerald');
+    }
+
+    async function submitVipBottleSwap(e) {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const shiftDate = document.getElementById('active-shift-date').value;
+      const serialStr = String(fd.get('foil_sticker_serial') || '').toUpperCase();
+      const numMatch = serialStr.match(/(\d+)$/);
+
+      const payload = {
+        venue_id: state.venueId,
+        shift_date: shiftDate,
+        foil_sticker_serial: serialStr,
+        foil_serial_number: numMatch ? parseInt(numMatch[1], 10) : null,
+        bottle_sku_name: fd.get('bottle_sku_name'),
+        vip_menu_price: parseFloat(fd.get('vip_menu_price') || '450'),
+        vip_booth_section: fd.get('vip_booth_section'),
+        vip_server_name: fd.get('vip_server_name'),
+        cage_issuer_mod: fd.get('cage_issuer_mod'),
+        pos_check_number: fd.get('pos_check_number') || null,
+        pos_verified: Boolean(fd.get('pos_check_number')),
+        dead_soldier_returned: fd.get('dead_soldier_returned') === 'on',
+        ingestion_mode: state.ingestionMode
+      };
+
+      await persistRecord('loss_vip_bottle_swaps', payload, 'vipSwaps');
+      e.target.reset();
+      showToast(`VIP Foil Bottle ${serialStr} recorded in Liquor Cage Ledger.`, 'emerald');
+    }
+
+    async function submitSecurityIncident(e) {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const shiftDate = document.getElementById('active-shift-date').value;
+
+      const payload = {
+        venue_id: state.venueId,
+        shift_date: shiftDate,
+        record_type: 'INCIDENT_LOG',
+        incident_category: fd.get('incident_category'),
+        severity: 'HIGH',
+        dvr_camera_channel: fd.get('dvr_camera_channel'),
+        dvr_timestamp_window: fd.get('dvr_timestamp_window'),
+        mod_on_duty: fd.get('mod_on_duty'),
+        narrative: fd.get('narrative'),
+        ingestion_mode: state.ingestionMode
+      };
+
+      await persistRecord('loss_security_seals', payload, 'securitySeals');
+      e.target.reset();
+      showToast('Floor Incident & 4K DVR Camera Clip bookmarked.', 'emerald');
+    }
+
+    async function sealShiftToSovereignVault(triggeredBy) {
+      const shiftDate = document.getElementById('active-shift-date').value;
+      const rawDigest = `${state.venueId}|${shiftDate}|${Date.now()}|drops:${state.blindDrops.length}|door:${state.doorRecons.length}|vip:${state.vipSwaps.length}`;
+      let sealHash = 'SEAL-' + btoa(rawDigest).slice(0, 18).toUpperCase();
+
+      if (window.crypto && window.crypto.subtle) {
+        const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(rawDigest));
+        const hex = Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, '0')).join('');
+        sealHash = 'SHA256-' + hex.slice(0, 16).toUpperCase();
+      }
+
+      const attestations = {
+        safe_locked: document.getElementById('attest-safe')?.checked ?? true,
+        liquor_cage_padlocked: document.getElementById('attest-cage')?.checked ?? true,
+        nvr_4k_active: document.getElementById('attest-dvr')?.checked ?? true,
+        boh_exit_deadbolted: document.getElementById('attest-backdoor')?.checked ?? true
+      };
+
+      const payload = {
+        venue_id: state.venueId,
+        shift_date: shiftDate,
+        record_type: 'SHIFT_VAULT_SEAL',
+        incident_category: 'NIGHTLY_SOVEREIGN_SEAL',
+        severity: 'LOW',
+        mod_on_duty: triggeredBy === 'MOD' ? 'Night MOD (Blind Seal)' : 'Sovereign Owner',
+        narrative: `Immutable Sovereign Shift Seal (${sealHash})`,
+        lockdown_attestations: attestations,
+        dvr_top5_queue: buildTop5DvrQueue(),
+        forensic_snapshot: {
+          blind_drops: state.blindDrops.length,
+          door_packets: state.doorRecons.length,
+          vip_bottles: state.vipSwaps.length,
+          mode: state.ingestionMode
+        },
+        seal_hash: sealHash,
+        sealed_to_vault: true,
+        sealed_at: new Date().toISOString(),
+        ingestion_mode: state.ingestionMode
+      };
+
+      if (state.sovereignWebhook) {
+        fetch(state.sovereignWebhook, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'CARBON_LOSS_VAULT_SEAL', ...payload })
+        }).catch(() => {});
+      }
+
+      await persistRecord('loss_security_seals', payload, 'securitySeals');
+      showToast(`✓ SEALED TO SOVEREIGN VAULT (${sealHash})`, 'emerald');
+    }
+
+    async function saveOwnerShelfScrubEdits() {
+      const inputs = document.querySelectorAll('[data-shelf-idx]');
+      await persistShelfInputs(inputs, 'data-shelf-idx', 'Sovereign Owner');
+    }
+
+    async function saveModBlindShelfCounts() {
+      const inputs = document.querySelectorAll('[data-mod-shelf-idx]');
+      await persistShelfInputs(inputs, 'data-mod-shelf-idx', 'Night MOD');
+    }
+
+    async function persistShelfInputs(inputs, attrName, countedBy) {
+      const shiftDate = document.getElementById('active-shift-date').value;
+      const updatedRows = [];
+
+      inputs.forEach((inp) => {
+        const idx = parseInt(inp.getAttribute(attrName), 10);
+        const item = state.shelfAudits[idx];
+        if (!item) return;
+        const val = inp.value.trim() === '' ? null : parseInt(inp.value, 10);
+        item.physical_shelf_count = val;
+        updatedRows.push({
+          venue_id: state.venueId,
+          audit_date: shiftDate,
+          period_type: 'WEEKLY_SCRUB',
+          sku_code: item.sku_code,
+          item_name: item.item_name,
+          packaging_category: item.packaging_category || 'DISPOSABLES',
+          unit_cogs: Number(item.unit_cogs || 0),
+          par_level: Number(item.par_level || 1000),
+          opening_stock: Number(item.opening_stock || 0),
+          vendor_deliveries: Number(item.vendor_deliveries || 0),
+          layer1_item_mod_burn: Number(item.layer1_item_mod_burn || 0),
+          layer2_ordermode_burn: Number(item.layer2_ordermode_burn || 0),
+          pos_theoretical_burn: Number(item.pos_theoretical_burn || 0),
+          physical_shelf_count: val,
+          counted_by: countedBy,
+          ingestion_mode: state.ingestionMode
+        });
+      });
+
+      if (state.sb && !state.demoActive && updatedRows.length > 0) {
+        try {
+          const { error } = await state.sb.from('loss_shelf_audits').insert(updatedRows);
+          if (error) throw error;
+        } catch (err) {
+          console.warn('Shelf audit DB write note:', err.message);
+        }
+      }
+      renderAllForensicViews();
+      showToast('Physical BOH Packaging Shelf Counts committed to Vault.', 'emerald');
+    }
+
+    async function persistRecord(tableName, payload, stateArrayKey) {
+      const localCopy = { id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()), created_at: new Date().toISOString(), ...payload };
+      state[stateArrayKey].unshift(localCopy);
+
+      if (state.sb && !state.demoActive) {
+        try {
+          const { data, error } = await state.sb.from(tableName).insert([payload]).select();
+          if (!error && data && data[0]) {
+            state[stateArrayKey][0] = data[0];
+          }
+        } catch (err) {
+          console.warn(`Supabase insert fallback (${tableName}):`, err.message);
+        }
+      }
+      renderAllForensicViews();
+    }
+
+    // =========================================================================
+    // 8. BULK PACKAGING IMPORTER, CSV BRIDGE & EXPORT
+    // =========================================================================
+    function loadStarterPackagingTemplate() {
+      const lines = CANONICAL_PACKAGING_SKUS.map((s) => {
+        const burn = s.layer1_item_mod_burn + s.layer2_ordermode_burn;
+        const exp = s.opening_stock + s.vendor_deliveries - burn;
+        return `${s.sku_code}, ${s.item_name}, ${s.packaging_category}, ${s.unit_cogs.toFixed(4)}, ${s.par_level}, ${s.opening_stock}, ${s.vendor_deliveries}, ${burn}, ${exp - 45}`;
+      });
+      document.getElementById('pkg-bulk-textarea').value = lines.join('\n');
+    }
+
+    async function importBulkPackagingRows() {
+      const raw = document.getElementById('pkg-bulk-textarea').value.trim();
+      if (!raw) {
+        showToast('Paste CSV lines or load the 10-SKU starter template first.', 'crimson');
+        return;
+      }
+      const shiftDate = document.getElementById('active-shift-date').value;
+      const parsed = [];
+
+      raw.split(/\r?\n/).forEach((line) => {
+        const cols = line.split(',').map((c) => c.trim());
+        if (cols.length < 5 || cols[0].toLowerCase() === 'sku_code') return;
+        const unitCogs = parseFloat(cols[3] || '0.02');
+        const par = parseInt(cols[4] || '1000', 10);
+        const open = parseInt(cols[5] || '2000', 10);
+        const deliv = parseInt(cols[6] || '500', 10);
+        const burn = parseInt(cols[7] || '800', 10);
+        const phys = cols[8] !== undefined && cols[8] !== '' ? parseInt(cols[8], 10) : null;
+
+        parsed.push({
+          venue_id: state.venueId,
+          audit_date: shiftDate,
+          period_type: 'WEEKLY_SCRUB',
+          sku_code: cols[0].toUpperCase(),
+          item_name: cols[1],
+          packaging_category: cols[2] || 'DISPOSABLES',
+          unit_cogs: unitCogs,
+          par_level: par,
+          opening_stock: open,
+          vendor_deliveries: deliv,
+          layer1_item_mod_burn: Math.round(burn * 0.65),
+          layer2_ordermode_burn: Math.round(burn * 0.35),
+          pos_theoretical_burn: burn,
+          physical_shelf_count: phys,
+          ingestion_mode: state.ingestionMode
+        });
+      });
+
+      if (parsed.length === 0) {
+        showToast('No valid SKU rows found in paste buffer.', 'crimson');
+        return;
+      }
+
+      state.shelfAudits = parsed;
+      if (state.sb && !state.demoActive) {
+        try {
+          await state.sb.from('loss_shelf_audits').insert(parsed);
+        } catch (_) {}
+      }
+      renderAllForensicViews();
+      document.getElementById('pkg-bulk-importer').classList.add('hidden');
+      showToast(`Imported ${parsed.length} Extended Packaging SKUs into Vault.`, 'emerald');
+    }
+
+    function exportPackagingCsv() {
+      const items = state.shelfAudits;
+      const header = 'SKU,Item_Name,Category,Unit_COGS,Par_Level,Opening_Stock,Deliveries,POS_Theo_Burn,Expected_End,Physical_Shelf,Unit_Variance,Shrink_Dollars\n';
+      const body = items.map((i) => {
+        const theo = Number(i.pos_theoretical_burn || (Number(i.layer1_item_mod_burn || 0) + Number(i.layer2_ordermode_burn || 0)));
+        const exp = Number(i.opening_stock || 0) + Number(i.vendor_deliveries || 0) - theo;
+        const phys = i.physical_shelf_count ?? '';
+        const uVar = phys !== '' ? Number(phys) - exp : '';
+        const dVar = uVar !== '' ? (uVar * Number(i.unit_cogs || 0)).toFixed(2) : '';
+        return `"${i.sku_code}","${i.item_name}","${i.packaging_category}",${Number(i.unit_cogs).toFixed(4)},${i.par_level},${i.opening_stock},${i.vendor_deliveries},${theo},${exp},${phys},${uVar},${dVar}`;
+      }).join('\n');
+
+      const blob = new Blob([header + body], { type: 'text/csv;charset=utf-8;' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `CARBON_LOSS_Packaging_Vault_${state.venueId}_${document.getElementById('active-shift-date').value}.csv`;
+      a.click();
+    }
+
+    function downloadSampleBridgeCsv() {
+      const sample = [
+        'action_type,check_number,staff_requester,manager_approver,amount,transfer_count,post_print_cash_void,timestamp',
+        'VOID_TICKET,CHK-9104,Marcus V,MOD Devon,68.00,5,true,2026-11-20T02:18:00',
+        'TRANSFER_CHECK,CHK-9119,Marcus V,MOD Devon,42.00,6,false,2026-11-20T01:49:00',
+        'COMP_DISC,CHK-9055,Tasha R,MOD Alicia,55.00,1,false,2026-11-20T00:20:00'
+      ].join('\n');
+      const blob = new Blob([sample], { type: 'text/csv' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'Carbon_Loss_Bridge_Sample.csv';
+      a.click();
+    }
+
+    function handleExternalPosCsvUpload(e) {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = async (ev) => {
+        const lines = String(ev.target.result || '').trim().split(/\r?\n/);
+        const importedAudits = [];
+        lines.slice(1).forEach((ln) => {
+          const c = ln.split(',').map((x) => x.trim());
+          if (c.length < 5) return;
+          importedAudits.push({
+            venue_id: state.venueId,
+            action_type: c[0],
+            check_number: c[1],
+            staff_requester: c[2],
+            manager_approver: c[3],
+            amount: parseFloat(c[4] || '0'),
+            transfer_count: parseInt(c[5] || '0', 10),
+            post_print_cash_void: c[6] === 'true',
+            created_at: c[7] || new Date().toISOString()
+          });
+        });
+        state.governanceAudits = [...importedAudits, ...state.governanceAudits];
+
+        if (state.sb && importedAudits.length > 0) {
+          try {
+            await state.sb.from('loss_security_seals').insert([{
+              venue_id: state.venueId,
+              shift_date: document.getElementById('active-shift-date').value,
+              record_type: 'CSV_BRIDGE_PACKET',
+              incident_category: 'EXTERNAL_POS_CSV_INGEST',
+              mod_on_duty: 'Sovereign Owner',
+              narrative: `Uploaded ${importedAudits.length} POS exception records via CSV Bridge.`,
+              forensic_snapshot: { rows: importedAudits },
+              ingestion_mode: 'EXTERNAL_CSV'
+            }]);
+          } catch (_) {}
+        }
+
+        renderAllForensicViews();
+        showToast(`Ingested ${importedAudits.length} external POS exception rows into Wagon Wheel Matrix.`, 'emerald');
+      };
+      reader.readAsText(file);
+    }
+
+    // =========================================================================
+    // 9. 1-CLICK REALISTIC FORENSIC DEMO TELEMETRY SEED & CLEAN LIVE RESET
+    // =========================================================================
+    function toggleDemoTelemetry() {
+      state.demoActive = true;
+      document.getElementById('demo-seed-btn').classList.add('hidden');
+      document.getElementById('live-reset-btn').classList.remove('hidden');
+
+      const today = document.getElementById('active-shift-date').value;
+
+      state.orders = [
+        { station_name: 'Main Bar Well #1', staff_name: 'Marcus Vance', guest_count: 68, item_count: 142, soda_water_items: 29, liquor_items: 155, transfer_count: 6 },
+        { station_name: 'Service & VIP Well #2', staff_name: 'Tasha Reynolds', guest_count: 54, item_count: 118, soda_water_items: 6, liquor_items: 112, transfer_count: 1 },
+        { station_name: 'VIP Mezzanine Booths 1–6', staff_name: 'Brianna Cole', guest_count: 38, item_count: 84, soda_water_items: 8, liquor_items: 76, transfer_count: 4 },
+        { station_name: 'Patio Express Bar', staff_name: 'Jordan Miles', guest_count: 42, item_count: 88, soda_water_items: 5, liquor_items: 83, transfer_count: 0 }
+      ];
+
+      state.governanceAudits = [
+        { action_type: 'VOID_TICKET', check_number: 'CHK-4812', staff_requester: 'Marcus Vance', manager_approver: 'MOD Devon K', amount: 84.00, transfer_count: 6, post_print_cash_void: true, created_at: `${today}T02:24:00`, camera_channel: 'CAM-01 Overhead Main Bar Well #1' },
+        { action_type: 'TRANSFER_CHECK', check_number: 'CHK-4799', staff_requester: 'Marcus Vance', manager_approver: 'MOD Devon K', amount: 62.00, transfer_count: 5, post_print_cash_void: false, created_at: `${today}T01:52:00`, camera_channel: 'CAM-01 Overhead Main Bar Well #1' },
+        { action_type: 'VOID_TICKET', check_number: 'CHK-4830', staff_requester: 'Marcus Vance', manager_approver: 'MOD Devon K', amount: 56.00, transfer_count: 4, post_print_cash_void: true, created_at: `${today}T02:48:00`, camera_channel: 'CAM-01 Overhead Main Bar Well #1' },
+        { action_type: 'COMP_DISC', check_number: 'CHK-4610', staff_requester: 'Brianna Cole', manager_approver: 'MOD Alicia W', amount: 95.00, transfer_count: 4, post_print_cash_void: false, created_at: `${today}T00:40:00`, camera_channel: 'CAM-05 VIP Mezzanine POS' },
+        { action_type: 'NO_SALE', check_number: 'DRAWER-POP', staff_requester: 'Marcus Vance', manager_approver: 'MOD Devon K', amount: 0.00, transfer_count: 0, post_print_cash_void: false, created_at: `${today}T02:11:00`, camera_channel: 'CAM-01 Overhead Main Bar Well #1' }
+      ];
+
+      state.depletionLogs = [
+        { station_name: 'Main Bar Well #1', staff_name: 'Marcus Vance', sku_code: 'PKG-CUP-12OZ', quantity_depleted: 168 },
+        { station_name: 'Main Bar Well #1', staff_name: 'Marcus Vance', sku_code: 'PKG-LIN-CHK', quantity_depleted: 46 },
+        { station_name: 'Main Bar Well #1', staff_name: 'Marcus Vance', sku_code: 'PKG-UTN-KIT', quantity_depleted: 42 },
+        { station_name: 'Service & VIP Well #2', staff_name: 'Tasha Reynolds', sku_code: 'PKG-CUP-12OZ', quantity_depleted: 102 },
+        { station_name: 'Service & VIP Well #2', staff_name: 'Tasha Reynolds', sku_code: 'PKG-LIN-CHK', quantity_depleted: 38 },
+        { station_name: 'VIP Mezzanine Booths 1–6', staff_name: 'Brianna Cole', sku_code: 'PKG-CUP-16OZ', quantity_depleted: 94 },
+        { station_name: 'VIP Mezzanine Booths 1–6', staff_name: 'Brianna Cole', sku_code: 'PKG-CLM-9X9', quantity_depleted: 29 },
+        { station_name: 'Patio Express Bar', staff_name: 'Jordan Miles', sku_code: 'PKG-CUP-16OZ', quantity_depleted: 78 }
+      ];
+
+      state.blindDrops = [
+        { station_name: 'Main Bar Well #1', drawer_type: 'BAR', starting_bank: 300, skim_1130_amount: 500, blind_drawer_cash: 1412.00, net_cash_drop: 1612.00, pos_expected_cash: 1688.50, staff_custodian: 'Marcus Vance', mod_witness: 'Devon K' },
+        { station_name: 'Service & VIP Well #2', drawer_type: 'BAR', starting_bank: 300, skim_1130_amount: 500, blind_drawer_cash: 1180.00, net_cash_drop: 1380.00, pos_expected_cash: 1380.00, staff_custodian: 'Tasha Reynolds', mod_witness: 'Alicia W' },
+        { station_name: 'Front Door Podium', drawer_type: 'DOOR', starting_bank: 200, skim_1130_amount: 500, blind_drawer_cash: 1840.00, net_cash_drop: 2140.00, pos_expected_cash: 2139.00, staff_custodian: 'Kendra P', mod_witness: 'Alicia W' }
+      ];
+
+      state.doorRecons = [
+        { tier_bucket: 'BUCKET_1_EARLY_GA', tier_cover_price: 20, starting_serial: 50100, ending_serial: 50215, stapled_spoiled_bands: 3, clicker_headcount: 113, door_cash_collected: 1240, door_cc_batch_total: 1000 },
+        { tier_bucket: 'BUCKET_2_PEAK_GA', tier_cover_price: 30, starting_serial: 60400, ending_serial: 60540, stapled_spoiled_bands: 2, clicker_headcount: 149, door_cash_collected: 2140, door_cc_batch_total: 1850 }
+      ];
+
+      state.vipSwaps = [
+        { foil_sticker_serial: 'VIP-FOIL-0801', bottle_sku_name: 'Don Julio 1942 (750ml)', vip_booth_section: 'VIP Booth #1', vip_server_name: 'Brianna Cole', pos_check_number: 'CHK-4501', dead_soldier_returned: true, created_at: `${today}T00:15:00` },
+        { foil_sticker_serial: 'VIP-FOIL-0802', bottle_sku_name: 'Clase Azul Reposado', vip_booth_section: 'VIP Booth #2', vip_server_name: 'Brianna Cole', pos_check_number: 'CHK-4544', dead_soldier_returned: true, created_at: `${today}T00:52:00` },
+        { foil_sticker_serial: 'VIP-FOIL-0804', bottle_sku_name: 'Casamigos Blanco (1L)', vip_booth_section: 'VIP Booth #4', vip_server_name: 'Brianna Cole', pos_check_number: '', dead_soldier_returned: false, created_at: `${today}T01:47:00` }
+      ];
+
+      state.securitySeals = [
+        { record_type: 'INCIDENT_LOG', incident_category: 'FLOOR_EJECTION', dvr_camera_channel: 'CAM-03 Dancefloor West', dvr_timestamp_window: '01:36 AM - 01:41 AM', mod_on_duty: 'Alicia W', narrative: 'Unruly guest escorted peacefully via Main Exit; ID logged, zero physical contact.', sealed_to_vault: false, created_at: `${today}T01:44:00` }
+      ];
+
+      state.shelfAudits = CANONICAL_PACKAGING_SKUS.map((sku, idx) => {
+        const posBurn = sku.layer1_item_mod_burn + sku.layer2_ordermode_burn;
+        const expected = sku.opening_stock + sku.vendor_deliveries - posBurn;
+        const shrinkUnits = idx === 8 ? -95 : idx === 3 ? -240 : -8;
+        return {
+          ...sku,
+          pos_theoretical_burn: posBurn,
+          expected_ending_stock: expected,
+          physical_shelf_count: expected + shrinkUnits
+        };
+      });
+
+      renderAllForensicViews();
+      showToast('Forensic Demo Telemetry Seeded across Tabs 4.1–4.5. Click "Clean Live Reset" anytime.', 'gold');
+    }
+
+    async function resetToCleanLive() {
+      state.demoActive = false;
+      document.getElementById('live-reset-btn').classList.add('hidden');
+      document.getElementById('demo-seed-btn').classList.remove('hidden');
+      state.orders = [];
+      state.governanceAudits = [];
+      state.depletionLogs = [];
+      state.blindDrops = [];
+      state.doorRecons = [];
+      state.vipSwaps = [];
+      state.securitySeals = [];
+      state.shelfAudits = buildDefaultShelfState();
+      await refreshAllData();
+      showToast('Clean Live Reset complete — streaming strictly from rehg-pos-core.', 'emerald');
+    }
+
+    // =========================================================================
+    // 10. NAVIGATION, MODALS & UTILITIES
+    // =========================================================================
+    function switchOwnerTab(tabId) {
+      state.activeTab = tabId;
+      document.querySelectorAll('.owner-tab-panel').forEach((el) => el.classList.add('hidden'));
+      document.getElementById(tabId)?.classList.remove('hidden');
+
+      document.querySelectorAll('.owner-tab-btn').forEach((btn) => {
+        if (btn.getAttribute('data-tab') === tabId) btn.classList.add('tab-btn-active');
+        else btn.classList.remove('tab-btn-active');
+      });
+    }
+
+    function switchPkgSubview(sub) {
+      state.pkgSubview = sub;
+      ['daily', 'weekly', 'monthly'].forEach((k) => {
+        document.getElementById(`pkg-subview-${k}`)?.classList.toggle('hidden', k !== sub);
+      });
+      document.querySelectorAll('.pkg-subview-btn').forEach((btn) => {
+        const active = btn.getAttribute('data-subview') === sub;
+        btn.className = active
+          ? 'pkg-subview-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-crimson text-white'
+          : 'pkg-subview-btn px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white';
+      });
+    }
+
+    function toggleQuickForm(id) {
+      document.getElementById(id)?.classList.toggle('hidden');
+    }
+
+    function openSettingsModal() {
+      document.getElementById('cfg-supabase-url').value = state.supabaseUrl;
+      document.getElementById('cfg-supabase-key').value = state.supabaseKey;
+      document.getElementById('cfg-venue-id').value = state.venueId;
+      document.getElementById('cfg-owner-pin').value = state.ownerPin;
+      document.getElementById('cfg-mod-pin').value = state.modPin;
+      document.getElementById('cfg-single-limit').value = state.singleLimit;
+      document.getElementById('cfg-shift-ceiling').value = state.shiftCeiling;
+      document.getElementById('cfg-sovereign-webhook').value = state.sovereignWebhook;
+      const modal = document.getElementById('settings-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeSettingsModal() {
+      const modal = document.getElementById('settings-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function restoreDefaultConnection() {
+      document.getElementById('cfg-supabase-url').value = DEFAULT_SUPABASE_URL;
+      document.getElementById('cfg-supabase-key').value = DEFAULT_SUPABASE_ANON_KEY;
+      showToast('Restored live rehg-pos-core Supabase URL & Publishable Key.', 'gold');
+    }
+
+    async function saveVaultConfig() {
+      state.supabaseUrl = document.getElementById('cfg-supabase-url').value.trim() || DEFAULT_SUPABASE_URL;
+      state.supabaseKey = document.getElementById('cfg-supabase-key').value.trim() || DEFAULT_SUPABASE_ANON_KEY;
+      state.venueId = (document.getElementById('cfg-venue-id').value.trim() || 'DEFAULT_VENUE').toUpperCase();
+      state.ownerPin = document.getElementById('cfg-owner-pin').value.trim() || '9999';
+      state.modPin = document.getElementById('cfg-mod-pin').value.trim() || '7777';
+      state.singleLimit = parseFloat(document.getElementById('cfg-single-limit').value || '50');
+      state.shiftCeiling = parseFloat(document.getElementById('cfg-shift-ceiling').value || '250');
+      state.sovereignWebhook = document.getElementById('cfg-sovereign-webhook').value.trim();
+
+      localStorage.setItem('carbon_loss_sb_url', state.supabaseUrl);
+      localStorage.setItem('carbon_loss_sb_key', state.supabaseKey);
+      localStorage.setItem('carbon_loss_venue_id', state.venueId);
+      localStorage.setItem('carbon_loss_owner_pin', state.ownerPin);
+      localStorage.setItem('carbon_loss_mod_pin', state.modPin);
+      localStorage.setItem('carbon_loss_single_limit', String(state.singleLimit));
+      localStorage.setItem('carbon_loss_shift_ceiling', String(state.shiftCeiling));
+      localStorage.setItem('carbon_loss_webhook', state.sovereignWebhook);
+
+      document.getElementById('gate-venue-id').value = state.venueId;
+      document.getElementById('header-venue-label').textContent = state.venueId;
+
+      closeSettingsModal();
+      initSupabaseClient();
+      await refreshAllData();
+      showToast(`Vault configuration saved & scoped to ${state.venueId}.`, 'emerald');
+    }
+
+    function fmtCurrency(n) {
+      return '$' + Number(n || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function fmtSignedCurrency(n) {
+      const val = Number(n || 0);
+      return (val >= 0 ? '+$' : '-$') + Math.abs(val).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function fmtTime(iso) {
+      if (!iso) return '—';
+      const d = new Date(iso);
+      if (isNaN(d.getTime())) return String(iso);
+      return d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function esc(str) {
+      return String(str ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function showToast(msg, tone = 'emerald') {
+      const container = document.getElementById('toast-container');
+      const el = document.createElement('div');
+      const palette = tone === 'crimson'
+        ? 'bg-gunmetal border-crimson text-red-100'
+        : tone === 'gold'
+          ? 'bg-gunmetal border-sovereign text-amber-100'
+          : 'bg-gunmetal border-emeraldVault text-emerald-100';
+      el.className = `pointer-events-auto rounded-xl border-l-4 px-4 py-3 text-xs font-semibold shadow-2xl transition-all ${palette}`;
+      el.textContent = msg;
+      container.appendChild(el);
+      setTimeout(() => {
+        el.style.opacity = '0';
+        setTimeout(() => el.remove(), 250);
+      }, 3800);
+    }
+
+    // =========================================================================
+    // 11. BOOTSTRAP ON DOM READY
+    // =========================================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      const todayIso = new Date().toISOString().slice(0, 10);
+      document.getElementById('active-shift-date').value = todayIso;
+      document.getElementById('gate-venue-id').value = state.venueId;
+      document.getElementById('header-venue-label').textContent = state.venueId;
+      state.shelfAudits = buildDefaultShelfState();
+
+      initPwaEngine();
+      initSupabaseClient();
+      updateIngestionModeUI();
+    });
+  </script>
+</body>
+</html>

@@ -1639,7 +1639,6 @@
 
       state.venueId = (state.venueId || 'CARBON_HQ').trim().toUpperCase();
       localStorage.setItem('rehg_loss_venue_id', state.venueId);
-      sessionStorage.setItem('carbon_loss_mode', mode);
       document.getElementById('header-venue-label').textContent = state.venueId;
 
       const inputEl = document.getElementById('pin-native-input');

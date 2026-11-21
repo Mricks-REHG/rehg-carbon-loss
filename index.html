@@ -10,8 +10,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="CARBON | LOSS" />
   <meta name="mobile-web-app-capable" content="yes" />
-  <link rel="icon" type="image/jpeg" href="./carbon-loss-logo.jpg" />
-  <link rel="apple-touch-icon" href="./carbon-loss-logo.jpg" />
+<link rel="icon" type="image/jpeg" href="./carbon-loss-logo.jpeg" />
+  <link rel="apple-touch-icon" href="./carbon-loss-logo.jpeg" />
   <link id="dynamic-manifest" rel="manifest" href="" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -137,29 +137,33 @@
   <!-- ========================================================================= -->
   <!-- ROLE-ISOLATED PIN GATE OVERLAY                                            -->
   <!-- ========================================================================= -->
-  <div id="pin-gate-overlay" class="fixed inset-0 z-50 bg-obsidian flex flex-col items-center justify-center p-4 overflow-y-auto">
-    <div class="w-full max-w-md carbon-card rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+ <div id="pin-gate-overlay" class="fixed inset-0 z-50 bg-[#050811] flex flex-col items-center justify-center p-4 overflow-y-auto">
+    <div class="w-full max-w-md bg-[#050811] border border-titanium rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
       <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-crimsonDark via-crimson to-sovereign"></div>
 
-      <!-- Brand Header -->
+      <!-- Seamless Obsidian Brand Hero -->
       <div class="flex flex-col items-center text-center mb-6">
-        <div class="w-28 h-28 rounded-2xl bg-obsidian border border-titanium/80 flex items-center justify-center overflow-hidden mb-3 shadow-lg">
-          <img src="./carbon-loss-logo.jpg" alt="CARBON | LOSS" class="w-full h-full object-contain logo-blend" onerror="this.style.display='none'; document.getElementById('gate-fallback-hex').classList.remove('hidden');" />
-          <div id="gate-fallback-hex" class="hidden flex-col items-center justify-center">
-            <span class="font-cinzel text-[11px] tracking-[0.28em] text-sovereign font-bold">REHG</span>
-            <span class="text-crimson font-extrabold text-xl font-mono mt-0.5">HEX-06</span>
-          </div>
-        </div>
-        <div class="flex items-center gap-2 text-2xl font-extrabold tracking-wider">
-          <span class="titanium-wordmark">CARBON</span>
-          <span class="text-slate-500 font-light">|</span>
-          <span class="crimson-wordmark">LOSS</span>
-        </div>
-        <p class="text-[11px] tracking-[0.26em] text-slate-400 uppercase mt-1 font-medium">Loss Prevention &amp; Shrinkage Vault</p>
-        <div class="mt-3 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-obsidian border border-sovereign/40 text-[11px] text-sovereign font-semibold">
+        <img
+          src="./carbon-loss-logo.jpeg"
+          alt="REHG Carbon Loss Engine"
+          class="w-64 sm:w-72 mx-auto object-contain select-none bg-[#050811]"
+          onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='./carbon-loss-logo.jpg';}"
+        />
+        <div class="mt-2 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#050811] border border-sovereign/40 text-[10px] text-sovereign font-semibold tracking-wider">
           <span>ENTERPRISE CLOUD EXTENSION</span>
           <span class="text-slate-600">•</span>
           <span>v4.0 SOVEREIGN</span>
+        </div>
+      </div>
+
+      <!-- Active Venue Scope Input -->
+      <div class="mb-4">
+        <label class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1.5">Scoped Venue Identifier (<code class="text-crimson">venue_id</code>)</label>
+        <div class="flex gap-2">
+          <input id="gate-venue-id" type="text" value="CARBON_HQ" class="carbon-input w-full rounded-lg px-3 py-2 text-sm font-mono uppercase" placeholder="CARBON_HQ" />
+          <button onclick="openSettingsModal()" type="button" class="px-3 py-2 rounded-lg bg-gunmetal border border-titanium hover:border-sovereign text-slate-300 text-xs font-semibold whitespace-nowrap transition">
+            ⚙️ DB Vault
+          </button>
         </div>
       </div>
 
@@ -205,18 +209,7 @@
       </div>
 
       <!-- Role Reference Legend -->
-      <div class="rounded-xl bg-obsidian/90 border border-titanium/70 p-3 text-[11px] text-slate-400 space-y-1.5">
-        <div class="flex items-center justify-between">
-          <span class="text-sovereign font-semibold">🏛️ Sovereign Owner / Exec</span>
-          <span class="font-mono text-slate-300">PIN <b class="text-white">9999</b> or Override <b class="text-sovereign">2424</b></span>
-        </div>
-        <div class="flex items-center justify-between">
-          <span class="text-crimson font-semibold">🔒 Night Ops MOD (Blind Slot)</span>
-          <span class="font-mono text-slate-300">PIN <b class="text-white">7777</b> (Zero POS Leakage View)</span>
-        </div>
-      </div>
-
-      <div class="mt-4 flex items-center justify-between gap-2">
+     <div class="mt-2 flex items-center justify-between gap-2">
         <button id="gate-pwa-install-btn" type="button" onclick="triggerPwaInstall()" class="w-full py-2.5 px-3 rounded-lg bg-gunmetal hover:bg-slatepanel border border-sovereign/50 text-sovereign text-xs font-semibold flex items-center justify-center gap-2 transition">
           <span>📲 Install App to Phone Home Screen</span>
         </button>
@@ -229,11 +222,15 @@
   <!-- ========================================================================= -->
   <header class="sticky top-0 z-40 bg-obsidian/95 backdrop-blur-md border-b border-titanium no-print">
     <div class="max-w-[1600px] mx-auto px-3 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
-      <!-- Left: Master Brand Mark -->
+     <!-- Left: Master Brand Mark -->
       <div class="flex items-center gap-3.5">
-        <div class="w-12 h-12 rounded-xl bg-obsidian border border-titanium flex items-center justify-center overflow-hidden shrink-0">
-          <img src="./carbon-loss-logo.jpg" alt="CARBON | LOSS" class="w-full h-full object-contain logo-blend" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');" />
-          <span class="hidden font-mono text-xs font-extrabold text-crimson">C|L</span>
+        <div class="w-12 h-12 rounded-xl overflow-hidden bg-[#050811] border border-red-500/30 shadow-[0_0_18px_rgba(239,68,68,0.22)] shrink-0">
+          <img
+            src="./carbon-loss-logo.jpeg"
+            alt="REHG Carbon Loss"
+            class="w-full h-[142%] object-cover object-top select-none"
+            onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='./carbon-loss-logo.jpg';}"
+          />
         </div>
         <div>
           <div class="flex items-center gap-2">
@@ -247,7 +244,7 @@
           <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-slate-400">
             <span class="uppercase tracking-[0.18em] font-medium">Loss Prevention Engine</span>
             <span class="text-slate-600">•</span>
-            <span class="font-mono text-slate-300">Venue: <strong id="header-venue-label" class="text-white">ELEVEN11_ATL</strong></span>
+            <span class="font-mono text-slate-300">Venue: <strong id="header-venue-label" class="text-white">CARBON_HQ</strong></span>
             <span class="text-slate-600">•</span>
             <span id="supabase-conn-pill" class="inline-flex items-center gap-1.5 font-mono text-[10px] text-emeraldVault">
               <span class="w-2 h-2 rounded-full bg-emeraldVault animate-pulse"></span>
@@ -271,14 +268,11 @@
         <input id="active-shift-date" type="date" onchange="refreshAllData()" class="carbon-input rounded-xl px-3 py-1.5 text-xs font-mono" />
       </div>
 
-      <!-- Right: Demo Seed, Install PWA, Settings, Lock -->
+      <!-- Right: Install PWA, Settings, Lock -->
       <div class="flex flex-wrap items-center gap-2">
-        <button id="demo-seed-btn" type="button" onclick="toggleDemoTelemetry()" class="px-3 py-1.5 rounded-xl bg-gunmetal hover:bg-slatepanel border border-sovereign/50 text-sovereign text-xs font-semibold transition">
-          🧪 Seed Forensic Demo
-        </button>
-        <button id="live-reset-btn" type="button" onclick="resetToCleanLive()" class="hidden px-3 py-1.5 rounded-xl bg-emeraldVault/15 hover:bg-emeraldVault/25 border border-emeraldVault/50 text-emeraldVault text-xs font-semibold transition">
-          🔄 Clean Live Reset
-        </button>
+        <span id="demo-active-pill" class="hidden px-2.5 py-1 rounded-lg bg-sovereign/20 border border-sovereign/50 text-sovereign font-mono text-[10px] font-bold uppercase">
+          DEMO SANDBOX
+        </span>
         <button id="header-pwa-btn" type="button" onclick="triggerPwaInstall()" class="px-3 py-1.5 rounded-xl bg-gunmetal hover:bg-slatepanel border border-titanium hover:border-sovereign text-slate-200 text-xs font-semibold transition">
           📲 Install App
         </button>
@@ -1287,6 +1281,22 @@
           <input id="cfg-sovereign-webhook" type="url" placeholder="https://script.google.com/macros/s/.../exec" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
         </div>
 
+       <!-- Forensic Telemetry Sandbox & Clean Zero Scrub (Owner Only) -->
+        <div id="vault-demo-controls" class="rounded-xl bg-obsidian border border-titanium p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-300">Forensic Sandbox & Zero-State Controls</span>
+            <p class="text-[11px] text-slate-500 mt-0.5">Load simulated executive audit telemetry or scrub workspace back to clean <code class="text-slate-300">0</code> / <code class="text-slate-300">$0.00</code> live mode.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2 shrink-0">
+            <button id="demo-seed-btn" type="button" onclick="toggleDemoTelemetry(); closeSettingsModal();" class="px-3 py-2 rounded-lg bg-gunmetal hover:bg-slatepanel border border-sovereign/50 text-sovereign text-xs font-bold transition">
+              🧪 Seed Forensic Demo
+            </button>
+            <button id="live-reset-btn" type="button" onclick="resetToCleanLive(); closeSettingsModal();" class="px-3 py-2 rounded-lg bg-emeraldVault/15 hover:bg-emeraldVault/25 border border-emeraldVault/50 text-emeraldVault text-xs font-bold transition">
+              🧹 Scrub / Reset to Zero
+            </button>
+          </div>
+        </div>
+
         <!-- Enterprise Commercial Provisioning Card -->
         <div class="rounded-xl bg-obsidian border border-sovereign/40 p-3.5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
@@ -1334,22 +1344,25 @@
     const MASTER_OVERRIDE_PIN = '2424';
 
     const CANONICAL_PACKAGING_SKUS = [
-      { sku_code: 'PKG-RAM-2OZ', item_name: '2oz Souffle Portion Ramekin', packaging_category: 'RAMEKINS_LIDS', unit_cogs: 0.0185, par_level: 2500, opening_stock: 4200, vendor_deliveries: 2000, layer1_item_mod_burn: 1940, layer2_ordermode_burn: 410 },
-      { sku_code: 'PKG-LID-2OZ', item_name: '2oz Clear Leakproof Ramekin Lid', packaging_category: 'RAMEKINS_LIDS', unit_cogs: 0.0160, par_level: 2500, opening_stock: 4100, vendor_deliveries: 2000, layer1_item_mod_burn: 1910, layer2_ordermode_burn: 410 },
-      { sku_code: 'PKG-UTN-KIT', item_name: 'Heavyweight Wrapped Utensil & Napkin Kit', packaging_category: 'UTENSIL_NAPKIN_KITS', unit_cogs: 0.0890, par_level: 1000, opening_stock: 1800, vendor_deliveries: 1000, layer1_item_mod_burn: 180, layer2_ordermode_burn: 1120 },
-      { sku_code: 'PKG-CUP-12OZ', item_name: '12oz Clear Rocks / Cocktail Cup', packaging_category: 'CUPS_STRAWS', unit_cogs: 0.0640, par_level: 2000, opening_stock: 3500, vendor_deliveries: 2000, layer1_item_mod_burn: 2890, layer2_ordermode_burn: 0 },
-      { sku_code: 'PKG-CUP-16OZ', item_name: '16oz Highball / Mixed Drink Cup', packaging_category: 'CUPS_STRAWS', unit_cogs: 0.0780, par_level: 1800, opening_stock: 3000, vendor_deliveries: 1500, layer1_item_mod_burn: 2140, layer2_ordermode_burn: 220 },
-      { sku_code: 'PKG-STR-BLK', item_name: '7.75" Unwrapped Black Cocktail Straw', packaging_category: 'CUPS_STRAWS', unit_cogs: 0.0065, par_level: 4000, opening_stock: 6000, vendor_deliveries: 4000, layer1_item_mod_burn: 4320, layer2_ordermode_burn: 210 },
-      { sku_code: 'PKG-NAP-BEV', item_name: 'Black 2-Ply Beverage Napkin', packaging_category: 'CUPS_STRAWS', unit_cogs: 0.0082, par_level: 5000, opening_stock: 8000, vendor_deliveries: 5000, layer1_item_mod_burn: 5400, layer2_ordermode_burn: 0 },
-      { sku_code: 'PKG-LIN-CHK', item_name: 'Dine-In Greaseproof Basket Liner', packaging_category: 'DINEIN_LINERS', unit_cogs: 0.0320, par_level: 1500, opening_stock: 2600, vendor_deliveries: 1000, layer1_item_mod_burn: 0, layer2_ordermode_burn: 1980 },
-      { sku_code: 'PKG-CLM-9X9', item_name: '9x9 Hinged Vented To-Go Clamshell', packaging_category: 'TOGO_CLAMSHELLS', unit_cogs: 0.2450, par_level: 600, opening_stock: 1100, vendor_deliveries: 500, layer1_item_mod_burn: 0, layer2_ordermode_burn: 1090 },
-      { sku_code: 'PKG-BAG-TSH', item_name: 'Heavy-Duty Carryout T-Shirt Bag (1/3 Items)', packaging_category: 'CARRYOUT_BAGS', unit_cogs: 0.0520, par_level: 800, opening_stock: 1400, vendor_deliveries: 500, layer1_item_mod_burn: 0, layer2_ordermode_burn: 640 }
+      { sku_code: 'PKG-RAM-2OZ', item_name: '2oz Souffle Portion Ramekin', packaging_category: 'RAMEKINS_LIDS', unit_cogs: 0.0185, par_level: 2500, demo_open: 4200, demo_deliv: 2000, demo_l1: 1940, demo_l2: 410 },
+      { sku_code: 'PKG-LID-2OZ', item_name: '2oz Clear Leakproof Ramekin Lid', packaging_category: 'RAMEKINS_LIDS', unit_cogs: 0.0160, par_level: 2500, demo_open: 4100, demo_deliv: 2000, demo_l1: 1910, demo_l2: 410 },
+      { sku_code: 'PKG-UTN-KIT', item_name: 'Heavyweight Wrapped Utensil & Napkin Kit', packaging_category: 'UTENSIL_NAPKIN_KITS', unit_cogs: 0.0890, par_level: 1000, demo_open: 1800, demo_deliv: 1000, demo_l1: 180, demo_l2: 1120 },
+      { sku_code: 'PKG-CUP-12OZ', item_name: '12oz Clear Rocks / Cocktail Cup', packaging_category: 'CUPS_STRAWS', unit_cogs: 0.0640, par_level: 2000, demo_open: 3500, demo_deliv: 2000, demo_l1: 2890, demo_l2: 0 },
+      { sku_code: 'PKG-CUP-16OZ', item_name: '16oz Highball / Mixed Drink Cup', packaging_category: 'CUPS_STRAWS', unit_cogs: 0.0780, par_level: 1800, demo_open: 3000, demo_deliv: 1500, demo_l1: 2140, demo_l2: 220 },
+      { sku_code: 'PKG-STR-BLK', item_name: '7.75" Unwrapped Black Cocktail Straw', packaging_category: 'CUPS_STRAWS', unit_cogs: 0.0065, par_level: 4000, demo_open: 6000, demo_deliv: 4000, demo_l1: 4320, demo_l2: 210 },
+      { sku_code: 'PKG-NAP-BEV', item_name: 'Black 2-Ply Beverage Napkin', packaging_category: 'CUPS_STRAWS', unit_cogs: 0.0082, par_level: 5000, demo_open: 8000, demo_deliv: 5000, demo_l1: 5400, demo_l2: 0 },
+      { sku_code: 'PKG-LIN-CHK', item_name: 'Dine-In Greaseproof Basket Liner', packaging_category: 'DINEIN_LINERS', unit_cogs: 0.0320, par_level: 1500, demo_open: 2600, demo_deliv: 1000, demo_l1: 0, demo_l2: 1980 },
+      { sku_code: 'PKG-CLM-9X9', item_name: '9x9 Hinged Vented To-Go Clamshell', packaging_category: 'TOGO_CLAMSHELLS', unit_cogs: 0.2450, par_level: 600, demo_open: 1100, demo_deliv: 500, demo_l1: 0, demo_l2: 1090 },
+      { sku_code: 'PKG-BAG-TSH', item_name: 'Heavy-Duty Carryout T-Shirt Bag (1/3 Items)', packaging_category: 'CARRYOUT_BAGS', unit_cogs: 0.0520, par_level: 800, demo_open: 1400, demo_deliv: 500, demo_l1: 0, demo_l2: 640 }
     ];
+
+    const _storedVenue = localStorage.getItem('carbon_loss_venue_id');
+    const INITIAL_VENUE_ID = (!_storedVenue || _storedVenue === 'ELEVEN11_ATL' || _storedVenue === 'DEFAULT_VENUE') ? 'CARBON_HQ' : _storedVenue;
 
     const state = {
       supabaseUrl: localStorage.getItem('carbon_loss_sb_url') || DEFAULT_SUPABASE_URL,
       supabaseKey: localStorage.getItem('carbon_loss_sb_key') || DEFAULT_SUPABASE_ANON_KEY,
-      venueId: localStorage.getItem('carbon_loss_venue_id') || 'ELEVEN11_ATL',
+      venueId: INITIAL_VENUE_ID,
       ownerPin: localStorage.getItem('carbon_loss_owner_pin') || '9999',
       modPin: localStorage.getItem('carbon_loss_mod_pin') || '7777',
       singleLimit: parseFloat(localStorage.getItem('carbon_loss_single_limit') || '50'),
@@ -1364,7 +1377,7 @@
       sb: null,
       realtimeChannel: null,
       deferredInstallPrompt: null,
-      // Telemetry Collections
+      // Telemetry Collections (Clean Zero State on Fresh Boot)
       orders: [],
       governanceAudits: [],
       depletionLogs: [],
@@ -1380,7 +1393,7 @@
     // =========================================================================
     function initPwaEngine() {
       const originBase = window.location.href.split('?')[0].split('#')[0].replace(/index\.html$/, '');
-      const iconUrl = new URL('./carbon-loss-logo.jpg', originBase).href;
+      const iconUrl = new URL('./carbon-loss-logo.jpeg', originBase).href;
 
       const manifestObj = {
         name: 'REHG Carbon™ Loss Engine',
@@ -1495,8 +1508,8 @@
       });
     }
 
-    async function submitPinGate() {
-      const venueInput = document.getElementById('gate-venue-id').value.trim().toUpperCase() || 'DEFAULT_VENUE';
+  async function submitPinGate() {
+      const venueInput = document.getElementById('gate-venue-id').value.trim().toUpperCase() || 'CARBON_HQ';
       state.venueId = venueInput;
       localStorage.setItem('carbon_loss_venue_id', state.venueId);
       document.getElementById('header-venue-label').textContent = state.venueId;
@@ -1553,12 +1566,15 @@
       const demoBtn = document.getElementById('demo-seed-btn');
 
       if (state.role === 'MOD') {
+     const vaultDemoControls = document.getElementById('vault-demo-controls');
+
+      if (state.role === 'MOD') {
         badge.textContent = 'NIGHT MOD • BLIND DROP ONLY';
         badge.className = 'ml-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-crimson/20 text-crimson border border-crimson/50';
         ownerNav.classList.add('hidden');
         ownerWorkspace.classList.add('hidden');
         modWorkspace.classList.remove('hidden');
-        demoBtn.classList.add('hidden');
+        vaultDemoControls?.classList.add('hidden');
         document.getElementById('csv-bridge-banner').classList.add('hidden');
         renderModBlindShelfGrid();
       } else {
@@ -1567,7 +1583,7 @@
         ownerNav.classList.remove('hidden');
         ownerWorkspace.classList.remove('hidden');
         modWorkspace.classList.add('hidden');
-        demoBtn.classList.remove('hidden');
+        vaultDemoControls?.classList.remove('hidden');
         updateIngestionModeUI();
       }
     }
@@ -1688,22 +1704,26 @@
     }
 
     function buildDefaultShelfState() {
-      return CANONICAL_PACKAGING_SKUS.map((sku) => {
-        const posBurn = sku.layer1_item_mod_burn + sku.layer2_ordermode_burn;
-        const expected = sku.opening_stock + sku.vendor_deliveries - posBurn;
-        return {
-          ...sku,
-          pos_theoretical_burn: posBurn,
-          expected_ending_stock: expected,
-          physical_shelf_count: null,
-          unit_variance: null,
-          dollar_variance: null,
-          actual_units_consumed: posBurn,
-          actual_packaging_cogs: Number((posBurn * sku.unit_cogs).toFixed(2)),
-          low_par_alert: expected < sku.par_level,
-          audit_status: expected < sku.par_level ? 'LOW_PAR_REORDER' : 'PENDING_COUNT'
-        };
-      });
+      return CANONICAL_PACKAGING_SKUS.map((sku) => ({
+        sku_code: sku.sku_code,
+        item_name: sku.item_name,
+        packaging_category: sku.packaging_category,
+        unit_cogs: sku.unit_cogs,
+        par_level: sku.par_level,
+        opening_stock: 0,
+        vendor_deliveries: 0,
+        layer1_item_mod_burn: 0,
+        layer2_ordermode_burn: 0,
+        pos_theoretical_burn: 0,
+        expected_ending_stock: 0,
+        physical_shelf_count: null,
+        unit_variance: null,
+        dollar_variance: null,
+        actual_units_consumed: 0,
+        actual_packaging_cogs: 0,
+        low_par_alert: false,
+        audit_status: 'PENDING_COUNT'
+      }));
     }
 
     // =========================================================================
@@ -2230,6 +2250,7 @@
       const items = state.shelfAudits.length > 0 ? state.shelfAudits : buildDefaultShelfState();
 
       let lowParCount = 0;
+      let anyStockTracked = false;
       const dailyTbody = document.getElementById('pkg-daily-tbody');
       dailyTbody.innerHTML = items.map((item) => {
         const l1 = Math.round(Number(item.layer1_item_mod_burn || 0) / 7) || Math.round(Number(item.pos_theoretical_burn || 0) / 7);
@@ -2237,12 +2258,22 @@
         const dailyUnits = l1 + l2;
         const unitCogs = Number(item.unit_cogs || 0);
         const dailyCost = dailyUnits * unitCogs;
-        const onHand = item.physical_shelf_count !== null && item.physical_shelf_count !== undefined
+        const hasPhys = item.physical_shelf_count !== null && item.physical_shelf_count !== undefined && item.physical_shelf_count !== '';
+        const hasActivity = hasPhys || Number(item.opening_stock || 0) > 0 || Number(item.vendor_deliveries || 0) > 0 || Number(item.pos_theoretical_burn || 0) > 0;
+        if (hasActivity) anyStockTracked = true;
+
+        const onHand = hasPhys
           ? Number(item.physical_shelf_count)
           : Number(item.opening_stock || 0) + Number(item.vendor_deliveries || 0) - Number(item.pos_theoretical_burn || 0);
         const par = Number(item.par_level || 1000);
-        const isLow = onHand < par;
+        const isLow = hasActivity && onHand < par;
         if (isLow) lowParCount += 1;
+
+        const statusBadge = !hasActivity
+          ? `<span class="px-2 py-0.5 rounded bg-obsidian border border-titanium text-slate-400 text-[10px]">STANDBY (0 BURN)</span>`
+          : isLow
+            ? `<span class="px-2 py-0.5 rounded bg-crimson text-white text-[10px] font-bold">REORDER NOW</span>`
+            : `<span class="px-2 py-0.5 rounded bg-emeraldVault/20 text-emeraldVault text-[10px] font-bold">ABOVE PAR</span>`;
 
         return `
           <tr class="hover:bg-white/[0.02]">
@@ -2254,18 +2285,21 @@
             <td class="py-2.5 px-3 text-right font-bold text-white">${dailyUnits.toLocaleString()}</td>
             <td class="py-2.5 px-3 text-right text-white">${fmtCurrency(dailyCost)}</td>
             <td class="py-2.5 px-3 text-right ${isLow ? 'text-crimson font-bold' : 'text-slate-300'}">${onHand.toLocaleString()} / ${par.toLocaleString()}</td>
-            <td class="py-2.5 px-3">
-              ${isLow
-                ? `<span class="px-2 py-0.5 rounded bg-crimson text-white text-[10px] font-bold">REORDER NOW</span>`
-                : `<span class="px-2 py-0.5 rounded bg-emeraldVault/20 text-emeraldVault text-[10px] font-bold">ABOVE PAR</span>`}
-            </td>
+            <td class="py-2.5 px-3">${statusBadge}</td>
           </tr>
         `;
       }).join('');
 
-      document.getElementById('low-par-summary').innerHTML = lowParCount > 0
-        ? `⚠️ <strong>${lowParCount} Packaging SKUs Below Par Threshold</strong> — Reorder before Friday/Saturday volume rush.`
-        : `✅ All 10 BOH Disposable & Packaging SKUs currently stocked above weekend par levels.`;
+      const lowParBanner = document.getElementById('low-par-banner');
+      lowParBanner.className = lowParCount > 0
+        ? 'rounded-xl bg-crimsonDark/25 border border-crimson/50 p-3.5 flex flex-wrap items-center justify-between gap-2 text-xs'
+        : 'rounded-xl bg-obsidian border border-titanium p-3.5 flex flex-wrap items-center justify-between gap-2 text-xs';
+
+      document.getElementById('low-par-summary').innerHTML = !anyStockTracked
+        ? `<span class="text-slate-300">✅ Clean Production Standby — <strong class="text-white">0 Daily Burn / $0.00 COGS</strong> until live <code class="text-emeraldVault">rehg-pos-core</code> packaging telemetry or physical shelf counts arrive.</span>`
+        : lowParCount > 0
+          ? `⚠️ <strong>${lowParCount} Packaging SKUs Below Par Threshold</strong> — Reorder before Friday/Saturday volume rush.`
+          : `<span class="text-emeraldVault">✅ All 10 BOH Disposable & Packaging SKUs stocked above weekend par levels.</span>`;
 
       const weeklyTbody = document.getElementById('pkg-weekly-tbody');
       weeklyTbody.innerHTML = items.map((item, idx) => {
@@ -2664,12 +2698,10 @@
     // =========================================================================
     // 8. BULK PACKAGING IMPORTER, CSV BRIDGE & EXPORT
     // =========================================================================
-    function loadStarterPackagingTemplate() {
-      const lines = CANONICAL_PACKAGING_SKUS.map((s) => {
-        const burn = s.layer1_item_mod_burn + s.layer2_ordermode_burn;
-        const exp = s.opening_stock + s.vendor_deliveries - burn;
-        return `${s.sku_code}, ${s.item_name}, ${s.packaging_category}, ${s.unit_cogs.toFixed(4)}, ${s.par_level}, ${s.opening_stock}, ${s.vendor_deliveries}, ${burn}, ${exp - 45}`;
-      });
+   function loadStarterPackagingTemplate() {
+      const lines = CANONICAL_PACKAGING_SKUS.map((s) =>
+        `${s.sku_code}, ${s.item_name}, ${s.packaging_category}, ${s.unit_cogs.toFixed(4)}, ${s.par_level}, 0, 0, 0, `
+      );
       document.getElementById('pkg-bulk-textarea').value = lines.join('\n');
     }
 
@@ -2810,8 +2842,7 @@
     // =========================================================================
     function toggleDemoTelemetry() {
       state.demoActive = true;
-      document.getElementById('demo-seed-btn').classList.add('hidden');
-      document.getElementById('live-reset-btn').classList.remove('hidden');
+      document.getElementById('demo-active-pill')?.classList.remove('hidden');
 
       const today = document.getElementById('active-shift-date').value;
 
@@ -2862,12 +2893,20 @@
         { record_type: 'INCIDENT_LOG', incident_category: 'FLOOR_EJECTION', dvr_camera_channel: 'CAM-03 Dancefloor West', dvr_timestamp_window: '01:36 AM - 01:41 AM', mod_on_duty: 'Alicia W', narrative: 'Unruly guest escorted peacefully via Main Exit; ID logged, zero physical contact.', sealed_to_vault: false, created_at: `${today}T01:44:00` }
       ];
 
-      state.shelfAudits = CANONICAL_PACKAGING_SKUS.map((sku, idx) => {
-        const posBurn = sku.layer1_item_mod_burn + sku.layer2_ordermode_burn;
-        const expected = sku.opening_stock + sku.vendor_deliveries - posBurn;
+    state.shelfAudits = CANONICAL_PACKAGING_SKUS.map((sku, idx) => {
+        const posBurn = sku.demo_l1 + sku.demo_l2;
+        const expected = sku.demo_open + sku.demo_deliv - posBurn;
         const shrinkUnits = idx === 8 ? -95 : idx === 3 ? -240 : -8;
         return {
-          ...sku,
+          sku_code: sku.sku_code,
+          item_name: sku.item_name,
+          packaging_category: sku.packaging_category,
+          unit_cogs: sku.unit_cogs,
+          par_level: sku.par_level,
+          opening_stock: sku.demo_open,
+          vendor_deliveries: sku.demo_deliv,
+          layer1_item_mod_burn: sku.demo_l1,
+          layer2_ordermode_burn: sku.demo_l2,
           pos_theoretical_burn: posBurn,
           expected_ending_stock: expected,
           physical_shelf_count: expected + shrinkUnits
@@ -2875,7 +2914,23 @@
       });
 
       renderAllForensicViews();
-      showToast('Forensic Demo Telemetry Seeded across Tabs 4.1–4.5. Click "Clean Live Reset" anytime.', 'gold');
+      showToast('Forensic Demo Telemetry Seeded. Open ⚙️ Vault Config → "🧹 Scrub / Reset to Zero" anytime.', 'gold');
+    }
+
+    async function resetToCleanLive() {
+      state.demoActive = false;
+      document.getElementById('demo-active-pill')?.classList.add('hidden');
+      state.orders = [];
+      state.governanceAudits = [];
+      state.depletionLogs = [];
+      state.blindDrops = [];
+      state.doorRecons = [];
+      state.vipSwaps = [];
+      state.securitySeals = [];
+      state.shelfAudits = buildDefaultShelfState();
+      renderAllForensicViews();
+      await refreshAllData();
+      showToast('Workspace scrubbed to clean 0 / $0.00 production state (rehg-pos-core LIVE).', 'emerald');
     }
 
     async function resetToCleanLive() {
@@ -2954,7 +3009,7 @@
     async function saveVaultConfig() {
       state.supabaseUrl = document.getElementById('cfg-supabase-url').value.trim() || DEFAULT_SUPABASE_URL;
       state.supabaseKey = document.getElementById('cfg-supabase-key').value.trim() || DEFAULT_SUPABASE_ANON_KEY;
-      state.venueId = (document.getElementById('cfg-venue-id').value.trim() || 'DEFAULT_VENUE').toUpperCase();
+      state.venueId = (document.getElementById('cfg-venue-id').value.trim() || 'CARBON_HQ').toUpperCase();
       state.ownerPin = document.getElementById('cfg-owner-pin').value.trim() || '9999';
       state.modPin = document.getElementById('cfg-mod-pin').value.trim() || '7777';
       state.singleLimit = parseFloat(document.getElementById('cfg-single-limit').value || '50');

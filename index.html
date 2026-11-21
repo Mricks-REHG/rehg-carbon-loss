@@ -151,33 +151,49 @@
   <div id="toast-container" class="fixed bottom-5 right-5 z-[100] flex flex-col gap-2 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
 
   <!-- ========================================================================= -->
-  <!-- ROLE-ISOLATED PIN GATE OVERLAY (ZERO KEYPAD • PURE HERO + PILL)           -->
+  <!-- ROLE-ISOLATED PIN GATE OVERLAY (SELF-CONTAINED • INSTANT AUTO-UNLOCK)     -->
   <!-- ========================================================================= -->
   <div id="pin-gate-overlay" onclick="document.getElementById('pin-native-input')?.focus()" class="fixed inset-0 z-50 bg-[#040710] flex flex-col items-center justify-center px-6 select-none">
     <div class="flex flex-col items-center justify-center w-full max-w-md -mt-6">
       <img
         src="./carbon-loss-logo.jpeg"
         alt="REHG Carbon Loss Engine"
-        class="w-80 sm:w-96 mx-auto object-contain select-none pointer-events-none hero-radial-mask mb-7"
+        style="mix-blend-mode: lighten; -webkit-mask-image: radial-gradient(ellipse 72% 72% at 50% 48%, #000 62%, transparent 98%); mask-image: radial-gradient(ellipse 72% 72% at 50% 48%, #000 62%, transparent 98%);"
+        class="w-80 sm:w-96 mx-auto object-contain select-none pointer-events-none mb-6"
         onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='./carbon-loss-logo.jpg';}"
       />
 
-      <div id="pin-capsule" class="w-44 h-12 mx-auto rounded-full bg-white/[0.03] border border-white/10 focus-within:border-red-500/60 focus-within:shadow-[0_0_25px_rgba(239,68,68,0.18)] transition-all flex items-center justify-center">
+      <div id="pin-capsule" class="w-40 h-11 mx-auto rounded-full bg-[#090D1A]/90 border border-slate-700/60 shadow-[inset_0_1px_2px_rgba(255,255,255,0.04),0_8px_30px_rgba(0,0,0,0.75)] focus-within:border-red-500/80 focus-within:shadow-[0_0_26px_rgba(239,68,68,0.28)] transition-all duration-200 flex items-center justify-center">
         <input
           id="pin-native-input"
           type="password"
           inputmode="numeric"
           pattern="[0-9]*"
           maxlength="4"
-          placeholder="• • • •"
+          placeholder="••••"
           autocomplete="off"
           autofocus
-          oninput="handleNativePinInput(this)"
-          class="w-full h-full bg-transparent text-center text-white font-mono text-xl tracking-[0.65em] pl-[0.65em] focus:outline-none placeholder:text-slate-700"
+          oninput="window.handleNativePinInput(this)"
+          class="w-full h-full bg-transparent text-center text-white font-mono text-lg tracking-[0.65em] pl-[0.65em] focus:outline-none placeholder:text-slate-600/70"
         />
       </div>
     </div>
   </div>
+
+  <script>
+    // Self-contained gate handler so PIN entry never breaks
+    window._pinGateBusy = false;
+    window.handleNativePinInput = async function (inputEl) {
+      const clean = String(inputEl.value || '').replace(/\D/g, '').slice(0, 4);
+      if (inputEl.value !== clean) inputEl.value = clean;
+      if (typeof state !== 'undefined') state.enteredPin = clean;
+      if (clean.length === 4 && !window._pinGateBusy) {
+        if (typeof submitPinGate === 'function') {
+          await submitPinGate();
+        }
+      }
+    };
+  </script>
 
   <!-- ========================================================================= -->
   <!-- TOP ENTERPRISE COMMAND HEADER                                             -->
@@ -2988,12 +3004,8 @@
       showToast('Restored live rehg-pos-core Supabase URL & Publishable Key.', 'gold');
     }
 
- function openSettingsModal() {
-      if (state.role !== 'OWNER') {
-        showToast('Sovereign Owner authentication required to edit Vault Config.', 'crimson');
-        return;
-      }
-      document.getElementById('cfg-supabase-url').value = state.supabaseUrl;
+ async function saveVaultConfig() {
+      state.supabaseUrl = document.getElementById('cfg-supabase-url').value.trim() || DEFAULT_SUPABASE_URL;
       state.supabaseKey = document.getElementById('cfg-supabase-key').value.trim() || DEFAULT_SUPABASE_ANON_KEY;
       state.venueId = (document.getElementById('cfg-venue-id').value.trim() || 'CARBON_HQ').toUpperCase();
       state.ownerPin = document.getElementById('cfg-owner-pin').value.trim() || '9999';

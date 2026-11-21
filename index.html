@@ -1470,13 +1470,17 @@
     const MASTER_OVERRIDE_PIN = '2424';
     const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-    const _urlVenue = new URLSearchParams(window.location.search).get('v');
-    const _storedVenue = localStorage.getItem('rehg_loss_venue_id') || localStorage.getItem('carbon_loss_venue_id');
-    const INITIAL_VENUE_ID = (_urlVenue
-      ? _urlVenue.trim().toUpperCase()
-      : (!_storedVenue || _storedVenue === 'ELEVEN11_ATL' || _storedVenue === 'DEFAULT_VENUE')
+    const _qp = new URLSearchParams(window.location.search);
+    const _urlVenue = (_qp.get('venue') || _qp.get('venue_id') || '').replace(/[^A-Za-z0-9_-]/g, '').toUpperCase();
+    const _rawStored = localStorage.getItem('rehg_loss_venue_id') || localStorage.getItem('carbon_loss_venue_id') || '';
+    const _cleanStored = _rawStored.replace(/[^A-Za-z0-9_-]/g, '').toUpperCase();
+    const INITIAL_VENUE_ID = _urlVenue.length >= 3
+      ? _urlVenue
+      : (!_cleanStored || _cleanStored.length < 3 || _rawStored === '2]' || _rawStored === '2' || _cleanStored === 'ELEVEN11_ATL' || _cleanStored === 'DEFAULT_VENUE')
         ? 'CARBON_HQ'
-        : _storedVenue.trim().toUpperCase());
+        : _cleanStored;
+    localStorage.setItem('rehg_loss_venue_id', INITIAL_VENUE_ID);
+    localStorage.setItem('carbon_loss_venue_id', INITIAL_VENUE_ID);
 
     const state = {
       supabaseUrl: localStorage.getItem('carbon_loss_sb_url') || DEFAULT_SUPABASE_URL,
@@ -1837,30 +1841,23 @@
       return null;
     }
 
-    async function safeFetchTable(table, shiftDateCol = null, useUuidFallback = false) {
+    const _unscopedSchemaTables = new Set();
+    async function fetchScopedOrFallback(tableName, orderCol = null, shiftDateCol = null, useUuidFallback = false) {
       if (!state.sb) return [];
       const { startIso, endIso } = getActiveDateRange();
-      const venueKey = useUuidFallback && !UUID_PATTERN.test(state.venueId)
-        ? (state.resolvedVenueUuid || null)
-        : state.venueId;
-
+      const venueKey = useUuidFallback && !UUID_PATTERN.test(state.venueId) ? (state.resolvedVenueUuid || null) : state.venueId;
       try {
-        let q = state.sb.from(table).select('*');
-        if (venueKey) q = q.eq('venue_id', venueKey);
-        if (shiftDateCol) {
-          q = q.gte(shiftDateCol, startIso).lte(shiftDateCol, endIso);
+        if (!_unscopedSchemaTables.has(tableName)) {
+          let q = state.sb.from(tableName).select('*');
+          if (venueKey) q = q.eq('venue_id', venueKey);
+          if (shiftDateCol) q = q.gte(shiftDateCol, startIso).lte(shiftDateCol, endIso);
+          if (orderCol) q = q.order(orderCol, { ascending: false });
+          const { data, error } = await q.limit(500);
+          if (!error && data) return data;
+          _unscopedSchemaTables.add(tableName);
         }
-        const { data, error } = await q.order('created_at', { ascending: false }).limit(500);
-        if (!error && data) return data;
-
-        // Automatic UUID fallback if core POS table uses UUID `venue_id`
-        if (error && state.resolvedVenueUuid && venueKey !== state.resolvedVenueUuid) {
-          let q2 = state.sb.from(table).select('*').eq('venue_id', state.resolvedVenueUuid);
-          if (shiftDateCol) q2 = q2.gte(shiftDateCol, startIso).lte(shiftDateCol, endIso);
-          const retry = await q2.order('created_at', { ascending: false }).limit(500);
-          return retry.data || [];
-        }
-        return [];
+        const fb = await state.sb.from(tableName).select('*').limit(500);
+        return fb.data || [];
       } catch (_) {
         return [];
       }
@@ -1871,7 +1868,7 @@
       const [sy, sm, sd] = startIso.split('-').map(Number);
       const [ey, em, ed] = endIso.split('-').map(Number);
       const startMs = new Date(sy, sm - 1, sd, 0, 0, 0).getTime() - 6 * 3600000;
-      const endMs = new Date(ey, em - 1, ed, 23, 59, 59).getTime() + 8 * 3600000;e
+      const endMs = new Date(ey, em - 1, ed, 23, 59, 59).getTime() + 8 * 3600000;
       return (rows || []).filter((r) => {
         const raw = r[tsField] || r.clock_in || r.created_at;
         if (!raw) return true;
@@ -1883,50 +1880,33 @@
     async function refreshAllData() {
       if (!state.sb) return;
       await resolveVenueUuidIfNeeded();
-
-      try {
-        const { data: alertCfg } = await state.sb
-          .from('venue_alert_settings')
-          .select('*')
-          .eq('venue_id', state.venueId)
-          .limit(1);
-        if (alertCfg && alertCfg[0]) {
-          if (alertCfg[0].single_override_limit) state.singleLimit = Number(alertCfg[0].single_override_limit);
-          if (alertCfg[0].shift_override_ceiling) state.shiftCeiling = Number(alertCfg[0].shift_override_ceiling);
-        }
-      } catch (_) {}
+      const alertCfg = await fetchScopedOrFallback('venue_alert_settings', null, null, true);
+      if (alertCfg[0]?.single_override_limit) state.singleLimit = Number(alertCfg[0].single_override_limit);
+      if (alertCfg[0]?.shift_override_ceiling) state.shiftCeiling = Number(alertCfg[0].shift_override_ceiling);
 
       const [
-        blindDrops,
-        doorRecons,
-        vipSwaps,
-        securitySeals,
-        shelfAudits,
-        ordersRaw,
-        govAuditsRaw,
-        depletionLogsRaw,
-        liquorInv,
-        foodInv,
-        menuItems,
-        shiftsRaw,
-        feederRes,
-        feederPromos
+        blindDrops, doorRecons, vipSwaps, securitySeals, shelfAudits,
+        ordersRaw, govAuditsRaw, depletionLogsRaw, liquorInv, foodInv,
+        menuItems, shiftsRaw, feederRes, feederPromos
       ] = await Promise.all([
-        safeFetchTable('loss_blind_drops', 'shift_date', false),
-        safeFetchTable('loss_door_reconciliations', 'shift_date', false),
-        safeFetchTable('loss_vip_bottle_swaps', 'shift_date', false),
-        safeFetchTable('loss_security_seals', 'shift_date', false),
-        safeFetchTable('loss_shelf_audits', null, false),
-        safeFetchTable('orders', null, true),
-        safeFetchTable('governance_audits', null, true),
-        safeFetchTable('inventory_depletion_log', null, true),
-        safeFetchTable('liquor_inventory', null, true),
-        safeFetchTable('food_inventory', null, true),
-        safeFetchTable('menu_items', null, true),
-        safeFetchTable('timeclock_shifts', null, true),
-        safeFetchTable('feeder_vip_reservations', 'shift_date', false),
-        safeFetchTable('feeder_promoter_ledgers', 'shift_date', false)
+        fetchScopedOrFallback('loss_blind_drops', 'created_at', 'shift_date', false),
+        fetchScopedOrFallback('loss_door_reconciliations', 'created_at', 'shift_date', false),
+        fetchScopedOrFallback('loss_vip_bottle_swaps', 'created_at', 'shift_date', false),
+        fetchScopedOrFallback('loss_security_seals', 'created_at', 'shift_date', false),
+        fetchScopedOrFallback('loss_shelf_audits', 'created_at', null, false),
+        fetchScopedOrFallback('orders', 'created_at', null, true),
+        fetchScopedOrFallback('governance_audits', 'created_at', null, true),
+        fetchScopedOrFallback('inventory_depletion_log', 'created_at', null, true),
+        fetchScopedOrFallback('liquor_inventory', null, null, true),
+        fetchScopedOrFallback('food_inventory', null, null, true),
+        fetchScopedOrFallback('menu_items', null, null, true),
+        fetchScopedOrFallback('timeclock_shifts', 'clock_in', null, true),
+        fetchScopedOrFallback('feeder_vip_reservations', 'created_at', 'shift_date', false),
+        fetchScopedOrFallback('feeder_promoter_ledgers', 'created_at', 'shift_date', false)
       ]);
+      const vIds = [...new Set([...ordersRaw, ...govAuditsRaw].map((r) => r.venue_id).filter(Boolean))];
+      const vSel = document.getElementById('cfg-detected-venues');
+      if (vSel && vIds.length) vSel.innerHTML = `<option value="">⚡ Detected POS venue_id (${vIds.length})</option>` + vIds.map((v) => `<option value="${v}">${v}</option>`).join('');
 
       state.blindDrops = blindDrops;
       state.doorRecons = doorRecons;
@@ -2010,27 +1990,31 @@
         }
       });
 
-      const synthVoids = state.orders.filter((o) => /^(VOID|VOIDED|COMP|COMPED)$/i.test(o.status || '') || Number(o.comp_amount || 0) > 0 || Number(o.void_amount || 0) > 0)
-        .filter((o) => !state.governanceAudits.some((a) => a.order_id && String(a.order_id) === String(o.id)))
-        .map((o) => ({ action_type: String(o.status || 'VOID_CHECK').toUpperCase(), check_number: o.tab_name || o.table_code || String(o.id).slice(0, 8), staff_requester: o.staff_name || 'POS Staff', manager_approver: 'POS Order Status', amount_affected: Number(o.void_amount || o.comp_amount || o.total_amount || o.subtotal || 0), transfer_count: Number(o.transfer_count || 0), created_at: o.updated_at || o.created_at }));
+      const synthVoids = state.orders
+        .filter((o) => /^(VOID|VOIDED|COMP|COMPED)$/i.test(String(o.status || '').trim()) || Number(o.void_amount || 0) > 0 || Number(o.comp_amount || 0) > 0)
+        .filter((o) => !state.governanceAudits.some((a) => (a.order_id && String(a.order_id) === String(o.id)) || (a.check_number && String(a.check_number) === String(o.check_number || o.tab_name || ''))))
+        .map((o) => ({ action_type: Number(o.comp_amount || 0) > 0 || /COMP/i.test(o.status || '') ? 'COMP_DISC' : 'VOID_CHECK', check_number: o.check_number || o.tab_name || o.table_code || String(o.id).slice(0, 8), staff_requester: o.staff_name || o.server_name || o.bartender || 'POS Staff', manager_approver: o.approved_by || 'POS Live Sync', amount_affected: Number(o.void_amount || o.comp_amount || o.total_retail || o.total_amount || o.subtotal || 0), transfer_count: Number(o.transfer_count || 0), created_at: o.updated_at || o.created_at }));
       const enrichedAudits = [...state.governanceAudits, ...synthVoids].map((a) => {
         const staff = a.staff_requester || a.requested_by || a.staff_name || 'Staff';
         const manager = a.manager_approver || a.approved_by || 'MOD';
-        const action = String(a.action_type || a.audit_type || a.event_type || 'VOID_TICKET').toUpperCase();
-        const amt = Math.abs(Number(a.amount ?? a.amount_affected ?? a.void_amount ?? a.comp_amount ?? 0));
+        const action = String(a.action_type || a.audit_type || a.event_type || a.type || 'VOID_TICKET').trim().toUpperCase();
+        const isVoid = /\b(VOID|VOID_CHECK|VOID_TICKET|VOID_ITEM|VOIDED)\b|VOID/i.test(action);
+        const isComp = /\b(COMP|COMP_DISC|DISCOUNT|COMPED)\b|COMP|DISC/i.test(action);
+        const isXfer = /\b(TRANSFER|TRANSFER_CHECK)\b|TRANSFER|XFER/i.test(action);
+        const amt = Math.abs(Number(a.amount ?? a.amount_affected ?? a.void_amount ?? a.comp_amount ?? a.discount_amount ?? 0));
         const ts = a.created_at || a.timestamp || new Date().toISOString();
         const d = new Date(ts);
         const hr = d.getHours() + d.getMinutes() / 60;
         const isClosingCluster = hr >= 1.5 && hr <= 3.5;
-        const isPostPrintVoid = Boolean(a.post_print_cash_void) || (action.includes('VOID') && String(a.notes || a.summary || '').toLowerCase().includes('print'));
-        const xferCount = Number(a.transfer_count || (action.includes('TRANSFER') ? 4 : 0));
+        const isPostPrintVoid = Boolean(a.post_print_cash_void) || (isVoid && String(a.notes || a.summary || '').toLowerCase().includes('print'));
+        const xferCount = Number(a.transfer_count || (isXfer ? 4 : 0));
 
         const st = ensureStaff(staff);
-        if (action.includes('TRANSFER')) {
+        if (isXfer) {
           st.totalTransfers += Math.max(1, xferCount);
           st.maxTransfersOnCheck = Math.max(st.maxTransfersOnCheck, xferCount);
         }
-        if (/VOID|COMP|DISC/i.test(action)) {
+        if (isVoid || isComp) {
           st.overrideDollars += amt;
           cumulativeOverrides += amt;
           if (isClosingCluster) st.closingWindowVoids += 1;

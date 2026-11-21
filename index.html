@@ -1817,7 +1817,7 @@
       if (UUID_PATTERN.test(state.venueId)) return state.venueId;
       if (state.resolvedVenueUuid && UUID_PATTERN.test(state.resolvedVenueUuid)) return state.resolvedVenueUuid;
       try {
-        try {
+        
         const { data: liveV } = await state.sb.from('governance_audits').select('venue_id').order('created_at', { ascending: false }).limit(1);
         const { data: liveO } = await state.sb.from('orders').select('venue_id').order('created_at', { ascending: false }).limit(1);
         const detId = liveV?.[0]?.venue_id || liveO?.[0]?.venue_id;

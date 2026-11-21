@@ -137,83 +137,51 @@
   <!-- ========================================================================= -->
   <!-- ROLE-ISOLATED PIN GATE OVERLAY                                            -->
   <!-- ========================================================================= -->
- <div id="pin-gate-overlay" class="fixed inset-0 z-50 bg-[#050811] flex flex-col items-center justify-center p-4 overflow-y-auto">
-    <div class="w-full max-w-md bg-[#050811] border border-titanium rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.85)]">
+  <div id="pin-gate-overlay" class="fixed inset-0 z-50 bg-[#050811] flex flex-col items-center justify-center p-4 overflow-y-auto">
+    <div class="w-full max-w-sm sm:max-w-md bg-[#050811] border border-titanium/80 rounded-2xl px-6 py-6 relative overflow-hidden shadow-[0_24px_70px_rgba(0,0,0,0.92)]">
       <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-crimsonDark via-crimson to-sovereign"></div>
 
-      <!-- Seamless Obsidian Brand Hero -->
-      <div class="flex flex-col items-center text-center mb-6">
-        <img
-          src="./carbon-loss-logo.jpeg"
-          alt="REHG Carbon Loss Engine"
-          class="w-64 sm:w-72 mx-auto object-contain select-none bg-[#050811]"
-          onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='./carbon-loss-logo.jpg';}"
-        />
-        <div class="mt-2 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#050811] border border-sovereign/40 text-[10px] text-sovereign font-semibold tracking-wider">
-          <span>ENTERPRISE CLOUD EXTENSION</span>
-          <span class="text-slate-600">•</span>
-          <span>v4.0 SOVEREIGN</span>
+      <!-- Pure Uncropped Brand Hero -->
+      <img
+        src="./carbon-loss-logo.jpeg"
+        alt="REHG Carbon Loss Engine"
+        class="w-64 sm:w-72 mx-auto object-contain mb-4 select-none bg-[#050811]"
+        onerror="if(!this.dataset.fb){this.dataset.fb='1';this.src='./carbon-loss-logo.jpg';}"
+      />
+
+      <!-- Sleek 4-Slot PIN Display Bar -->
+      <div class="mb-3.5">
+        <div class="flex items-center justify-between text-[10px] text-slate-400 uppercase tracking-widest mb-1.5 font-semibold">
+          <span>Governance PIN</span>
+          <span id="pin-error-msg" class="text-crimson font-mono hidden">ACCESS DENIED</span>
+        </div>
+        <div id="pin-dots" class="grid grid-cols-4 gap-3 bg-[#050811] border border-titanium rounded-xl p-3">
+          <div class="h-3 rounded-full bg-titanium/50 transition-all"></div>
+          <div class="h-3 rounded-full bg-titanium/50 transition-all"></div>
+          <div class="h-3 rounded-full bg-titanium/50 transition-all"></div>
+          <div class="h-3 rounded-full bg-titanium/50 transition-all"></div>
         </div>
       </div>
 
-      <!-- Active Venue Scope Input -->
-      <div class="mb-4">
-        <label class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1.5">Scoped Venue Identifier (<code class="text-crimson">venue_id</code>)</label>
-        <div class="flex gap-2">
-          <input id="gate-venue-id" type="text" value="CARBON_HQ" class="carbon-input w-full rounded-lg px-3 py-2 text-sm font-mono uppercase" placeholder="CARBON_HQ" />
-          <button onclick="openSettingsModal()" type="button" class="px-3 py-2 rounded-lg bg-gunmetal border border-titanium hover:border-sovereign text-slate-300 text-xs font-semibold whitespace-nowrap transition">
-            ⚙️ DB Vault
-          </button>
-        </div>
+      <!-- Crisp 3x4 Keypad -->
+      <div class="grid grid-cols-3 gap-2 mb-3">
+        <button type="button" onclick="pressPinDigit('1')" class="py-3 rounded-xl bg-gunmetal/60 hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">1</button>
+        <button type="button" onclick="pressPinDigit('2')" class="py-3 rounded-xl bg-gunmetal/60 hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">2</button>
+        <button type="button" onclick="pressPinDigit('3')" class="py-3 rounded-xl bg-gunmetal/60 hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">3</button>
+        <button type="button" onclick="pressPinDigit('4')" class="py-3 rounded-xl bg-gunmetal/60 hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">4</button>
+        <button type="button" onclick="pressPinDigit('5')" class="py-3 rounded-xl bg-gunmetal/60 hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">5</button>
+        <button type="button" onclick="pressPinDigit('6')" class="py-3 rounded-xl bg-gunmetal/60 hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">6</button>
+        <button type="button" onclick="pressPinDigit('7')" class="py-3 rounded-xl bg-gunmetal/60 hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">7</button>
+        <button type="button" onclick="pressPinDigit('8')" class="py-3 rounded-xl bg-gunmetal/60 hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">8</button>
+        <button type="button" onclick="pressPinDigit('9')" class="py-3 rounded-xl bg-gunmetal/60 hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">9</button>
+        <button type="button" onclick="clearPinDigits()" class="py-3 rounded-xl bg-gunmetal/60 hover:bg-crimsonDark/40 border border-titanium text-xs font-mono font-bold text-slate-400 hover:text-white uppercase transition">CLR</button>
+        <button type="button" onclick="pressPinDigit('0')" class="py-3 rounded-xl bg-gunmetal/60 hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">0</button>
+        <button type="button" onclick="submitPinGate()" class="py-3 rounded-xl bg-crimson hover:bg-red-500 border border-crimson text-xs font-mono font-bold text-white uppercase transition shadow-lg shadow-crimson/25">UNLOCK</button>
       </div>
 
-      <!-- Active Venue Scope Input -->
-      <div class="mb-4">
-        <label class="block text-[11px] uppercase tracking-wider text-slate-400 font-semibold mb-1.5">Scoped Venue Identifier (<code class="text-crimson">venue_id</code>)</label>
-        <div class="flex gap-2">
-          <input id="gate-venue-id" type="text" value="ELEVEN11_ATL" class="carbon-input w-full rounded-lg px-3 py-2 text-sm font-mono uppercase" placeholder="e.g. ELEVEN11_ATL or DEFAULT_VENUE" />
-          <button onclick="openSettingsModal()" type="button" class="px-3 py-2 rounded-lg bg-gunmetal border border-titanium hover:border-sovereign text-slate-300 text-xs font-semibold whitespace-nowrap transition">
-            ⚙️ DB Vault
-          </button>
-        </div>
-      </div>
-
-      <!-- PIN Display Dots -->
-      <div class="mb-4">
-        <div class="flex items-center justify-between text-[11px] text-slate-400 uppercase tracking-wider mb-1.5 font-semibold">
-          <span>4-Digit Governance PIN</span>
-          <span id="pin-error-msg" class="text-crimson font-mono hidden">INVALID PIN</span>
-        </div>
-        <div id="pin-dots" class="grid grid-cols-4 gap-3 bg-obsidian border border-titanium rounded-xl p-3.5">
-          <div class="h-3.5 rounded-full bg-titanium/50 transition-all"></div>
-          <div class="h-3.5 rounded-full bg-titanium/50 transition-all"></div>
-          <div class="h-3.5 rounded-full bg-titanium/50 transition-all"></div>
-          <div class="h-3.5 rounded-full bg-titanium/50 transition-all"></div>
-        </div>
-      </div>
-
-      <!-- Numeric Keypad -->
-      <div class="grid grid-cols-3 gap-2.5 mb-5">
-        <button type="button" onclick="pressPinDigit('1')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">1</button>
-        <button type="button" onclick="pressPinDigit('2')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">2</button>
-        <button type="button" onclick="pressPinDigit('3')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">3</button>
-        <button type="button" onclick="pressPinDigit('4')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">4</button>
-        <button type="button" onclick="pressPinDigit('5')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">5</button>
-        <button type="button" onclick="pressPinDigit('6')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">6</button>
-        <button type="button" onclick="pressPinDigit('7')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">7</button>
-        <button type="button" onclick="pressPinDigit('8')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">8</button>
-        <button type="button" onclick="pressPinDigit('9')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">9</button>
-        <button type="button" onclick="clearPinDigits()" class="py-3.5 rounded-xl bg-obsidian hover:bg-crimsonDark/40 border border-titanium text-xs font-mono font-bold text-slate-400 hover:text-white uppercase transition">CLR</button>
-        <button type="button" onclick="pressPinDigit('0')" class="py-3.5 rounded-xl bg-obsidian hover:bg-slatepanel border border-titanium hover:border-crimson text-lg font-mono font-bold text-white transition active:scale-95">0</button>
-        <button type="button" onclick="submitPinGate()" class="py-3.5 rounded-xl bg-crimson hover:bg-red-500 border border-crimson text-xs font-mono font-bold text-white uppercase transition shadow-lg shadow-crimson/20">UNLOCK</button>
-      </div>
-
-      <!-- Role Reference Legend -->
-     <div class="mt-2 flex items-center justify-between gap-2">
-        <button id="gate-pwa-install-btn" type="button" onclick="triggerPwaInstall()" class="w-full py-2.5 px-3 rounded-lg bg-gunmetal hover:bg-slatepanel border border-sovereign/50 text-sovereign text-xs font-semibold flex items-center justify-center gap-2 transition">
-          <span>📲 Install App to Phone Home Screen</span>
-        </button>
-      </div>
+      <button id="gate-pwa-install-btn" type="button" onclick="triggerPwaInstall()" class="w-full py-1.5 text-slate-400 hover:text-sovereign text-[11px] font-medium flex items-center justify-center gap-1.5 transition">
+        <span>📲 Install App</span>
+      </button>
     </div>
   </div>
 
@@ -1356,8 +1324,13 @@
       { sku_code: 'PKG-BAG-TSH', item_name: 'Heavy-Duty Carryout T-Shirt Bag (1/3 Items)', packaging_category: 'CARRYOUT_BAGS', unit_cogs: 0.0520, par_level: 800, demo_open: 1400, demo_deliv: 500, demo_l1: 0, demo_l2: 640 }
     ];
 
-    const _storedVenue = localStorage.getItem('carbon_loss_venue_id');
-    const INITIAL_VENUE_ID = (!_storedVenue || _storedVenue === 'ELEVEN11_ATL' || _storedVenue === 'DEFAULT_VENUE') ? 'CARBON_HQ' : _storedVenue;
+    const _urlVenue = new URLSearchParams(window.location.search).get('v');
+    const _storedVenue = localStorage.getItem('rehg_loss_venue_id') || localStorage.getItem('carbon_loss_venue_id');
+    const INITIAL_VENUE_ID = (_urlVenue
+      ? _urlVenue.trim().toUpperCase()
+      : (!_storedVenue || _storedVenue === 'ELEVEN11_ATL' || _storedVenue === 'DEFAULT_VENUE')
+        ? 'CARBON_HQ'
+        : _storedVenue.trim().toUpperCase());
 
     const state = {
       supabaseUrl: localStorage.getItem('carbon_loss_sb_url') || DEFAULT_SUPABASE_URL,
@@ -1509,8 +1482,8 @@
     }
 
   async function submitPinGate() {
-      const venueInput = document.getElementById('gate-venue-id').value.trim().toUpperCase() || 'CARBON_HQ';
-      state.venueId = venueInput;
+      state.venueId = (state.venueId || 'CARBON_HQ').trim().toUpperCase();
+      localStorage.setItem('rehg_loss_venue_id', state.venueId);
       localStorage.setItem('carbon_loss_venue_id', state.venueId);
       document.getElementById('header-venue-label').textContent = state.venueId;
 
@@ -3006,8 +2979,12 @@
       showToast('Restored live rehg-pos-core Supabase URL & Publishable Key.', 'gold');
     }
 
-    async function saveVaultConfig() {
-      state.supabaseUrl = document.getElementById('cfg-supabase-url').value.trim() || DEFAULT_SUPABASE_URL;
+ function openSettingsModal() {
+      if (state.role !== 'OWNER') {
+        showToast('Sovereign Owner authentication required to edit Vault Config.', 'crimson');
+        return;
+      }
+      document.getElementById('cfg-supabase-url').value = state.supabaseUrl;
       state.supabaseKey = document.getElementById('cfg-supabase-key').value.trim() || DEFAULT_SUPABASE_ANON_KEY;
       state.venueId = (document.getElementById('cfg-venue-id').value.trim() || 'CARBON_HQ').toUpperCase();
       state.ownerPin = document.getElementById('cfg-owner-pin').value.trim() || '9999';
@@ -3016,8 +2993,9 @@
       state.shiftCeiling = parseFloat(document.getElementById('cfg-shift-ceiling').value || '250');
       state.sovereignWebhook = document.getElementById('cfg-sovereign-webhook').value.trim();
 
-      localStorage.setItem('carbon_loss_sb_url', state.supabaseUrl);
+     localStorage.setItem('carbon_loss_sb_url', state.supabaseUrl);
       localStorage.setItem('carbon_loss_sb_key', state.supabaseKey);
+      localStorage.setItem('rehg_loss_venue_id', state.venueId);
       localStorage.setItem('carbon_loss_venue_id', state.venueId);
       localStorage.setItem('carbon_loss_owner_pin', state.ownerPin);
       localStorage.setItem('carbon_loss_mod_pin', state.modPin);
@@ -3025,7 +3003,6 @@
       localStorage.setItem('carbon_loss_shift_ceiling', String(state.shiftCeiling));
       localStorage.setItem('carbon_loss_webhook', state.sovereignWebhook);
 
-      document.getElementById('gate-venue-id').value = state.venueId;
       document.getElementById('header-venue-label').textContent = state.venueId;
 
       closeSettingsModal();
@@ -3081,7 +3058,6 @@
     document.addEventListener('DOMContentLoaded', () => {
       const todayIso = new Date().toISOString().slice(0, 10);
       document.getElementById('active-shift-date').value = todayIso;
-      document.getElementById('gate-venue-id').value = state.venueId;
       document.getElementById('header-venue-label').textContent = state.venueId;
       state.shelfAudits = buildDefaultShelfState();
 

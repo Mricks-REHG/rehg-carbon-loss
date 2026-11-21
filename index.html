@@ -263,8 +263,8 @@
     <!-- ======================================================================= -->
     <!-- SOVEREIGN 6-TAB NAVIGATION BAR (HIDDEN IN MOD ONE-WAY BLIND SLOT MODE)  -->
     <!-- ======================================================================= -->
-    <nav id="owner-tab-bar" class="max-w-[1600px] mx-auto px-3 sm:px-6 pb-2.5 pt-1 overflow-x-auto">
-      <div class="flex items-center gap-2 min-w-max">
+    <nav id="owner-tab-bar" class="max-w-[1600px] mx-auto px-3 sm:px-6 pb-2.5 pt-1">
+      <div class="flex flex-wrap items-center gap-1.5">
         <button type="button" data-tab="tab-41" onclick="switchOwnerTab('tab-41')" class="owner-tab-btn tab-btn-active px-3.5 py-2 rounded-xl border border-titanium bg-gunmetal text-xs font-bold tracking-wide text-slate-300 hover:text-white transition flex items-center gap-2">
           <span class="font-mono text-[11px] text-crimson font-extrabold">4.1</span>
           <span>Wagon Wheel & POS Overrides</span>
@@ -287,7 +287,7 @@
         </button>
         <button type="button" data-tab="tab-46" onclick="switchOwnerTab('tab-46')" class="owner-tab-btn px-3.5 py-2 rounded-xl border border-sovereign/50 bg-gunmetal text-xs font-bold tracking-wide text-sovereign hover:text-white transition flex items-center gap-2">
           <span class="font-mono text-[11px] text-sovereign font-extrabold">4.6</span>
-          <span>Executive Leakage Report & Preventive Playbook</span>
+         <span>Kitchen, Bar, VIP & Total Venue Bleed</span>
         </button>
       </div>
     </nav>
@@ -1383,6 +1383,7 @@
           <div>
             <label class="block text-slate-400 font-semibold mb-1">Active <code class="text-crimson">venue_id</code></label>
             <input id="cfg-venue-id" type="text" class="carbon-input w-full rounded-lg px-3 py-2 font-mono uppercase" />
+            <select id="cfg-detected-venues" onchange="if(this.value)document.getElementById('cfg-venue-id').value=this.value" class="carbon-input w-full rounded-lg px-2 py-1 mt-1 font-mono text-[10px] text-emeraldVault"><option value="">⚡ Auto-Detect POS venue_id...</option></select>
           </div>
           <div>
             <label class="block text-sovereign font-semibold mb-1">Owner Sovereign PIN</label>
@@ -1484,7 +1485,7 @@
       singleLimit: parseFloat(localStorage.getItem('carbon_loss_single_limit') || '50'),
       shiftCeiling: parseFloat(localStorage.getItem('carbon_loss_shift_ceiling') || '250'),
       sovereignWebhook: localStorage.getItem('carbon_loss_webhook') || '',
-      ingestionMode: localStorage.getItem('carbon_loss_mode') || 'CARBON_POS_LIVE',
+     ingestionMode: sessionStorage.getItem('carbon_loss_mode') || 'CARBON_POS_LIVE',
       role: null, // 'OWNER' | 'MOD'
       enteredPin: '',
       activeTab: 'tab-41',
@@ -1598,6 +1599,7 @@
         .on('postgres_changes', { event: '*', schema: 'public', table: 'loss_vip_bottle_swaps' }, () => refreshAllData())
         .on('postgres_changes', { event: '*', schema: 'public', table: 'loss_security_seals' }, () => refreshAllData())
         .on('postgres_changes', { event: '*', schema: 'public', table: 'loss_shelf_audits' }, () => refreshAllData())
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'orders' }, () => refreshAllData())
         .on('postgres_changes', { event: '*', schema: 'public', table: 'governance_audits' }, () => refreshAllData())
         .on('postgres_changes', { event: '*', schema: 'public', table: 'feeder_vip_reservations' }, () => refreshAllData())
         .on('postgres_changes', { event: '*', schema: 'public', table: 'feeder_promoter_ledgers' }, () => refreshAllData())
@@ -1634,7 +1636,7 @@
 
       state.venueId = (state.venueId || 'CARBON_HQ').trim().toUpperCase();
       localStorage.setItem('rehg_loss_venue_id', state.venueId);
-      localStorage.setItem('carbon_loss_venue_id', state.venueId);
+      sessionStorage.setItem('carbon_loss_mode', mode);
       document.getElementById('header-venue-label').textContent = state.venueId;
 
       const inputEl = document.getElementById('pin-native-input');
@@ -1812,6 +1814,11 @@
       if (UUID_PATTERN.test(state.venueId)) return state.venueId;
       if (state.resolvedVenueUuid && UUID_PATTERN.test(state.resolvedVenueUuid)) return state.resolvedVenueUuid;
       try {
+        try {
+        const { data: liveV } = await state.sb.from('governance_audits').select('venue_id').order('created_at', { ascending: false }).limit(1);
+        const { data: liveO } = await state.sb.from('orders').select('venue_id').order('created_at', { ascending: false }).limit(1);
+        const detId = liveV?.[0]?.venue_id || liveO?.[0]?.venue_id;
+        if (detId && UUID_PATTERN.test(detId)) return (state.resolvedVenueUuid = detId);
         const { data } = await state.sb.from('venues').select('id, venue_code, name').limit(20);
         if (data && data.length > 0) {
           const match = data.find((v) =>
@@ -1859,8 +1866,10 @@
 
     function filterByActiveTimestampWindow(rows, tsField = 'created_at') {
       const { startIso, endIso } = getActiveDateRange();
-      const startMs = new Date(startIso + 'T00:00:00').getTime();
-      const endMs = new Date(endIso + 'T23:59:59').getTime() + 5 * 3600 * 1000; // Include late-night 5AM bar close
+      const [sy, sm, sd] = startIso.split('-').map(Number);
+      const [ey, em, ed] = endIso.split('-').map(Number);
+      const startMs = new Date(sy, sm - 1, sd, 0, 0, 0).getTime() - 6 * 3600000;
+      const endMs = new Date(ey, em - 1, ed, 23, 59, 59).getTime() + 8 * 3600000;e
       return (rows || []).filter((r) => {
         const raw = r[tsField] || r.clock_in || r.created_at;
         if (!raw) return true;
@@ -1999,11 +2008,14 @@
         }
       });
 
-      const enrichedAudits = state.governanceAudits.map((a) => {
+      const synthVoids = state.orders.filter((o) => /^(VOID|VOIDED|COMP|COMPED)$/i.test(o.status || '') || Number(o.comp_amount || 0) > 0 || Number(o.void_amount || 0) > 0)
+        .filter((o) => !state.governanceAudits.some((a) => a.order_id && String(a.order_id) === String(o.id)))
+        .map((o) => ({ action_type: String(o.status || 'VOID_CHECK').toUpperCase(), check_number: o.tab_name || o.table_code || String(o.id).slice(0, 8), staff_requester: o.staff_name || 'POS Staff', manager_approver: 'POS Order Status', amount_affected: Number(o.void_amount || o.comp_amount || o.total_amount || o.subtotal || 0), transfer_count: Number(o.transfer_count || 0), created_at: o.updated_at || o.created_at }));
+      const enrichedAudits = [...state.governanceAudits, ...synthVoids].map((a) => {
         const staff = a.staff_requester || a.requested_by || a.staff_name || 'Staff';
         const manager = a.manager_approver || a.approved_by || 'MOD';
         const action = String(a.action_type || a.audit_type || a.event_type || 'VOID_TICKET').toUpperCase();
-        const amt = Math.abs(Number(a.amount ?? a.amount_affected ?? a.void_amount ?? 0));
+        const amt = Math.abs(Number(a.amount ?? a.amount_affected ?? a.void_amount ?? a.comp_amount ?? 0));
         const ts = a.created_at || a.timestamp || new Date().toISOString();
         const d = new Date(ts);
         const hr = d.getHours() + d.getMinutes() / 60;
@@ -2016,7 +2028,7 @@
           st.totalTransfers += Math.max(1, xferCount);
           st.maxTransfersOnCheck = Math.max(st.maxTransfersOnCheck, xferCount);
         }
-        if (action.includes('VOID') || action.includes('COMP')) {
+        if (/VOID|COMP|DISC/i.test(action)) {
           st.overrideDollars += amt;
           cumulativeOverrides += amt;
           if (isClosingCluster) st.closingWindowVoids += 1;
@@ -3546,8 +3558,14 @@
       document.getElementById(id)?.classList.toggle('hidden');
     }
 
-    function openSettingsModal() {
+    async function openSettingsModal() {
       document.getElementById('cfg-supabase-url').value = state.supabaseUrl;
+      if (state.sb) {
+        const [oR, gR] = await Promise.all([state.sb.from('orders').select('venue_id').limit(40), state.sb.from('governance_audits').select('venue_id').limit(40)]);
+        const ids = [...new Set([...(oR.data || []), ...(gR.data || [])].map((r) => r.venue_id).filter(Boolean))];
+        const sel = document.getElementById('cfg-detected-venues');
+        if (sel) sel.innerHTML = '<option value="">⚡ Detected POS venue_id (' + ids.length + ')</option>' + ids.map((v) => '<option value="' + v + '">' + v + '</option>').join('');
+      }
       document.getElementById('cfg-supabase-key').value = state.supabaseKey;
       document.getElementById('cfg-venue-id').value = state.venueId;
       document.getElementById('cfg-owner-pin').value = state.ownerPin;
@@ -3647,7 +3665,8 @@
     // 10. BOOTSTRAP ON DOM READY
     // =========================================================================
     document.addEventListener('DOMContentLoaded', () => {
-      const todayIso = new Date().toISOString().slice(0, 10);
+      const _n = new Date();
+      const todayIso = new Date(_n.getTime() - _n.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
       document.getElementById('active-shift-date').value = todayIso;
       const startInp = document.getElementById('lk-start-date');
       const endInp = document.getElementById('lk-end-date');

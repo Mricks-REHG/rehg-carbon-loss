@@ -1569,7 +1569,7 @@
       const modWorkspace = document.getElementById('mod-blind-workspace');
       const demoBtn = document.getElementById('demo-seed-btn');
 
-      if (state.role === 'MOD') {
+     
      const vaultDemoControls = document.getElementById('vault-demo-controls');
 
       if (state.role === 'MOD') {
@@ -2929,22 +2929,6 @@
       renderAllForensicViews();
       await refreshAllData();
       showToast('Workspace scrubbed to clean 0 / $0.00 production state (rehg-pos-core LIVE).', 'emerald');
-    }
-
-    async function resetToCleanLive() {
-      state.demoActive = false;
-      document.getElementById('live-reset-btn').classList.add('hidden');
-      document.getElementById('demo-seed-btn').classList.remove('hidden');
-      state.orders = [];
-      state.governanceAudits = [];
-      state.depletionLogs = [];
-      state.blindDrops = [];
-      state.doorRecons = [];
-      state.vipSwaps = [];
-      state.securitySeals = [];
-      state.shelfAudits = buildDefaultShelfState();
-      await refreshAllData();
-      showToast('Clean Live Reset complete — streaming strictly from rehg-pos-core.', 'emerald');
     }
 
     // =========================================================================

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>CARBON | LOSS — REHG Carbon™ Loss Engine</title>
-  <meta name="description" content="REHG Carbon™ Loss Engine — Enterprise Physical & Financial Shrinkage Vault, Wagon Wheel Anomaly Matrix™, Blind Drops, Phantom Guest Anti-Theft, Feeder VIP Audit & Executive Leakage Playbook." />
+  <meta name="description" content="REHG Carbon™ Loss Engine — Enterprise Physical & Financial Shrinkage Vault, Wagon Wheel Anomaly Matrix™, No-Sale Drawer Tripwires, Full-Boat Schedule & Shift Labor vs. Revenue P&L, Blind Drops, Phantom Guest Anti-Theft, Feeder VIP Audit & Executive Leakage Playbook." />
   <meta name="theme-color" content="#050811" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -168,7 +168,7 @@
 
       <div id="pin-capsule" class="w-40 h-11 mx-auto rounded-full bg-[#090D1A]/90 border border-slate-700/60 shadow-[inset_0_1px_2px_rgba(255,255,255,0.04),0_8px_30px_rgba(0,0,0,0.75)] focus-within:border-red-500/80 focus-within:shadow-[0_0_26px_rgba(239,68,68,0.28)] transition-all duration-200 flex items-center justify-center">
         <input
-         iid="pin-native-input"
+          id="pin-native-input"
           type="tel"
           style="-webkit-text-security: disc;"
           data-lpignore="true"
@@ -264,7 +264,7 @@
     </div>
 
     <!-- ======================================================================= -->
-    <!-- SOVEREIGN 6-TAB NAVIGATION BAR (HIDDEN IN MOD ONE-WAY BLIND SLOT MODE)  -->
+    <!-- SOVEREIGN COMMAND RAIL (HIDDEN IN MOD ONE-WAY BLIND SLOT MODE)          -->
     <!-- ======================================================================= -->
     <nav id="owner-tab-bar" class="max-w-[1600px] mx-auto px-3 sm:px-6 pb-2.5 pt-1">
       <div class="flex flex-wrap items-center gap-1.5">
@@ -288,9 +288,13 @@
           <span class="font-mono text-[11px] text-crimson font-extrabold">4.5</span>
           <span>Extended Inventory & Micro-Packaging Vault</span>
         </button>
+        <button type="button" data-tab="tab-47" onclick="switchOwnerTab('tab-47')" class="owner-tab-btn px-3.5 py-2 rounded-xl border border-emeraldVault/50 bg-gunmetal text-xs font-bold tracking-wide text-emeraldVault hover:text-white transition flex items-center gap-2">
+          <span class="font-mono text-[11px] text-emeraldVault font-extrabold">4.7</span>
+          <span>Schedule & Labor vs. Rev</span>
+        </button>
         <button type="button" data-tab="tab-46" onclick="switchOwnerTab('tab-46')" class="owner-tab-btn px-3.5 py-2 rounded-xl border border-sovereign/50 bg-gunmetal text-xs font-bold tracking-wide text-sovereign hover:text-white transition flex items-center gap-2">
           <span class="font-mono text-[11px] text-sovereign font-extrabold">4.6</span>
-         <span>Kitchen, Bar, VIP & Total Venue Bleed</span>
+          <span>Kitchen, Bar, VIP & Total Venue Bleed</span>
         </button>
       </div>
     </nav>
@@ -307,17 +311,24 @@
         <div>
           <div class="flex items-center gap-2">
             <span class="px-2 py-0.5 rounded bg-sovereign/20 text-sovereign font-mono text-[10px] font-bold uppercase">BRIDGE MODE ACTIVE (EXTERNAL_CSV)</span>
-            <h2 class="text-sm font-bold text-white">Toast / Square / Aloha / Micros Exception & Z-Tape Bridge</h2>
+            <h2 class="text-sm font-bold text-white">Toast / Square / Aloha / ADP Exception, No-Sale & Payroll Bridge</h2>
           </div>
-          <p class="text-xs text-slate-400 mt-1">Upload competitor POS sales/void CSV exports to cross-examine against Night MOD One-Way Blind Drops stored in <code class="text-slate-200">rehg-pos-core</code>.</p>
+          <p class="text-xs text-slate-400 mt-1">Upload competitor POS sales/void/No-Sale CSV exports or legacy Payroll/Timeclock CSVs to cross-examine against Night MOD Blind Drops & Scheduled Labor stored in <code class="text-slate-200">rehg-pos-core</code>.</p>
         </div>
         <div class="flex flex-wrap items-center gap-2">
           <label class="cursor-pointer px-3.5 py-2 rounded-xl bg-crimson hover:bg-red-500 text-white text-xs font-bold transition">
-            📤 Upload POS Sales/Void CSV
+            📤 Upload POS Sales/Void/No-Sale CSV
             <input type="file" accept=".csv,.txt" class="hidden" onchange="handleExternalPosCsvUpload(event)" />
+          </label>
+          <label class="cursor-pointer px-3.5 py-2 rounded-xl bg-emeraldVault hover:bg-emerald-400 text-obsidian text-xs font-extrabold transition">
+            ⏱️ Upload Payroll/Timeclock CSV
+            <input type="file" accept=".csv,.txt" class="hidden" onchange="handleExternalLaborCsvUpload(event)" />
           </label>
           <button type="button" onclick="downloadBlankBridgeCsvHeaders()" class="px-3 py-2 rounded-xl bg-gunmetal hover:bg-slatepanel border border-titanium text-slate-300 text-xs font-semibold transition">
             ⬇️ Blank CSV Header Template
+          </button>
+          <button type="button" onclick="downloadBlankPayrollCsvHeaders()" class="px-3 py-2 rounded-xl bg-gunmetal hover:bg-slatepanel border border-titanium text-slate-300 text-xs font-semibold transition">
+            ⬇️ Payroll CSV Template
           </button>
         </div>
       </div>
@@ -325,17 +336,17 @@
 
     <!-- ======================================================================= -->
     <!-- NIGHT MOD ONE-WAY BLIND DROP-SLOT WORKSPACE (ROLE = MOD ONLY)           -->
-    <!-- ZERO EXPECTED CASH, ZERO WAGON WHEEL SCORES, ZERO TAB 4.6 VISIBILITY    -->
+    <!-- ZERO EXPECTED CASH, ZERO WAGON WHEEL SCORES, ZERO NET MARGIN VISIBILITY -->
     <!-- ======================================================================= -->
     <div id="mod-blind-workspace" class="hidden space-y-6">
       <div class="carbon-card rounded-2xl p-5 border-l-4 border-l-crimson">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div>
             <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-crimson/20 border border-crimson/50 text-crimson text-[11px] font-bold uppercase">
-              🔒 One-Way Blind Drop-Slot Governance Active
+              🔒 One-Way Blind Drop-Slot & PIN-M Roster Governance Active
             </div>
-            <h1 class="text-lg sm:text-xl font-extrabold text-white mt-1.5">Night Manager Closing Vault Submission</h1>
-            <p class="text-xs text-slate-400 mt-0.5">Submit counted drawer cash, 11:30 PM safe skims, wristband serials, VIP bottle cage returns, physical shelf counts, and floor incidents. Expected POS totals & forensic variance scores are hardware-isolated to Sovereign Ownership.</p>
+            <h1 class="text-lg sm:text-xl font-extrabold text-white mt-1.5">Night Manager Closing Vault, Red Book & Shift Schedule Entry</h1>
+            <p class="text-xs text-slate-400 mt-0.5">Submit counted drawer cash, Z-Tape No-Sale counts, 11:30 PM safe skims, wristband serials, VIP bottle cage returns, physical shelf counts, Red Book flags, and Weekly/Monthly staff rosters. Expected POS totals, SPLH & forensic net margins are hardware-isolated to Sovereign Ownership.</p>
           </div>
           <div class="flex items-center gap-2">
             <span id="mod-submission-counter" class="px-3 py-1.5 rounded-xl bg-obsidian border border-titanium font-mono text-xs text-emeraldVault">0 Packets Logged Tonight</span>
@@ -344,17 +355,17 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <!-- MOD Card 1: Blind Drawer Drop -->
+        <!-- MOD Card 1: Blind Drawer Drop + Standalone No-Sale Count -->
         <div class="carbon-card rounded-2xl p-5 space-y-4">
           <div class="flex items-center justify-between border-b border-titanium pb-3">
             <div>
-              <h3 class="text-sm font-bold text-white uppercase tracking-wider">1. Dual-Custody Blind Cash Drop</h3>
-              <p class="text-[11px] text-slate-400">Fixed Starting Banks: $300.00 Bar / $200.00 Door • Mandatory 11:30 PM $500 Skim</p>
+              <h3 class="text-sm font-bold text-white uppercase tracking-wider">1. Dual-Custody Blind Cash Drop & No-Sale Log</h3>
+              <p class="text-[11px] text-slate-400">Fixed Starting Banks: $300.00 Bar / $200.00 Door • Mandatory 11:30 PM $500 Skim • Z-Tape No-Sales</p>
             </div>
             <span class="font-mono text-xs text-sovereign">BLIND ENTRY</span>
           </div>
-          <form onsubmit="submitBlindDrop(event, 'MOD')" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            <div>
+          <form onsubmit="submitBlindDrop(event, 'MOD')" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div class="sm:col-span-2">
               <label class="block text-slate-400 mb-1 font-semibold">Station / Well Name</label>
               <input name="station_name" required placeholder="Main Bar Well #1" class="carbon-input w-full rounded-lg px-3 py-2" />
             </div>
@@ -376,6 +387,10 @@
               <input name="skim_1130_amount" type="number" step="0.01" value="0.00" class="carbon-input w-full rounded-lg px-3 py-2 font-mono" />
             </div>
             <div>
+              <label class="block text-crimson mb-1 font-semibold">Register No-Sale Pops (#)</label>
+              <input name="no_sale_count" type="number" min="0" step="1" value="0" class="carbon-input w-full rounded-lg px-3 py-2 font-mono border-crimson/40" />
+            </div>
+            <div class="sm:col-span-2">
               <label class="block text-slate-400 mb-1 font-semibold">Total Counted Drawer Cash ($)</label>
               <input name="blind_drawer_cash" type="number" step="0.01" required placeholder="0.00" class="carbon-input w-full rounded-lg px-3 py-2 font-mono text-white font-bold" />
             </div>
@@ -383,7 +398,7 @@
               <label class="block text-slate-400 mb-1 font-semibold">Safe Drop Envelope Serial #</label>
               <input name="safe_drop_envelope_id" required placeholder="ENV-001" class="carbon-input w-full rounded-lg px-3 py-2 font-mono uppercase" />
             </div>
-            <div>
+            <div class="sm:col-span-2">
               <label class="block text-slate-400 mb-1 font-semibold">Bartender / Cashier Custodian</label>
               <input name="staff_custodian" required placeholder="Full Name" class="carbon-input w-full rounded-lg px-3 py-2" />
             </div>
@@ -391,7 +406,7 @@
               <label class="block text-slate-400 mb-1 font-semibold">Witnessing Night MOD</label>
               <input name="mod_witness" required placeholder="MOD Initials / Name" class="carbon-input w-full rounded-lg px-3 py-2" />
             </div>
-            <div class="sm:col-span-2">
+            <div class="sm:col-span-3">
               <button type="submit" class="w-full py-2.5 rounded-xl bg-crimson hover:bg-red-500 text-white font-bold uppercase tracking-wider transition">
                 📥 Drop Blind Cash Envelope into Vault
               </button>
@@ -467,7 +482,7 @@
             </div>
           </form>
         </div>
-<!-- === END OF PART 1 === -->
+
         <!-- MOD Card 3: VIP Foil Sticker & Dead Soldier Bottle Log -->
         <div class="carbon-card rounded-2xl p-5 space-y-4">
           <div class="flex items-center justify-between border-b border-titanium pb-3">
@@ -562,11 +577,78 @@
         </div>
       </div>
 
+      <!-- MOD Card 5: Red Book Log + Weekly/Monthly Roster Schedule Entry (PIN-M Allowed, Net Margin Sealed) -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="carbon-card rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-titanium pb-3">
+            <div>
+              <h3 class="text-sm font-bold text-white uppercase tracking-wider">5A. MOD Red Book Exception Log (<code class="text-crimson">mod_red_book_logs</code>)</h3>
+              <p class="text-[11px] text-slate-400">Flag Guest, Security, or Attendance exceptions directly into the Owner DVR Spot-Check Queue.</p>
+            </div>
+            <span class="font-mono text-xs text-crimson">RED BOOK</span>
+          </div>
+          <form onsubmit="submitModRedBookLog(event, 'MOD')" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <select name="category" class="carbon-input rounded-lg px-3 py-2">
+              <option value="SECURITY">Security / Floor</option>
+              <option value="GUEST">Guest / VIP Issue</option>
+              <option value="ATTENDANCE">Staff Attendance / Late</option>
+              <option value="DRAWER">Drawer / No-Sale Note</option>
+            </select>
+            <input name="camera_channel" placeholder="Camera (e.g. CAM-01 Well)" class="carbon-input rounded-lg px-3 py-2" />
+            <input name="mod_author" required placeholder="MOD Name" class="carbon-input rounded-lg px-3 py-2" />
+            <input name="summary" required placeholder="Factual shift note for Owner review..." class="carbon-input rounded-lg px-3 py-2 sm:col-span-3" />
+            <div class="sm:col-span-3">
+              <button type="submit" class="w-full py-2.5 rounded-xl bg-gunmetal hover:bg-slatepanel border border-crimson/60 text-white font-bold uppercase tracking-wider transition">
+                📕 Append Red Book Entry to DVR Queue
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="carbon-card rounded-2xl p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-titanium pb-3">
+            <div>
+              <h3 class="text-sm font-bold text-white uppercase tracking-wider">5B. Weekly / Monthly Staff Schedule Builder</h3>
+              <p class="text-[11px] text-slate-400">Enter shift rosters into <code class="text-emeraldVault">venue_labor_schedules</code>. Net sales & labor % P&L remain sealed to Ownership.</p>
+            </div>
+            <span class="font-mono text-xs text-emeraldVault">PIN-M ROSTER</span>
+          </div>
+          <form onsubmit="submitLaborScheduleShift(event, 'MOD')" class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <input name="shift_date" type="date" required class="carbon-input rounded-lg px-2.5 py-2 font-mono" />
+            <input name="staff_name" required placeholder="Staff Full Name" class="carbon-input rounded-lg px-2.5 py-2" />
+            <select name="role_name" class="carbon-input rounded-lg px-2.5 py-2">
+              <option value="Bartender">Bartender</option>
+              <option value="Server">Server</option>
+              <option value="Bottle Girl">Bottle Girl</option>
+              <option value="Line Cook">Line Cook</option>
+              <option value="Prep">Prep</option>
+              <option value="Security">Security</option>
+              <option value="Barback">Barback</option>
+              <option value="Host">Host</option>
+              <option value="MOD">MOD</option>
+            </select>
+            <select name="daypart" class="carbon-input rounded-lg px-2.5 py-2">
+              <option value="AM_LUNCH">AM / Lunch</option>
+              <option value="PM_DINNER">PM / Dinner</option>
+              <option value="LATE_VIP" selected>Late-Night VIP</option>
+            </select>
+            <input name="scheduled_hours" type="number" step="0.25" min="0.5" placeholder="Sched Hours (e.g. 7)" required class="carbon-input rounded-lg px-2.5 py-2 font-mono" />
+            <input name="hourly_wage" type="number" step="0.25" min="0" placeholder="Wage $/hr" required class="carbon-input rounded-lg px-2.5 py-2 font-mono" />
+            <div class="sm:col-span-3">
+              <button type="submit" class="w-full py-2.5 rounded-xl bg-emeraldVault hover:bg-emerald-400 text-obsidian font-extrabold uppercase tracking-wider transition">
+                📅 Save Scheduled Shift to Roster Vault
+              </button>
+            </div>
+          </form>
+          <div id="mod-schedule-list" class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs"></div>
+        </div>
+      </div>
+
       <!-- MOD Blind Shelf Count Quick Entry -->
       <div class="carbon-card rounded-2xl p-5 space-y-3">
         <div class="flex flex-wrap items-center justify-between gap-2 border-b border-titanium pb-3">
           <div>
-            <h3 class="text-sm font-bold text-white uppercase tracking-wider">5. Blind Weekly Physical Shelf Count</h3>
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider">6. Blind Weekly Physical Shelf Count</h3>
             <p class="text-[11px] text-slate-400">Enter actual physical shelf counts. Theoretical POS depletion & variance math remain sealed to Ownership.</p>
           </div>
           <button type="button" onclick="saveModBlindShelfCounts()" class="px-4 py-2 rounded-xl bg-crimson hover:bg-red-500 text-white text-xs font-bold uppercase tracking-wider transition">
@@ -576,9 +658,9 @@
         <div id="mod-shelf-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs"></div>
       </div>
     </div>
-
+<!-- === END OF PART 1 === -->
     <!-- ======================================================================= -->
-    <!-- SOVEREIGN OWNER / EXECUTIVE 6-TAB FORENSIC SUITE                        -->
+    <!-- SOVEREIGN OWNER / EXECUTIVE FORENSIC & LABOR P&L SUITE                  -->
     <!-- ======================================================================= -->
     <div id="owner-forensic-workspace" class="space-y-6">
 
@@ -588,7 +670,7 @@
           <p class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Wagon Wheel Criticals</p>
           <div class="flex items-baseline justify-between mt-1.5">
             <span id="kpi-wagon-flags" class="text-2xl font-extrabold font-mono text-crimson">0</span>
-            <span class="text-[11px] font-mono text-slate-400">Xfer ≥4 / Voids</span>
+            <span class="text-[11px] font-mono text-slate-400">Xfer ≥4 / No-Sale</span>
           </div>
         </div>
         <div class="carbon-card rounded-2xl p-4">
@@ -630,21 +712,23 @@
       </section>
 
       <!-- ===================================================================== -->
-      <!-- TAB 4.1 — POS OVERRIDE & "WAGON WHEEL" ANOMALY MATRIX™                -->
+      <!-- TAB 4.1 — POS OVERRIDE, NO-SALE DRAWER POPS & "WAGON WHEEL" MATRIX™   -->
       <!-- ===================================================================== -->
       <section id="tab-41" class="owner-tab-panel space-y-6">
         <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
-          <!-- Left 2 Cols: Staff Wagon Wheel Risk Ranking Table -->
+          <!-- Left 2 Cols: Staff Wagon Wheel Risk Ranking Table + No-Sale Counter -->
           <div class="xl:col-span-2 carbon-card rounded-2xl p-5 space-y-4">
             <div class="flex flex-wrap items-center justify-between gap-2 border-b border-titanium pb-3">
               <div>
                 <div class="flex items-center gap-2">
                   <span class="px-2 py-0.5 rounded bg-crimson/20 text-crimson font-mono text-[10px] font-bold">PROPRIETARY FORENSIC ENGINE</span>
-                  <h2 class="text-base font-extrabold text-white">Tab 4.1 — “Wagon Wheel” Floating-Item & Override Risk Matrix™</h2>
+                  <h2 class="text-base font-extrabold text-white">Tab 4.1 — “Wagon Wheel” Floating-Item, No-Sale & Override Risk Matrix™</h2>
                 </div>
-                <p class="text-xs text-slate-400 mt-0.5">Flags Check Transfers (≥4), Post-Print Cash Voids, 1:30–3:30 AM Closing Void Clusters, and >12% Soda/Water-to-Liquor Ratios.</p>
+                <p class="text-xs text-slate-400 mt-0.5">Flags No-Sale Drawer Pops (≥3 Cluster), Check Transfers (≥4), Post-Print Cash Voids, 1:30–3:30 AM Closing Void Clusters, and >12% Soda/Water-to-Liquor Ratios.</p>
               </div>
-              <div class="flex items-center gap-2 text-[11px] font-mono">
+              <div class="flex flex-wrap items-center gap-2 text-[11px] font-mono">
+                <span id="pill-nosale-counter" class="px-2.5 py-1 rounded-lg bg-obsidian border border-titanium text-slate-300">No-Sale Drawer Pops: <b id="label-nosale-total" class="text-white">0</b></span>
+                <button type="button" onclick="promptManualNoSaleLog()" class="px-2 py-1 rounded-lg bg-gunmetal hover:bg-slatepanel border border-crimson/50 text-crimson font-bold transition no-print" title="Log Standalone Z-Tape No-Sale Pop">+ No-Sale</button>
                 <span class="px-2.5 py-1 rounded-lg bg-obsidian border border-titanium text-slate-300">Single Limit <b id="label-single-limit" class="text-white">$50.00</b></span>
                 <span class="px-2.5 py-1 rounded-lg bg-obsidian border border-titanium text-slate-300">Shift Ceiling <b id="label-shift-ceiling" class="text-white">$250.00</b></span>
               </div>
@@ -656,6 +740,7 @@
                   <tr class="border-b border-titanium text-[10px] uppercase tracking-wider text-slate-400">
                     <th class="py-2.5 px-3">Bartender / Server</th>
                     <th class="py-2.5 px-3 text-right">Checks</th>
+                    <th class="py-2.5 px-3 text-right">No-Sales (≥3)</th>
                     <th class="py-2.5 px-3 text-right">Xfers (≥4)</th>
                     <th class="py-2.5 px-3 text-right">Post-Print Voids</th>
                     <th class="py-2.5 px-3 text-right">1:30–3:30a Voids</th>
@@ -679,11 +764,11 @@
           </div>
         </div>
 
-        <!-- Live $X / $Y Comp-Void-Transfer Tripwire Breach Feed -->
+        <!-- Live $X / $Y Comp-Void-Transfer-NoSale Tripwire Breach Feed -->
         <div class="carbon-card rounded-2xl p-5 space-y-4">
           <div class="flex flex-wrap items-center justify-between gap-2 border-b border-titanium pb-3">
             <div>
-              <h3 class="text-sm font-extrabold text-white uppercase tracking-wider">Live Comp / Void / Transfer Tripwire Stream (<code class="text-crimson">governance_audits</code>)</h3>
+              <h3 class="text-sm font-extrabold text-white uppercase tracking-wider">Live Comp / Void / Transfer / No-Sale Tripwire Stream (<code class="text-crimson">governance_audits</code>)</h3>
               <p class="text-xs text-slate-400">Real-time ingestion of <code class="text-slate-300">COMP_DISC</code>, <code class="text-slate-300">VOID_TICKET</code>, <code class="text-slate-300">TRANSFER_CHECK</code>, and <code class="text-slate-300">NO_SALE</code> events.</p>
             </div>
             <span id="tripwire-breach-count" class="px-3 py-1 rounded-full bg-crimson/20 border border-crimson/40 text-crimson font-mono text-xs font-bold">0 Tripwire Breaches</span>
@@ -694,7 +779,7 @@
                 <tr class="border-b border-titanium text-[10px] uppercase tracking-wider text-slate-400">
                   <th class="py-2.5 px-3">Timestamp</th>
                   <th class="py-2.5 px-3">Event Type</th>
-                  <th class="py-2.5 px-3">Check #</th>
+                  <th class="py-2.5 px-3">Check / Register</th>
                   <th class="py-2.5 px-3">Staff Requester</th>
                   <th class="py-2.5 px-3">Manager Approver</th>
                   <th class="py-2.5 px-3 text-right">Amount ($)</th>
@@ -715,8 +800,8 @@
         <div class="carbon-card rounded-2xl p-5 space-y-4">
           <div class="flex flex-wrap items-center justify-between gap-3 border-b border-titanium pb-3">
             <div>
-              <h2 class="text-base font-extrabold text-white">4.2A — Dual-Custody Blind Drawer & 11:30 PM Safe Skim Ledger</h2>
-              <p class="text-xs text-slate-400">Enforces $300 Bar / $200 Door banks, mandatory 11:30 PM ±$2.00 variance cap, and Exact-$0.00 pre-count clustering flags.</p>
+              <h2 class="text-base font-extrabold text-white">4.2A — Dual-Custody Blind Drawer, No-Sale & 11:30 PM Safe Skim Ledger</h2>
+              <p class="text-xs text-slate-400">Enforces $300 Bar / $200 Door banks, ±$2.00 variance cap, Z-Tape No-Sale counts, and Exact-$0.00 pre-count clustering flags.</p>
             </div>
             <button type="button" onclick="toggleQuickForm('owner-drop-form')" class="px-3.5 py-2 rounded-xl bg-crimson hover:bg-red-500 text-white text-xs font-bold transition no-print">
               + Log / Reconcile Blind Drop
@@ -724,7 +809,7 @@
           </div>
 
           <!-- Collapsible Owner Drop & POS Expected Cash Form -->
-          <form id="owner-drop-form" onsubmit="submitBlindDrop(event, 'OWNER')" class="hidden carbon-subcard rounded-xl p-4 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 text-xs no-print">
+          <form id="owner-drop-form" onsubmit="submitBlindDrop(event, 'OWNER')" class="hidden carbon-subcard rounded-xl p-4 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs no-print">
             <div>
               <label class="block text-slate-400 mb-1 font-semibold">Station / Well</label>
               <input name="station_name" required placeholder="Main Bar Well #1" class="carbon-input w-full rounded-lg px-2.5 py-2" />
@@ -747,6 +832,10 @@
               <input name="skim_1130_amount" type="number" step="0.01" value="0.00" class="carbon-input w-full rounded-lg px-2.5 py-2 font-mono" />
             </div>
             <div>
+              <label class="block text-crimson mb-1 font-semibold">No-Sale Pops (#)</label>
+              <input name="no_sale_count" type="number" min="0" step="1" value="0" class="carbon-input w-full rounded-lg px-2.5 py-2 font-mono border-crimson/40" />
+            </div>
+            <div>
               <label class="block text-slate-400 mb-1 font-semibold">Blind Counted Cash ($)</label>
               <input name="blind_drawer_cash" type="number" step="0.01" required placeholder="0.00" class="carbon-input w-full rounded-lg px-2.5 py-2 font-mono" />
             </div>
@@ -766,7 +855,7 @@
               <label class="block text-slate-400 mb-1 font-semibold">MOD Witness</label>
               <input name="mod_witness" required placeholder="MOD Name" class="carbon-input w-full rounded-lg px-2.5 py-2" />
             </div>
-            <div class="flex items-end">
+            <div class="sm:col-span-2 flex items-end">
               <button type="submit" class="w-full py-2 rounded-lg bg-emeraldVault text-obsidian font-extrabold uppercase">Save & Audit</button>
             </div>
           </form>
@@ -779,6 +868,7 @@
                   <th class="py-2.5 px-3">Custodian / MOD</th>
                   <th class="py-2.5 px-3 text-right">Bank</th>
                   <th class="py-2.5 px-3 text-right">11:30p Skim</th>
+                  <th class="py-2.5 px-3 text-right">No-Sales</th>
                   <th class="py-2.5 px-3 text-right">Counted Drawer</th>
                   <th class="py-2.5 px-3 text-right">Net Cash Drop</th>
                   <th class="py-2.5 px-3 text-right">POS Expected</th>
@@ -887,24 +977,49 @@
           </div>
         </div>
       </section>
-<!-- === END OF PART 2 === -->
-              <!-- ===================================================================== -->
-      <!-- TAB 4.3 — SECURITY INCIDENTS, 4K DVR QUEUE & SOVEREIGN VAULT SEAL     -->
+
+      <!-- ===================================================================== -->
+      <!-- TAB 4.3 — SECURITY, RED BOOK, 4K DVR QUEUE & SOVEREIGN VAULT SEAL     -->
       <!-- ===================================================================== -->
       <section id="tab-43" class="owner-tab-panel hidden space-y-6">
         <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
-          <!-- Auto-Generated Tuesday 10:00 AM Top-5 High-Risk 4K DVR Queue -->
+          <!-- Auto-Generated Tuesday 10:00 AM Top-5 High-Risk 4K DVR Queue + Red Book -->
           <div class="xl:col-span-2 carbon-card rounded-2xl p-5 space-y-4">
             <div class="flex flex-wrap items-center justify-between gap-2 border-b border-titanium pb-3">
               <div>
                 <div class="flex items-center gap-2">
                   <span class="px-2 py-0.5 rounded bg-sovereign/20 text-sovereign font-mono text-[10px] font-bold">TUESDAY 10:00 AM PROTOCOL</span>
-                  <h2 class="text-base font-extrabold text-white">Auto-Generated Top-5 High-Risk 4K DVR Camera Spot-Check Queue</h2>
+                  <h2 class="text-base font-extrabold text-white">Auto-Generated High-Risk 4K DVR Camera Spot-Check Exception Queue</h2>
                 </div>
-                <p class="text-xs text-slate-400 mt-0.5">Automatically isolates the 5 highest-risk POS timestamps (closing voids, No-Sale drawer pops, un-rung VIP bottles) for 10-minute overhead NVR camera verification.</p>
+                <p class="text-xs text-slate-400 mt-0.5">Automatically promotes ≥3 No-Sale Drawer Clusters, closing voids, un-rung VIP bottles, and flagged <code class="text-crimson">mod_red_book_logs</code> entries for 10-minute NVR verification.</p>
               </div>
+              <button type="button" onclick="toggleQuickForm('owner-redbook-form')" class="px-3 py-1.5 rounded-xl bg-gunmetal border border-crimson/50 text-crimson text-xs font-bold hover:text-white transition no-print">
+                + Red Book Flag
+              </button>
             </div>
+
+            <form id="owner-redbook-form" onsubmit="submitModRedBookLog(event, 'OWNER')" class="hidden carbon-subcard rounded-xl p-3.5 grid grid-cols-1 sm:grid-cols-4 gap-2.5 text-xs no-print">
+              <select name="category" class="carbon-input rounded-lg px-2.5 py-2">
+                <option value="SECURITY">Security / Floor</option>
+                <option value="GUEST">Guest / VIP Issue</option>
+                <option value="ATTENDANCE">Staff Attendance / Late</option>
+                <option value="DRAWER">Drawer / No-Sale Note</option>
+              </select>
+              <input name="camera_channel" placeholder="CAM-01 Overhead Well" class="carbon-input rounded-lg px-2.5 py-2" />
+              <input name="mod_author" required placeholder="Author / MOD" class="carbon-input rounded-lg px-2.5 py-2" />
+              <button type="submit" class="rounded-lg bg-crimson text-white font-bold uppercase py-2">Save Red Book</button>
+              <input name="summary" required placeholder="Factual Guest / Security / Attendance exception note..." class="carbon-input rounded-lg px-2.5 py-2 sm:col-span-4" />
+            </form>
+
             <div id="dvr-top5-queue-list" class="space-y-3"></div>
+
+            <div class="pt-2 border-t border-titanium">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-extrabold uppercase tracking-wider text-slate-300">MOD Red Book Guest / Security / Attendance Stream (<code class="text-crimson">mod_red_book_logs</code>)</span>
+                <span id="redbook-count-badge" class="font-mono text-[10px] text-sovereign">0 Entries</span>
+              </div>
+              <div id="owner-redbook-stream" class="space-y-2 text-xs"></div>
+            </div>
           </div>
 
           <!-- Sovereign Shift Vault Seal & Lockdown Attestation -->
@@ -1056,8 +1171,8 @@
           </div>
         </div>
       </section>
-
-      <!-- ===================================================================== -->
+<!-- === END OF PART 2 === -->
+              <!-- ===================================================================== -->
       <!-- TAB 4.5 — EXTENDED INVENTORY & BOH MICRO-DEPLETION PACKAGING VAULT    -->
       <!-- ===================================================================== -->
       <section id="tab-45" class="owner-tab-panel hidden space-y-6">
@@ -1208,8 +1323,150 @@
 
         </div>
       </section>
-<!-- === END OF PART 3 === -->
-              <!-- ===================================================================== -->
+
+      <!-- ===================================================================== -->
+      <!-- TAB 4.7 — FULL-BOAT SCHEDULE & SHIFT LABOR-VS-REVENUE ENGINE          -->
+      <!-- ===================================================================== -->
+      <section id="tab-47" class="owner-tab-panel hidden space-y-6">
+        <div class="carbon-card rounded-2xl p-5 border-l-4 border-l-emeraldVault space-y-5">
+          <div class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 border-b border-titanium pb-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded bg-emeraldVault/20 border border-emeraldVault/50 text-emeraldVault font-mono text-[10px] font-extrabold uppercase">SOVEREIGN OWNER ONLY • SHIFT LABOR VS. NET REVENUE</span>
+                <h2 class="text-base sm:text-lg font-extrabold text-white">Tab 4.7 — Full-Boat Weekly / Monthly Roster & Shift Labor-vs-Revenue P&L</h2>
+              </div>
+              <p class="text-xs text-slate-400 mt-1">Cross-references <code class="text-slate-200">venue_labor_schedules</code> against live <code class="text-slate-200">timeclock_shifts</code> and <code class="text-slate-200">orders</code> across AM/Lunch, PM/Dinner, and Late-Night VIP shifts to surface Scheduled vs. Actual Hours Variance, Early-In / Overtime Drift $, SPLH, and True Labor % of Net Sales.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2 no-print">
+              <div class="inline-flex rounded-xl bg-obsidian p-1 border border-titanium">
+                <button type="button" data-schedwin="WEEKLY" onclick="setLaborHorizon('WEEKLY')" class="sched-win-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-emeraldVault text-obsidian">Weekly Roster</button>
+                <button type="button" data-schedwin="MONTHLY" onclick="setLaborHorizon('MONTHLY')" class="sched-win-btn px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white">Monthly Roster</button>
+              </div>
+              <div class="carbon-subcard rounded-xl px-3 py-1.5 flex items-center gap-2 text-xs">
+                <span class="text-slate-400 font-semibold">Target Labor %:</span>
+                <input id="labor-target-pct" type="number" step="0.5" value="22" onchange="saveLaborGuardrail()" class="w-14 bg-transparent font-mono font-bold text-emeraldVault text-right focus:outline-none" />
+                <span class="font-mono text-slate-400">%</span>
+              </div>
+              <button type="button" onclick="toggleQuickForm('owner-schedule-form')" class="px-3.5 py-2 rounded-xl bg-crimson hover:bg-red-500 text-white text-xs font-bold transition">
+                + Schedule Shift
+              </button>
+              <button type="button" onclick="exportLaborScheduleCsv()" class="px-3 py-2 rounded-xl bg-gunmetal border border-titanium hover:border-white text-slate-200 text-xs font-semibold transition">
+                ⬇️ Export Labor P&L CSV
+              </button>
+            </div>
+          </div>
+
+          <!-- Collapsible Owner Roster Shift Builder -->
+          <form id="owner-schedule-form" onsubmit="submitLaborScheduleShift(event, 'OWNER')" class="hidden carbon-subcard rounded-xl p-4 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-7 gap-3 text-xs no-print">
+            <input name="shift_date" type="date" required class="carbon-input rounded-lg px-2.5 py-2 font-mono" />
+            <input name="staff_name" required placeholder="Staff Full Name" class="carbon-input rounded-lg px-2.5 py-2" />
+            <select name="role_name" class="carbon-input rounded-lg px-2.5 py-2">
+              <option value="Bartender">Bartender</option>
+              <option value="Server">Server</option>
+              <option value="Bottle Girl">Bottle Girl</option>
+              <option value="Line Cook">Line Cook</option>
+              <option value="Prep">Prep</option>
+              <option value="Security">Security</option>
+              <option value="Barback">Barback</option>
+              <option value="Host">Host</option>
+              <option value="MOD">MOD</option>
+            </select>
+            <select name="daypart" class="carbon-input rounded-lg px-2.5 py-2">
+              <option value="AM_LUNCH">AM / Lunch</option>
+              <option value="PM_DINNER">PM / Dinner</option>
+              <option value="LATE_VIP" selected>Late-Night VIP</option>
+            </select>
+            <input name="scheduled_hours" type="number" step="0.25" min="0.5" placeholder="Sched Hours" required class="carbon-input rounded-lg px-2.5 py-2 font-mono" />
+            <input name="hourly_wage" type="number" step="0.25" min="0" placeholder="Wage $/hr" required class="carbon-input rounded-lg px-2.5 py-2 font-mono" />
+            <button type="submit" class="rounded-lg bg-emeraldVault text-obsidian font-extrabold uppercase py-2">Save Shift</button>
+          </form>
+
+          <!-- Symmetrical 6-Card C-Suite Labor vs. Revenue KPI Strip -->
+          <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
+            <div class="carbon-subcard rounded-xl p-3.5">
+              <span class="text-[10px] uppercase text-slate-400 font-semibold">Net Venue Sales</span>
+              <div id="lbr-kpi-net-sales" class="text-xl font-extrabold font-mono text-white mt-1">$0.00</div>
+              <span id="lbr-kpi-gross-sub" class="text-[10px] font-mono text-slate-400">Gross: $0.00</span>
+            </div>
+            <div class="carbon-subcard rounded-xl p-3.5">
+              <span class="text-[10px] uppercase text-slate-400 font-semibold">Scheduled Labor $</span>
+              <div id="lbr-kpi-sched-cost" class="text-xl font-extrabold font-mono text-sovereign mt-1">$0.00</div>
+              <span id="lbr-kpi-sched-hrs" class="text-[10px] font-mono text-slate-400">0.0 Sched Hrs</span>
+            </div>
+            <div class="carbon-subcard rounded-xl p-3.5">
+              <span class="text-[10px] uppercase text-slate-400 font-semibold">Actual Clocked Labor $</span>
+              <div id="lbr-kpi-actual-cost" class="text-xl font-extrabold font-mono text-white mt-1">$0.00</div>
+              <span id="lbr-kpi-actual-hrs" class="text-[10px] font-mono text-slate-400">0.0 Clocked Hrs</span>
+            </div>
+            <div class="carbon-subcard rounded-xl p-3.5">
+              <span class="text-[10px] uppercase text-slate-400 font-semibold">Early-In / OT Drift $</span>
+              <div id="lbr-kpi-drift-dollars" class="text-xl font-extrabold font-mono text-crimson mt-1">$0.00</div>
+              <span id="lbr-kpi-hrs-var" class="text-[10px] font-mono text-slate-400">0.0h vs. Sched</span>
+            </div>
+            <div class="carbon-subcard rounded-xl p-3.5">
+              <span class="text-[10px] uppercase text-slate-400 font-semibold">SPLH (Sales / Labor Hr)</span>
+              <div id="lbr-kpi-splh" class="text-xl font-extrabold font-mono text-emeraldVault mt-1">$0.00</div>
+              <span class="text-[10px] font-mono text-slate-400">Productivity Index</span>
+            </div>
+            <div class="carbon-subcard rounded-xl p-3.5">
+              <span class="text-[10px] uppercase text-slate-400 font-semibold">True Labor % of Net</span>
+              <div id="lbr-kpi-labor-pct" class="text-xl font-extrabold font-mono text-emeraldVault mt-1">0.0%</div>
+              <span id="lbr-kpi-guardrail-badge" class="text-[10px] font-mono text-emeraldVault font-bold">GUARDRAIL PASS</span>
+            </div>
+          </div>
+
+          <!-- Shift-by-Shift Daypart Labor vs. Revenue Table -->
+          <div class="overflow-x-auto">
+            <h3 class="text-xs font-extrabold uppercase tracking-wider text-sovereign mb-2">Shift-by-Shift Daypart Labor vs. Live Revenue Matrix</h3>
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="border-b border-titanium text-[10px] uppercase tracking-wider text-slate-400">
+                  <th class="py-2.5 px-3">Shift Daypart</th>
+                  <th class="py-2.5 px-3 text-right">Gross Rev $</th>
+                  <th class="py-2.5 px-3 text-right">Net Sales $</th>
+                  <th class="py-2.5 px-3 text-right">Sched Hrs / $</th>
+                  <th class="py-2.5 px-3 text-right">Actual Hrs / $</th>
+                  <th class="py-2.5 px-3 text-right">Hrs Variance</th>
+                  <th class="py-2.5 px-3 text-right">SPLH ($)</th>
+                  <th class="py-2.5 px-3 text-right">Labor % Net</th>
+                  <th class="py-2.5 px-3">C-Suite Verdict</th>
+                </tr>
+              </thead>
+              <tbody id="labor-daypart-tbody" class="divide-y divide-titanium/50 font-mono"></tbody>
+            </table>
+          </div>
+
+          <!-- Role Allocation + Roster Schedule Ledger -->
+          <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 pt-2">
+            <div class="carbon-subcard rounded-xl p-4 space-y-3">
+              <h4 class="text-xs font-extrabold uppercase tracking-wider text-white border-b border-titanium pb-2">Role Cost Allocation</h4>
+              <div id="labor-role-breakdown" class="space-y-2 text-xs font-mono"></div>
+            </div>
+            <div class="xl:col-span-2 carbon-subcard rounded-xl p-4 space-y-3 overflow-x-auto">
+              <div class="flex items-center justify-between border-b border-titanium pb-2">
+                <h4 class="text-xs font-extrabold uppercase tracking-wider text-white">Active Roster Schedule (<code class="text-emeraldVault">venue_labor_schedules</code>)</h4>
+                <span id="labor-roster-window-label" class="font-mono text-[10px] text-slate-400">Horizon: WEEKLY</span>
+              </div>
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b border-titanium text-[10px] uppercase tracking-wider text-slate-400">
+                    <th class="py-2 px-2.5">Shift Date</th>
+                    <th class="py-2 px-2.5">Staff Member</th>
+                    <th class="py-2 px-2.5">Role</th>
+                    <th class="py-2 px-2.5">Daypart</th>
+                    <th class="py-2 px-2.5 text-right">Sched Hrs</th>
+                    <th class="py-2 px-2.5 text-right">Rate $/hr</th>
+                    <th class="py-2 px-2.5 text-right">Proj Wage $</th>
+                  </tr>
+                </thead>
+                <tbody id="labor-roster-tbody" class="divide-y divide-titanium/50 font-mono"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================== -->
       <!-- TAB 4.6 — EXECUTIVE LEAKAGE REPORT & PREVENTIVE PLAYBOOK (OWNER ONLY) -->
       <!-- ===================================================================== -->
       <section id="tab-46" class="owner-tab-panel hidden space-y-6">
@@ -1457,8 +1714,8 @@
       <p class="font-mono text-[10px] text-slate-500">loss.rehgexec.com • Enterprise Extension ($999 Provisioning + $49.99/mo Cloud Sync)</p>
     </div>
   </footer>
-
-  <!-- ========================================================================= -->
+<!-- === END OF PART 3 === -->
+              <!-- ========================================================================= -->
   <!-- APPLICATION ENGINE SCRIPT (100% LIVE SUPABASE • ZERO MOCK DATA)           -->
   <!-- ========================================================================= -->
   <script>
@@ -1467,6 +1724,7 @@
     // =========================================================================
     const DEFAULT_SUPABASE_URL = 'https://ruvyxmpokjdzkagbltac.supabase.co';
     const DEFAULT_SUPABASE_ANON_KEY = 'sb_publishable_VqSVbTVwxowgrMeRH3xWLw_UgcJohXH';
+    const DEFAULT_VENUE_ID = 'CARBON_HQ';
     const MASTER_OVERRIDE_PIN = '2424';
     const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -1476,8 +1734,8 @@
     const _cleanStored = _rawStored.replace(/[^A-Za-z0-9_-]/g, '').toUpperCase();
     const INITIAL_VENUE_ID = _urlVenue.length >= 3
       ? _urlVenue
-      : (!_cleanStored || _cleanStored.length < 3 || _rawStored === '2]' || _rawStored === '2' || _cleanStored === 'ELEVEN11_ATL' || _cleanStored === 'DEFAULT_VENUE')
-        ? 'CARBON_HQ'
+      : (!_cleanStored || _cleanStored.length < 3 || _rawStored === '2]' || _rawStored === '2' || _cleanStored === 'DEFAULT_VENUE')
+        ? DEFAULT_VENUE_ID
         : _cleanStored;
     localStorage.setItem('rehg_loss_venue_id', INITIAL_VENUE_ID);
     localStorage.setItem('carbon_loss_venue_id', INITIAL_VENUE_ID);
@@ -1492,12 +1750,14 @@
       singleLimit: parseFloat(localStorage.getItem('carbon_loss_single_limit') || '50'),
       shiftCeiling: parseFloat(localStorage.getItem('carbon_loss_shift_ceiling') || '250'),
       sovereignWebhook: localStorage.getItem('carbon_loss_webhook') || '',
-     ingestionMode: sessionStorage.getItem('carbon_loss_mode') || 'CARBON_POS_LIVE',
+      ingestionMode: sessionStorage.getItem('carbon_loss_mode') || localStorage.getItem('carbon_loss_mode') || 'CARBON_POS_LIVE',
       role: null, // 'OWNER' | 'MOD'
       enteredPin: '',
       activeTab: 'tab-41',
       pkgSubview: 'daily',
       leakageWindow: 'TODAY', // 'TODAY' | 'WTD' | 'MTD' | 'CUSTOM'
+      laborHorizon: 'WEEKLY', // 'WEEKLY' | 'MONTHLY'
+      laborTargetPct: parseFloat(localStorage.getItem('carbon_loss_labor_target') || '22'),
       sb: null,
       realtimeChannel: null,
       deferredInstallPrompt: null,
@@ -1514,6 +1774,8 @@
       foodInventory: [],
       menuItems: [],
       timeclockShifts: [],
+      laborSchedules: [],
+      redBookLogs: [],
       feederReservations: [],
       feederPromoters: [],
       lastPlaybookSmsText: ''
@@ -1608,11 +1870,13 @@
         .on('postgres_changes', { event: '*', schema: 'public', table: 'loss_shelf_audits' }, () => refreshAllData())
         .on('postgres_changes', { event: '*', schema: 'public', table: 'orders' }, () => refreshAllData())
         .on('postgres_changes', { event: '*', schema: 'public', table: 'governance_audits' }, () => refreshAllData())
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'venue_labor_schedules' }, () => refreshAllData())
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'mod_red_book_logs' }, () => refreshAllData())
         .on('postgres_changes', { event: '*', schema: 'public', table: 'feeder_vip_reservations' }, () => refreshAllData())
         .on('postgres_changes', { event: '*', schema: 'public', table: 'feeder_promoter_ledgers' }, () => refreshAllData())
         .subscribe();
     }
-// === END OF PART 4 ===
+
     // =========================================================================
     // 4. ROLE-ISOLATED PIN GATE GOVERNANCE (INSTANT NATIVE AUTO-UNLOCK)
     // =========================================================================
@@ -1641,7 +1905,7 @@
       if (_pinValidating) return;
       _pinValidating = true;
 
-      state.venueId = (state.venueId || 'CARBON_HQ').trim().toUpperCase();
+      state.venueId = (state.venueId || DEFAULT_VENUE_ID).replace(/[^A-Za-z0-9_-]/g, '').toUpperCase() || DEFAULT_VENUE_ID;
       localStorage.setItem('rehg_loss_venue_id', state.venueId);
       document.getElementById('header-venue-label').textContent = state.venueId;
 
@@ -1710,16 +1974,19 @@
       const ownerWorkspace = document.getElementById('owner-forensic-workspace');
       const modWorkspace = document.getElementById('mod-blind-workspace');
       const tab46El = document.getElementById('tab-46');
+      const tab47El = document.getElementById('tab-47');
 
       if (state.role === 'MOD') {
-        badge.textContent = 'NIGHT MOD • BLIND DROP ONLY';
+        badge.textContent = 'NIGHT MOD • BLIND DROP & ROSTER';
         badge.className = 'ml-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-crimson/20 text-crimson border border-crimson/50';
         ownerNav.classList.add('hidden');
         ownerWorkspace.classList.add('hidden');
         if (tab46El) tab46El.classList.add('hidden');
+        if (tab47El) tab47El.classList.add('hidden');
         modWorkspace.classList.remove('hidden');
         document.getElementById('csv-bridge-banner').classList.add('hidden');
         renderModBlindShelfGrid();
+        renderModScheduleList();
       } else {
         badge.textContent = 'SOVEREIGN OWNER • UNREDACTED';
         badge.className = 'ml-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-sovereign/15 text-sovereign border border-sovereign/40';
@@ -1743,10 +2010,11 @@
     }
 
     // =========================================================================
-    // 5. DUAL-MODE INGESTION, DATE WINDOW SCOPING & SUPABASE DATA LOADING
+    // 5. DUAL-MODE INGESTION, DATE WINDOW SCOPING & ZERO-400 SUPABASE FETCH
     // =========================================================================
     function setIngestionMode(mode) {
       state.ingestionMode = mode;
+      sessionStorage.setItem('carbon_loss_mode', mode);
       localStorage.setItem('carbon_loss_mode', mode);
       updateIngestionModeUI();
       showToast(
@@ -1820,7 +2088,6 @@
       if (UUID_PATTERN.test(state.venueId)) return state.venueId;
       if (state.resolvedVenueUuid && UUID_PATTERN.test(state.resolvedVenueUuid)) return state.resolvedVenueUuid;
       try {
-        
         const { data: liveV } = await state.sb.from('governance_audits').select('venue_id').order('created_at', { ascending: false }).limit(1);
         const { data: liveO } = await state.sb.from('orders').select('venue_id').order('created_at', { ascending: false }).limit(1);
         const detId = liveV?.[0]?.venue_id || liveO?.[0]?.venue_id;
@@ -1887,7 +2154,7 @@
       const [
         blindDrops, doorRecons, vipSwaps, securitySeals, shelfAudits,
         ordersRaw, govAuditsRaw, depletionLogsRaw, liquorInv, foodInv,
-        menuItems, shiftsRaw, feederRes, feederPromos
+        menuItems, shiftsRaw, schedulesRaw, redBookRaw, feederRes, feederPromos
       ] = await Promise.all([
         fetchScopedOrFallback('loss_blind_drops', 'created_at', 'shift_date', false),
         fetchScopedOrFallback('loss_door_reconciliations', 'created_at', 'shift_date', false),
@@ -1901,12 +2168,16 @@
         fetchScopedOrFallback('food_inventory', null, null, true),
         fetchScopedOrFallback('menu_items', null, null, true),
         fetchScopedOrFallback('timeclock_shifts', 'clock_in', null, true),
+        fetchScopedOrFallback('venue_labor_schedules', 'shift_date', null, false),
+        fetchScopedOrFallback('mod_red_book_logs', 'created_at', 'shift_date', false),
         fetchScopedOrFallback('feeder_vip_reservations', 'created_at', 'shift_date', false),
         fetchScopedOrFallback('feeder_promoter_ledgers', 'created_at', 'shift_date', false)
       ]);
       const vIds = [...new Set([...ordersRaw, ...govAuditsRaw].map((r) => r.venue_id).filter(Boolean))];
       const vSel = document.getElementById('cfg-detected-venues');
-      if (vSel && vIds.length) vSel.innerHTML = `<option value="">⚡ Detected POS venue_id (${vIds.length})</option>` + vIds.map((v) => `<option value="${v}">${v}</option>`).join('');
+      if (vSel && vIds.length) {
+        vSel.innerHTML = `<option value="">⚡ Detected POS venue_id (${vIds.length})</option>` + vIds.map((v) => `<option value="${esc(v)}">${esc(v)}</option>`).join('');
+      }
 
       state.blindDrops = blindDrops;
       state.doorRecons = doorRecons;
@@ -1920,6 +2191,8 @@
       state.foodInventory = foodInv;
       state.menuItems = menuItems;
       state.timeclockShifts = filterByActiveTimestampWindow(shiftsRaw, 'clock_in');
+      state.laborSchedules = schedulesRaw || [];
+      state.redBookLogs = redBookRaw || [];
       state.feederReservations = feederRes;
       state.feederPromoters = feederPromos;
 
@@ -1927,7 +2200,7 @@
     }
 
     // =========================================================================
-    // 6. FORENSIC FORMULA ENGINES & RENDERERS (TABS 4.1 -> 4.6)
+    // 6. FORENSIC FORMULA ENGINES & RENDERERS (TABS 4.1 -> 4.7)
     // =========================================================================
     function renderAllForensicViews() {
       const lblSingle = document.getElementById('label-single-limit');
@@ -1935,12 +2208,13 @@
       if (lblSingle) lblSingle.textContent = fmtCurrency(state.singleLimit);
       if (lblCeiling) lblCeiling.textContent = fmtCurrency(state.shiftCeiling);
 
-      const modTotal = state.blindDrops.length + state.doorRecons.length + state.vipSwaps.length + state.securitySeals.length;
+      const modTotal = state.blindDrops.length + state.doorRecons.length + state.vipSwaps.length + state.securitySeals.length + state.redBookLogs.length;
       const modCounter = document.getElementById('mod-submission-counter');
       if (modCounter) modCounter.textContent = `${modTotal} Packets Logged Tonight`;
 
       if (state.role === 'MOD') {
         renderModBlindShelfGrid();
+        renderModScheduleList();
         return;
       }
 
@@ -1949,18 +2223,20 @@
       renderSecurityAndDvrQueue();
       renderPhantomGuestEngine();
       renderPackagingVault();
+      renderLaborVsRevenueEngine();
       renderExecutiveLeakagePlaybook();
       updateExecutiveKpiStrip();
     }
 
     // -------------------------------------------------------------------------
-    // TAB 4.1: WAGON WHEEL ANOMALY MATRIX™ + COLLUSION + TRIPWIRE STREAM
+    // TAB 4.1: WAGON WHEEL ANOMALY MATRIX™ + NO-SALE COUNTER + COLLUSION
     // -------------------------------------------------------------------------
     function computeWagonWheelAnalytics() {
       const staffMap = {};
       const collusionMap = {};
       let cumulativeOverrides = 0;
       let breachCount = 0;
+      let totalNoSales = 0;
 
       const ensureStaff = (name) => {
         const key = name || 'Unassigned Staff';
@@ -1968,6 +2244,7 @@
           staffMap[key] = {
             staff: key,
             checks: 0,
+            noSaleCount: 0,
             maxTransfersOnCheck: 0,
             totalTransfers: 0,
             postPrintCashVoids: 0,
@@ -1990,15 +2267,34 @@
         }
       });
 
+      state.blindDrops.forEach((d) => {
+        const ns = Number(d.no_sale_count || 0);
+        if (ns > 0) {
+          const st = ensureStaff(d.staff_custodian || d.station_name || 'POS Drawer');
+          st.noSaleCount += ns;
+          totalNoSales += ns;
+        }
+      });
+
       const synthVoids = state.orders
         .filter((o) => /^(VOID|VOIDED|COMP|COMPED)$/i.test(String(o.status || '').trim()) || Number(o.void_amount || 0) > 0 || Number(o.comp_amount || 0) > 0)
         .filter((o) => !state.governanceAudits.some((a) => (a.order_id && String(a.order_id) === String(o.id)) || (a.check_number && String(a.check_number) === String(o.check_number || o.tab_name || ''))))
-        .map((o) => ({ action_type: Number(o.comp_amount || 0) > 0 || /COMP/i.test(o.status || '') ? 'COMP_DISC' : 'VOID_CHECK', check_number: o.check_number || o.tab_name || o.table_code || String(o.id).slice(0, 8), staff_requester: o.staff_name || o.server_name || o.bartender || 'POS Staff', manager_approver: o.approved_by || 'POS Live Sync', amount_affected: Number(o.void_amount || o.comp_amount || o.total_retail || o.total_amount || o.subtotal || 0), transfer_count: Number(o.transfer_count || 0), created_at: o.updated_at || o.created_at }));
+        .map((o) => ({
+          action_type: Number(o.comp_amount || 0) > 0 || /COMP/i.test(o.status || '') ? 'COMP_DISC' : 'VOID_CHECK',
+          check_number: o.check_number || o.tab_name || o.table_code || String(o.id).slice(0, 8),
+          staff_requester: o.staff_name || o.server_name || o.bartender || 'POS Staff',
+          manager_approver: o.approved_by || 'POS Live Sync',
+          amount_affected: Number(o.void_amount || o.comp_amount || o.total_retail || o.total_amount || o.subtotal || 0),
+          transfer_count: Number(o.transfer_count || 0),
+          created_at: o.updated_at || o.created_at
+        }));
+
       const enrichedAudits = [...state.governanceAudits, ...synthVoids].map((a) => {
         const staff = a.staff_requester || a.requested_by || a.staff_name || 'Staff';
         const manager = a.manager_approver || a.approved_by || 'MOD';
         const action = String(a.action_type || a.audit_type || a.event_type || a.type || 'VOID_TICKET').trim().toUpperCase();
-        const isVoid = /\b(VOID|VOID_CHECK|VOID_TICKET|VOID_ITEM|VOIDED)\b|VOID/i.test(action);
+        const isNoSale = /NO_SALE|NOSALE|DRAWER_OPEN|OPEN_DRAWER/i.test(action);
+        const isVoid = !isNoSale && (/\b(VOID|VOID_CHECK|VOID_TICKET|VOID_ITEM|VOIDED)\b|VOID/i.test(action));
         const isComp = /\b(COMP|COMP_DISC|DISCOUNT|COMPED)\b|COMP|DISC/i.test(action);
         const isXfer = /\b(TRANSFER|TRANSFER_CHECK)\b|TRANSFER|XFER/i.test(action);
         const amt = Math.abs(Number(a.amount ?? a.amount_affected ?? a.void_amount ?? a.comp_amount ?? a.discount_amount ?? 0));
@@ -2008,8 +2304,13 @@
         const isClosingCluster = hr >= 1.5 && hr <= 3.5;
         const isPostPrintVoid = Boolean(a.post_print_cash_void) || (isVoid && String(a.notes || a.summary || '').toLowerCase().includes('print'));
         const xferCount = Number(a.transfer_count || (isXfer ? 4 : 0));
+        const nsCount = Math.max(1, Number(a.no_sale_count || 1));
 
         const st = ensureStaff(staff);
+        if (isNoSale) {
+          st.noSaleCount += nsCount;
+          totalNoSales += nsCount;
+        }
         if (isXfer) {
           st.totalTransfers += Math.max(1, xferCount);
           st.maxTransfersOnCheck = Math.max(st.maxTransfersOnCheck, xferCount);
@@ -2029,20 +2330,22 @@
         collusionMap[pairKey].dollars += amt;
 
         const triggers = [];
+        if (isNoSale) triggers.push(st.noSaleCount >= 3 ? `NO-SALE CLUSTER (${st.noSaleCount})` : 'NO-SALE DRAWER POP');
         if (amt > state.singleLimit) triggers.push(`>${fmtCurrency(state.singleLimit)} SINGLE CAP`);
         if (isPostPrintVoid) triggers.push('POST-PRINT CASH VOID');
-        if (isClosingCluster && action.includes('VOID')) triggers.push('1:30–3:30a CLOSING CLUSTER');
+        if (isClosingCluster && isVoid) triggers.push('1:30–3:30a CLOSING CLUSTER');
         if (xferCount >= 4) triggers.push(`WAGON WHEEL (${xferCount} XFERS)`);
         if (triggers.length > 0) breachCount += 1;
 
         return {
           ts,
           action,
-          checkNum: a.check_number || a.order_id || 'CHK-LIVE',
+          checkNum: a.check_number || a.order_id || (isNoSale ? 'DRAWER' : 'CHK-LIVE'),
           staff,
           manager,
           amt,
           triggers,
+          isNoSale,
           isClosingCluster,
           isPostPrintVoid,
           xferCount
@@ -2052,6 +2355,8 @@
       const staffRows = Object.values(staffMap).map((s) => {
         const sodaRatio = s.liquorCount > 0 ? (s.sodaWaterCount / s.liquorCount) * 100 : 0;
         let risk = 0;
+        if (s.noSaleCount >= 3) risk += 34 + (s.noSaleCount - 3) * 8;
+        else if (s.noSaleCount > 0) risk += s.noSaleCount * 8;
         if (s.maxTransfersOnCheck >= 4) risk += 38 + (s.maxTransfersOnCheck - 4) * 6;
         risk += s.postPrintCashVoids * 28;
         risk += s.closingWindowVoids * 18;
@@ -2062,7 +2367,7 @@
         return { ...s, sodaRatio, risk };
       }).sort((a, b) => b.risk - a.risk);
 
-      const shiftBreached = cumulativeOverrides > state.shiftCeiling;
+      const shiftBreached = cumulativeOverrides > state.shiftCeiling || staffRows.some((s) => s.noSaleCount >= 3);
       if (shiftBreached) breachCount += 1;
 
       return {
@@ -2070,17 +2375,27 @@
         collusionRows: Object.values(collusionMap).sort((a, b) => b.dollars - a.dollars || b.count - a.count),
         enrichedAudits,
         cumulativeOverrides,
+        totalNoSales,
         shiftBreached,
         breachCount
       };
     }
 
     function renderWagonWheelMatrix() {
-      const { staffRows, collusionRows, enrichedAudits, breachCount } = computeWagonWheelAnalytics();
-      const tbody = document.getElementById('wagon-wheel-tbody');
+      const { staffRows, collusionRows, enrichedAudits, breachCount, totalNoSales } = computeWagonWheelAnalytics();
+      const nsLbl = document.getElementById('label-nosale-total');
+      const nsPill = document.getElementById('pill-nosale-counter');
+      if (nsLbl) nsLbl.textContent = String(totalNoSales);
+      if (nsPill) {
+        const hotNs = totalNoSales >= 3 || staffRows.some((s) => s.noSaleCount >= 3);
+        nsPill.className = hotNs
+          ? 'px-2.5 py-1 rounded-lg bg-crimson text-white font-bold shadow'
+          : 'px-2.5 py-1 rounded-lg bg-obsidian border border-titanium text-slate-300';
+      }
 
+      const tbody = document.getElementById('wagon-wheel-tbody');
       if (staffRows.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="8" class="py-6 text-center text-slate-500">0 POS check transfers or override anomalies recorded in rehg-pos-core for this window.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="9" class="py-6 text-center text-slate-500">0 POS check transfers, No-Sales, or override anomalies recorded in rehg-pos-core for this window.</td></tr>';
       } else {
         tbody.innerHTML = staffRows.map((r) => {
           const badge = r.risk >= 70
@@ -2088,10 +2403,14 @@
             : r.risk >= 40
               ? `<span class="px-2 py-0.5 rounded bg-sovereign/20 text-sovereign font-bold">${r.risk} WATCH</span>`
               : `<span class="px-2 py-0.5 rounded bg-emeraldVault/15 text-emeraldVault font-bold">${r.risk} CLEAN</span>`;
+          const nsCell = r.noSaleCount >= 3
+            ? `<span class="px-1.5 py-0.5 rounded bg-crimson text-white font-bold">${r.noSaleCount} CLUSTER</span>`
+            : `<span class="${r.noSaleCount > 0 ? 'text-sovereign font-bold' : 'text-slate-400'}">${r.noSaleCount}</span>`;
           return `
             <tr class="hover:bg-white/[0.02]">
               <td class="py-2.5 px-3 font-sans font-semibold text-white">${esc(r.staff)}</td>
               <td class="py-2.5 px-3 text-right text-slate-300">${r.checks}</td>
+              <td class="py-2.5 px-3 text-right">${nsCell}</td>
               <td class="py-2.5 px-3 text-right ${r.maxTransfersOnCheck >= 4 ? 'text-crimson font-bold' : 'text-slate-300'}">${r.totalTransfers} (Max ${r.maxTransfersOnCheck})</td>
               <td class="py-2.5 px-3 text-right ${r.postPrintCashVoids > 0 ? 'text-crimson font-bold' : 'text-slate-300'}">${r.postPrintCashVoids}</td>
               <td class="py-2.5 px-3 text-right ${r.closingWindowVoids > 0 ? 'text-sovereign font-bold' : 'text-slate-300'}">${r.closingWindowVoids}</td>
@@ -2117,7 +2436,7 @@
               </div>
               <div class="text-right font-mono">
                 <div class="font-bold ${hot ? 'text-crimson' : 'text-white'}">${fmtCurrency(c.dollars)}</div>
-                <div class="text-[10px] ${hot ? 'text-crimson font-bold' : 'text-emeraldVault'}">${hot ? 'COLLUSION WATCH' : 'NORMAL'}</div>
+                <div class="text-[10px] ${hot ? 'text-crimson font-bold' : 'text-slate-400'}">${hot ? 'COLLUSION WATCH' : 'NORMAL'}</div>
               </div>
             </div>
           `;
@@ -2127,37 +2446,38 @@
       document.getElementById('tripwire-breach-count').textContent = `${breachCount} Tripwire Breaches`;
       const govTbody = document.getElementById('governance-feed-tbody');
       if (enrichedAudits.length === 0) {
-        govTbody.innerHTML = '<tr><td colspan="7" class="py-6 text-center text-slate-500">0 COMP_DISC / VOID_TICKET / TRANSFER_CHECK events in active window.</td></tr>';
+        govTbody.innerHTML = '<tr><td colspan="7" class="py-6 text-center text-slate-500">0 COMP_DISC / VOID_TICKET / TRANSFER_CHECK / NO_SALE events in active window.</td></tr>';
       } else {
-        govTbody.innerHTML = enrichedAudits.map((e) => `
+        govTbody.innerHTML = enrichedAudits.map((ev) => `
           <tr class="hover:bg-white/[0.02]">
-            <td class="py-2.5 px-3 text-slate-400">${fmtTime(e.ts)}</td>
-            <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-obsidian border border-titanium text-slate-200">${esc(e.action)}</span></td>
-            <td class="py-2.5 px-3 text-slate-300">${esc(e.checkNum)}</td>
-            <td class="py-2.5 px-3 font-sans text-white">${esc(e.staff)}</td>
-            <td class="py-2.5 px-3 font-sans text-sovereign">${esc(e.manager)}</td>
-            <td class="py-2.5 px-3 text-right font-bold text-white">${fmtCurrency(e.amt)}</td>
+            <td class="py-2.5 px-3 text-slate-400">${fmtTime(ev.ts)}</td>
+            <td class="py-2.5 px-3"><span class="px-2 py-0.5 rounded bg-obsidian border ${ev.isNoSale ? 'border-crimson text-crimson font-bold' : 'border-titanium text-slate-200'}">${esc(ev.action)}</span></td>
+            <td class="py-2.5 px-3 text-slate-300">${esc(ev.checkNum)}</td>
+            <td class="py-2.5 px-3 font-sans text-white">${esc(ev.staff)}</td>
+            <td class="py-2.5 px-3 font-sans text-sovereign">${esc(ev.manager)}</td>
+            <td class="py-2.5 px-3 text-right font-bold text-white">${fmtCurrency(ev.amt)}</td>
             <td class="py-2.5 px-3">
-              ${e.triggers.length
-                ? e.triggers.map((t) => `<span class="inline-block mr-1 mb-0.5 px-2 py-0.5 rounded bg-crimson/20 text-crimson text-[10px] font-bold">${esc(t)}</span>`).join('')
+              ${ev.triggers.length
+                ? ev.triggers.map((t) => `<span class="inline-block mr-1 mb-0.5 px-2 py-0.5 rounded bg-crimson/20 text-crimson text-[10px] font-bold">${esc(t)}</span>`).join('')
                 : '<span class="text-emeraldVault text-[10px]">WITHIN GUARDRAIL</span>'}
             </td>
           </tr>
         `).join('');
       }
     }
-
+// === END OF PART 4 ===
     // -------------------------------------------------------------------------
-    // TAB 4.2: BLIND DROPS, DOOR WRISTBANDS & VIP BOTTLE CAGE
+    // TAB 4.2: BLIND DROPS (+ NO-SALE POPS), DOOR WRISTBANDS & VIP BOTTLE CAGE
     // -------------------------------------------------------------------------
     function renderTab42Reconciliations() {
       const dropsTbody = document.getElementById('blind-drops-tbody');
       if (state.blindDrops.length === 0) {
-        dropsTbody.innerHTML = '<tr><td colspan="9" class="py-6 text-center text-slate-500">0 blind cash drops submitted for this window.</td></tr>';
+        dropsTbody.innerHTML = '<tr><td colspan="10" class="py-6 text-center text-slate-500">0 blind cash drops submitted for this window.</td></tr>';
       } else {
         dropsTbody.innerHTML = state.blindDrops.map((d) => {
           const bank = Number(d.starting_bank || 300);
           const skim = Number(d.skim_1130_amount || 0);
+          const noSales = Number(d.no_sale_count || 0);
           const counted = Number(d.blind_drawer_cash || 0);
           const netDrop = Number(d.net_cash_drop ?? (counted - bank + skim));
           const hasExpected = d.pos_expected_cash !== null && d.pos_expected_cash !== undefined && d.pos_expected_cash !== '';
@@ -2177,13 +2497,17 @@
           if (netDrop >= 500 && skim === 0) {
             verdictBadge += ' <span class="px-1.5 py-0.5 rounded bg-crimson/20 text-crimson text-[10px] font-bold">MISSED 11:30p SKIM</span>';
           }
+          if (noSales >= 3) {
+            verdictBadge += ` <span class="px-1.5 py-0.5 rounded bg-crimson text-white text-[10px] font-bold">${noSales} NO-SALES</span>`;
+          }
 
           return `
             <tr class="hover:bg-white/[0.02]">
-              <td class="py-2.5 px-3 font-sans font-semibold text-white">${esc(d.station_name)} <span class="text-slate-500 font-mono text-[10px]">(${esc(d.drawer_type)})</span></td>
+              <td class="py-2.5 px-3 font-sans font-semibold text-white">${esc(d.station_name)} <span class="text-slate-500 text-[10px]">(${esc(d.drawer_type)})</span></td>
               <td class="py-2.5 px-3 font-sans text-slate-300">${esc(d.staff_custodian)} <span class="text-slate-500">/ ${esc(d.mod_witness)}</span></td>
               <td class="py-2.5 px-3 text-right text-slate-400">${fmtCurrency(bank)}</td>
               <td class="py-2.5 px-3 text-right ${skim > 0 ? 'text-emeraldVault' : 'text-slate-400'}">${fmtCurrency(skim)}</td>
+              <td class="py-2.5 px-3 text-right ${noSales >= 3 ? 'text-crimson font-bold' : noSales > 0 ? 'text-sovereign font-bold' : 'text-slate-400'}">${noSales}</td>
               <td class="py-2.5 px-3 text-right text-white">${fmtCurrency(counted)}</td>
               <td class="py-2.5 px-3 text-right font-bold text-white">${fmtCurrency(netDrop)}</td>
               <td class="py-2.5 px-3 text-right text-slate-300">${expected !== null ? fmtCurrency(expected) : '—'}</td>
@@ -2254,22 +2578,33 @@
         }).join('');
       }
     }
-// === END OF PART 5 ===
+
     // -------------------------------------------------------------------------
-    // TAB 4.3: TUESDAY 10:00 AM DVR SPOT-CHECK QUEUE & VAULT SEAL[cite: 14]
+    // TAB 4.3: TUESDAY 10:00 AM DVR QUEUE (+ NO-SALE CLUSTERS + RED BOOK)
     // -------------------------------------------------------------------------
     function buildTop5DvrQueue() {
       const candidates = [];
 
+      const ww = computeWagonWheelAnalytics();
+      ww.staffRows.filter((s) => s.noSaleCount >= 3).forEach((s) => {
+        candidates.push({
+          priority: 175 + s.noSaleCount * 10,
+          camera: 'CAM-01 Overhead Cash Drawer & Well',
+          timestamp: 'Active Shift No-Sale Cluster',
+          reason: `NO-SALE DRAWER CLUSTER: ${s.staff} triggered ${s.noSaleCount} No-Sale drawer pops (>=3 shift threshold)`,
+          severity: 'CRITICAL'
+        });
+      });
+
       state.governanceAudits.forEach((a) => {
         const amt = Math.abs(Number(a.amount ?? a.amount_affected ?? 0));
-        const action = String(a.action_type || a.audit_type || 'VOID_TICKET').toUpperCase();
+        const action = String(a.action_type || a.audit_type || a.event_type || 'VOID_TICKET').toUpperCase();
         const ts = a.created_at || new Date().toISOString();
         const hr = new Date(ts).getHours() + new Date(ts).getMinutes() / 60;
         let priority = amt;
         if (hr >= 1.5 && hr <= 3.5) priority += 75;
         if (a.post_print_cash_void) priority += 110;
-        if (action.includes('NO_SALE')) priority += 90;
+        if (/NO_SALE|NOSALE|DRAWER_OPEN/i.test(action)) priority += 105;
         candidates.push({
           priority,
           camera: a.camera_channel || 'CAM-01 Overhead Main Bar Well',
@@ -2277,6 +2612,19 @@
           reason: `${action} (${fmtCurrency(amt)}) — ${a.staff_requester || a.requested_by || 'Staff'} / Approver: ${a.manager_approver || a.approved_by || 'MOD'}`,
           severity: priority >= 120 ? 'CRITICAL' : 'HIGH'
         });
+      });
+
+      state.redBookLogs.forEach((rb) => {
+        const cat = String(rb.category || rb.log_category || 'SECURITY').toUpperCase();
+        if (/SECURITY|GUEST|ATTENDANCE|DRAWER|EJECTION|THEFT/i.test(cat) || rb.dvr_flag !== false) {
+          candidates.push({
+            priority: 135,
+            camera: rb.camera_channel || 'CAM-03 Main Floor & Bar',
+            timestamp: fmtTime(rb.created_at || rb.shift_date),
+            reason: `MOD Red Book [${cat}]: ${rb.summary || rb.notes || 'Shift flag'} (${rb.mod_author || 'MOD'})`,
+            severity: 'HIGH'
+          });
+        }
       });
 
       state.vipSwaps.forEach((v) => {
@@ -2305,16 +2653,16 @@
         }
       });
 
-      return candidates.sort((a, b) => b.priority - a.priority).slice(0, 5);
+      return candidates.sort((a, b) => b.priority - a.priority).slice(0, 6);
     }
 
     function renderSecurityAndDvrQueue() {
-      const top5 = buildTop5DvrQueue();
+      const topQueue = buildTop5DvrQueue();
       const qContainer = document.getElementById('dvr-top5-queue-list');
-      if (top5.length === 0) {
+      if (topQueue.length === 0) {
         qContainer.innerHTML = '<div class="p-4 rounded-xl bg-obsidian border border-titanium text-xs text-slate-400">Zero high-risk DVR camera exceptions queued for Tuesday 10:00 AM review.</div>';
       } else {
-        qContainer.innerHTML = top5.map((item, idx) => `
+        qContainer.innerHTML = topQueue.map((item, idx) => `
           <div class="p-3.5 rounded-xl bg-obsidian border ${item.severity === 'CRITICAL' ? 'border-crimson/70' : 'border-titanium'} flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div class="flex items-start gap-3">
               <span class="w-6 h-6 rounded-lg bg-crimson/20 border border-crimson text-crimson font-mono text-xs font-extrabold flex items-center justify-center shrink-0">#${idx + 1}</span>
@@ -2328,6 +2676,23 @@
         `).join('');
       }
 
+      const rbBadge = document.getElementById('redbook-count-badge');
+      const rbStream = document.getElementById('owner-redbook-stream');
+      if (rbBadge) rbBadge.textContent = `${state.redBookLogs.length} Entries`;
+      if (rbStream) {
+        rbStream.innerHTML = state.redBookLogs.length === 0
+          ? '<div class="p-3 rounded-xl bg-obsidian border border-titanium text-slate-500 text-center">0 MOD Red Book entries logged for active window.</div>'
+          : state.redBookLogs.slice(0, 8).map((rb) => `
+            <div class="p-2.5 rounded-xl bg-obsidian border border-titanium flex flex-wrap items-center justify-between gap-2">
+              <div>
+                <span class="px-2 py-0.5 rounded bg-crimson/20 text-crimson font-mono text-[10px] font-bold mr-1.5">${esc(rb.category || 'SECURITY')}</span>
+                <span class="font-semibold text-white">${esc(rb.summary || rb.notes || '')}</span>
+              </div>
+              <span class="font-mono text-[10px] text-slate-400">${esc(rb.camera_channel || 'FLOOR')} • ${esc(rb.mod_author || 'MOD')}</span>
+            </div>
+          `).join('');
+      }
+
       const secTbody = document.getElementById('security-incidents-tbody');
       if (state.securitySeals.length === 0) {
         secTbody.innerHTML = '<tr><td colspan="6" class="py-5 text-center text-slate-500">0 floor ejections or vault seals logged for this window.</td></tr>';
@@ -2336,13 +2701,13 @@
           <tr class="hover:bg-white/[0.02]">
             <td class="py-2.5 px-3 text-slate-400">${fmtTime(s.incident_time || s.created_at)}</td>
             <td class="py-2.5 px-3 font-sans text-white font-semibold">${esc(s.incident_category)}</td>
-            <td class="py-2.5 px-3 text-slate-300">${esc(s.dvr_camera_channel || '')} <span class="text-slate-500">${esc(s.dvr_timestamp_window || '')}</span></td>
+            <td class="py-2.5 px-3 text-slate-300">${esc(s.dvr_camera_channel || 'VAULT')} <span class="text-slate-500">${esc(s.dvr_timestamp_window || '')}</span></td>
             <td class="py-2.5 px-3 font-sans text-slate-200">${esc(s.mod_on_duty)}</td>
             <td class="py-2.5 px-3 font-sans text-slate-300">${esc(s.narrative || s.seal_hash || '')}</td>
             <td class="py-2.5 px-3">
               ${s.sealed_to_vault
                 ? '<span class="px-2.5 py-0.5 rounded bg-emeraldVault/20 border border-emeraldVault/50 text-emeraldVault font-bold text-[10px]">✓ SEALED TO VAULT</span>'
-                : '<span class="px-2 py-0.5 rounded bg-obsidian border border-titanium text-slate-300 text-[10px]">LOGGED</span>'}
+                : '<span class="px-2.5 py-0.5 rounded bg-obsidian border border-titanium text-slate-300 text-[10px]">LOGGED</span>'}
             </td>
           </tr>
         `).join('');
@@ -2358,7 +2723,7 @@
     }
 
     // -------------------------------------------------------------------------
-    // TAB 4.4: MODEL A VS. MODEL B "PHANTOM GUEST" ANTI-THEFT ENGINE[cite: 14]
+    // TAB 4.4: MODEL A VS. MODEL B "PHANTOM GUEST" ANTI-THEFT ENGINE
     // -------------------------------------------------------------------------
     function computePhantomGuestStations() {
       const avgSpend = Math.max(5, Number(document.getElementById('phantom-avg-spend')?.value || 28));
@@ -2441,11 +2806,11 @@
           <tr class="hover:bg-white/[0.02]">
             <td class="py-2.5 px-3 font-sans font-bold text-white">${esc(r.station)}</td>
             <td class="py-2.5 px-3 font-sans text-slate-300">${esc(r.staff)}</td>
-            <td class="py-2.5 px-3 text-right text-slate-200">${r.modelAGuests} Guests (${r.rungItems} Items)</td>
+            <td class="py-2.5 px-3 text-right text-slate-200">${r.modelAGuests} (${r.rungItems} Items)</td>
             <td class="py-2.5 px-3 text-right text-slate-300">${r.cupsBurned} Cups / ${r.linersClamshellsBurned} Boxes / ${r.utensilKitsBurned} Kits</td>
             <td class="py-2.5 px-3 text-right font-bold text-sovereign">${r.modelBGuests} Guests</td>
             <td class="py-2.5 px-3 text-right font-bold ${r.phantomDelta > 2 ? 'text-crimson' : 'text-emeraldVault'}">${r.phantomDelta >= 0 ? '+' : ''}${r.phantomDelta}</td>
-            <td class="py-2.5 px-3 text-right font-bold ${r.unrungExposure > 0 ? 'text-crimson' : 'text-slate-300'}">${fmtCurrency(r.unrungExposure)}</td>
+            <td class="py-2.5 px-3 text-right font-bold ${r.unrungExposure > 0 ? 'text-crimson' : 'text-white'}">${fmtCurrency(r.unrungExposure)}</td>
             <td class="py-2.5 px-3">${flag}</td>
           </tr>
         `;
@@ -2453,7 +2818,7 @@
     }
 
     // -------------------------------------------------------------------------
-    // TAB 4.5: EXTENDED INVENTORY & BOH MICRO-DEPLETION PACKAGING VAULT[cite: 14]
+    // TAB 4.5: EXTENDED INVENTORY & BOH MICRO-DEPLETION PACKAGING VAULT
     // -------------------------------------------------------------------------
     function getPackagingShelfRows() {
       return state.shelfAudits.filter((s) => String(s.audit_domain || 'PACKAGING').toUpperCase() === 'PACKAGING');
@@ -2498,7 +2863,7 @@
               <td class="py-2.5 px-3 text-right text-slate-300">${l2.toLocaleString()}</td>
               <td class="py-2.5 px-3 text-right font-bold text-white">${dailyUnits.toLocaleString()}</td>
               <td class="py-2.5 px-3 text-right text-white">${fmtCurrency(dailyCost)}</td>
-              <td class="py-2.5 px-3 text-right ${isLow ? 'text-crimson font-bold' : 'text-slate-300'}">${onHand.toLocaleString()} / ${par.toLocaleString()}</td>
+              <td class="py-2.5 px-3 text-right ${isLow ? 'text-crimson font-bold' : 'text-slate-200'}">${onHand.toLocaleString()} / ${par.toLocaleString()}</td>
               <td class="py-2.5 px-3">${statusBadge}</td>
             </tr>
           `;
@@ -2541,7 +2906,7 @@
               <td class="py-2.5 px-3 text-right">
                 <input type="number" data-shelf-idx="${idx}" value="${phys}" placeholder="${expectedEnd}" class="carbon-input w-24 rounded px-2 py-1 text-right font-mono text-xs" />
               </td>
-              <td class="py-2.5 px-3 text-right ${unitVar !== null && unitVar < 0 ? 'text-crimson font-bold' : 'text-slate-300'}">${unitVar !== null ? (unitVar >= 0 ? '+' : '') + unitVar.toLocaleString() : '—'}</td>
+              <td class="py-2.5 px-3 text-right ${unitVar !== null && unitVar < 0 ? 'text-crimson font-bold' : 'text-emeraldVault'}">${unitVar !== null ? (unitVar >= 0 ? '+' : '') + unitVar.toLocaleString() : '—'}</td>
               <td class="py-2.5 px-3 text-right ${shrinkDollars !== null && shrinkDollars < 0 ? 'text-crimson font-bold' : 'text-emeraldVault'}">${shrinkDollars !== null ? fmtSignedCurrency(shrinkDollars) : '—'}</td>
               <td class="py-2.5 px-3">${badge}</td>
             </tr>
@@ -2620,25 +2985,252 @@
         </div>
       `).join('');
     }
+// === END OF PART 5 ===
+    // -------------------------------------------------------------------------
+    // TAB 4.7: FULL-BOAT WEEKLY / MONTHLY SCHEDULE & SHIFT LABOR-VS-REV ENGINE
+    // -------------------------------------------------------------------------
+    function setLaborHorizon(h) {
+      state.laborHorizon = h;
+      document.querySelectorAll('.sched-win-btn').forEach((btn) => {
+        const active = btn.getAttribute('data-schedwin') === h;
+        btn.className = active
+          ? 'sched-win-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-emeraldVault text-obsidian'
+          : 'sched-win-btn px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white';
+      });
+      const lbl = document.getElementById('labor-roster-window-label');
+      if (lbl) lbl.textContent = `Horizon: ${h}`;
+      renderLaborVsRevenueEngine();
+    }
+
+    function saveLaborGuardrail() {
+      const val = parseFloat(document.getElementById('labor-target-pct')?.value || '22');
+      state.laborTargetPct = Math.max(5, Math.min(65, val));
+      localStorage.setItem('carbon_loss_labor_target', String(state.laborTargetPct));
+      renderLaborVsRevenueEngine();
+    }
+
+    function classifyTimestampDaypart(isoStr) {
+      if (!isoStr) return 'LATE_VIP';
+      const h = new Date(isoStr).getHours();
+      if (h >= 6 && h < 16) return 'AM_LUNCH';
+      if (h >= 16 && h < 22) return 'PM_DINNER';
+      return 'LATE_VIP';
+    }
+
+    function filterSchedulesByHorizon() {
+      const anchor = document.getElementById('active-shift-date')?.value || new Date().toISOString().slice(0, 10);
+      const d = new Date(anchor + 'T12:00:00');
+      let startIso = anchor;
+      let endIso = anchor;
+      if (state.laborHorizon === 'WEEKLY') {
+        const diff = (d.getDay() + 6) % 7;
+        const mon = new Date(d);
+        mon.setDate(d.getDate() - diff);
+        const sun = new Date(mon);
+        sun.setDate(mon.getDate() + 6);
+        startIso = mon.toISOString().slice(0, 10);
+        endIso = sun.toISOString().slice(0, 10);
+      } else {
+        startIso = anchor.slice(0, 8) + '01';
+        const nextM = new Date(d.getFullYear(), d.getMonth() + 1, 0);
+        endIso = nextM.toISOString().slice(0, 10);
+      }
+      return state.laborSchedules.filter((s) => {
+        const sd = String(s.shift_date || '').slice(0, 10);
+        return !sd || (sd >= startIso && sd <= endIso);
+      });
+    }
+
+    function renderModScheduleList() {
+      const box = document.getElementById('mod-schedule-list');
+      if (!box) return;
+      const rows = filterSchedulesByHorizon();
+      if (!rows.length) {
+        box.innerHTML = '<div class="col-span-full text-center text-slate-500 py-3">0 upcoming roster shifts scheduled for active week.</div>';
+        return;
+      }
+      box.innerHTML = rows.slice(0, 10).map((r) => `
+        <div class="carbon-subcard rounded-lg p-2.5 flex items-center justify-between gap-2">
+          <div>
+            <div class="font-bold text-white">${esc(r.staff_name)} <span class="text-emeraldVault font-mono text-[10px]">(${esc(r.role_name)})</span></div>
+            <div class="font-mono text-[10px] text-slate-400">${esc(r.shift_date)} • ${esc(r.daypart)}</div>
+          </div>
+          <div class="font-mono text-xs text-white font-bold">${Number(r.scheduled_hours || 0).toFixed(1)}h</div>
+        </div>
+      `).join('');
+    }
+
+    function computeLaborVsRevenueAnalytics() {
+      const buckets = {
+        AM_LUNCH: { key: 'AM_LUNCH', label: 'AM / Lunch (06:00–16:00)', gross: 0, net: 0, schedHrs: 0, schedCost: 0, actHrs: 0, actCost: 0 },
+        PM_DINNER: { key: 'PM_DINNER', label: 'PM / Dinner (16:00–22:00)', gross: 0, net: 0, schedHrs: 0, schedCost: 0, actHrs: 0, actCost: 0 },
+        LATE_VIP: { key: 'LATE_VIP', label: 'Late-Night VIP (22:00–Close)', gross: 0, net: 0, schedHrs: 0, schedCost: 0, actHrs: 0, actCost: 0 }
+      };
+      const roleMap = {};
+
+      state.orders.forEach((o) => {
+        if (/^(VOID|VOIDED)$/i.test(String(o.status || ''))) return;
+        const dp = buckets[o.daypart] ? o.daypart : classifyTimestampDaypart(o.created_at);
+        const gross = Number(o.total_retail ?? o.total_amount ?? o.subtotal ?? 0);
+        const disc = Number(o.comp_amount ?? o.discount_amount ?? 0);
+        const tax = Number(o.tax_amount ?? gross * 0.08);
+        const net = Math.max(0, Number(o.net_sales ?? (gross - disc - tax)));
+        buckets[dp].gross += gross;
+        buckets[dp].net += net;
+      });
+
+      const scopedSched = filterSchedulesByHorizon();
+      scopedSched.forEach((s) => {
+        const dp = buckets[s.daypart] ? s.daypart : 'LATE_VIP';
+        const h = Number(s.scheduled_hours || 0);
+        const c = Number(s.projected_wage_cost ?? h * Number(s.hourly_wage || 0));
+        buckets[dp].schedHrs += h;
+        buckets[dp].schedCost += c;
+        const rk = s.role_name || 'Staff';
+        if (!roleMap[rk]) roleMap[rk] = { role: rk, schedHrs: 0, schedCost: 0, actHrs: 0, actCost: 0 };
+        roleMap[rk].schedHrs += h;
+        roleMap[rk].schedCost += c;
+      });
+
+      let otDriftDollars = 0;
+      state.timeclockShifts.forEach((sh) => {
+        const dp = buckets[sh.daypart] ? sh.daypart : classifyTimestampDaypart(sh.clock_in);
+        const inMs = sh.clock_in ? new Date(sh.clock_in).getTime() : 0;
+        const outMs = sh.clock_out ? new Date(sh.clock_out).getTime() : (inMs ? Date.now() : 0);
+        const hrs = Number(sh.hours_worked ?? (inMs && outMs > inMs ? (outMs - inMs) / 3600000 : 0));
+        const rate = Number(sh.hourly_rate || sh.wage_rate || 15);
+        const regHrs = Math.min(8, hrs);
+        const otHrs = Math.max(0, hrs - 8);
+        const pay = Number(sh.total_pay ?? (regHrs * rate + otHrs * rate * 1.5));
+        if (otHrs > 0) otDriftDollars += otHrs * rate * 0.5;
+        buckets[dp].actHrs += hrs;
+        buckets[dp].actCost += pay;
+        const rk = sh.role_tier || sh.staff_role || 'FOH/BOH';
+        if (!roleMap[rk]) roleMap[rk] = { role: rk, schedHrs: 0, schedCost: 0, actHrs: 0, actCost: 0 };
+        roleMap[rk].actHrs += hrs;
+        roleMap[rk].actCost += pay;
+      });
+
+      const dayparts = Object.values(buckets).map((b) => {
+        const effHrs = b.actHrs > 0 ? b.actHrs : b.schedHrs;
+        const effCost = b.actCost > 0 ? b.actCost : b.schedCost;
+        const hrsVar = b.actHrs > 0 || b.schedHrs > 0 ? b.actHrs - b.schedHrs : 0;
+        if (hrsVar > 0 && b.schedHrs > 0) {
+          const blendedRate = b.actHrs > 0 ? b.actCost / b.actHrs : 15;
+          otDriftDollars += hrsVar * blendedRate;
+        }
+        const splh = effHrs > 0 ? b.net / effHrs : 0;
+        const laborPct = b.net > 0 ? (effCost / b.net) * 100 : 0;
+        return { ...b, effHrs, effCost, hrsVar, splh, laborPct };
+      });
+
+      return { dayparts, roles: Object.values(roleMap), scopedSched, otDriftDollars };
+    }
+
+    function renderLaborVsRevenueEngine() {
+      if (state.role !== 'OWNER') return;
+      const targetInp = document.getElementById('labor-target-pct');
+      if (targetInp) targetInp.value = state.laborTargetPct;
+
+      const { dayparts, roles, scopedSched, otDriftDollars } = computeLaborVsRevenueAnalytics();
+      const totGross = dayparts.reduce((s, d) => s + d.gross, 0);
+      const totNet = dayparts.reduce((s, d) => s + d.net, 0);
+      const totSchedH = dayparts.reduce((s, d) => s + d.schedHrs, 0);
+      const totSchedC = dayparts.reduce((s, d) => s + d.schedCost, 0);
+      const totActH = dayparts.reduce((s, d) => s + d.actHrs, 0);
+      const totActC = dayparts.reduce((s, d) => s + d.actCost, 0);
+      const effCost = totActC > 0 ? totActC : totSchedC;
+      const effHrs = totActH > 0 ? totActH : totSchedH;
+      const splh = effHrs > 0 ? totNet / effHrs : 0;
+      const laborPct = totNet > 0 ? (effCost / totNet) * 100 : 0;
+      const hrsDelta = totActH - totSchedH;
+
+      document.getElementById('lbr-kpi-net-sales').textContent = fmtCurrency(totNet);
+      document.getElementById('lbr-kpi-gross-sub').textContent = `Gross: ${fmtCurrency(totGross)}`;
+      document.getElementById('lbr-kpi-sched-cost').textContent = fmtCurrency(totSchedC);
+      document.getElementById('lbr-kpi-sched-hrs').textContent = `${totSchedH.toFixed(1)} Sched Hrs`;
+      document.getElementById('lbr-kpi-actual-cost').textContent = fmtCurrency(totActC);
+      document.getElementById('lbr-kpi-actual-hrs').textContent = `${totActH.toFixed(1)} Clocked Hrs`;
+      document.getElementById('lbr-kpi-drift-dollars').textContent = fmtCurrency(otDriftDollars);
+      document.getElementById('lbr-kpi-hrs-var').textContent = `${hrsDelta >= 0 ? '+' : ''}${hrsDelta.toFixed(1)}h vs. Sched`;
+      document.getElementById('lbr-kpi-splh').textContent = fmtCurrency(splh);
+
+      const pctEl = document.getElementById('lbr-kpi-labor-pct');
+      const guardEl = document.getElementById('lbr-kpi-guardrail-badge');
+      pctEl.textContent = `${laborPct.toFixed(1)}%`;
+      const overGuard = laborPct > state.laborTargetPct;
+      pctEl.className = `text-xl font-extrabold font-mono mt-1 ${overGuard ? 'text-crimson' : 'text-emeraldVault'}`;
+      guardEl.textContent = overGuard ? `BREACH (>${state.laborTargetPct}%)` : `TARGET <=${state.laborTargetPct}% PASS`;
+      guardEl.className = `text-[10px] font-mono font-bold ${overGuard ? 'text-crimson' : 'text-emeraldVault'}`;
+
+      document.getElementById('labor-daypart-tbody').innerHTML = dayparts.map((d) => {
+        const breach = d.laborPct > state.laborTargetPct || (d.effCost > 0 && d.net === 0);
+        const badge = d.effCost === 0 && d.net === 0
+          ? '<span class="px-2 py-0.5 rounded bg-obsidian border border-titanium text-slate-400 text-[10px]">IDLE SHIFT</span>'
+          : breach
+            ? '<span class="px-2 py-0.5 rounded bg-crimson text-white text-[10px] font-bold">OVER LABOR CAP</span>'
+            : '<span class="px-2 py-0.5 rounded bg-emeraldVault/20 text-emeraldVault text-[10px] font-bold">PROFITABLE</span>';
+        return `
+          <tr class="hover:bg-white/[0.02]">
+            <td class="py-2.5 px-3 font-sans font-bold text-white">${esc(d.label)}</td>
+            <td class="py-2.5 px-3 text-right text-slate-300">${fmtCurrency(d.gross)}</td>
+            <td class="py-2.5 px-3 text-right font-bold text-white">${fmtCurrency(d.net)}</td>
+            <td class="py-2.5 px-3 text-right text-sovereign">${d.schedHrs.toFixed(1)}h / ${fmtCurrency(d.schedCost)}</td>
+            <td class="py-2.5 px-3 text-right text-white">${d.actHrs.toFixed(1)}h / ${fmtCurrency(d.actCost)}</td>
+            <td class="py-2.5 px-3 text-right ${d.hrsVar > 1 ? 'text-crimson font-bold' : 'text-emeraldVault'}">${d.hrsVar >= 0 ? '+' : ''}${d.hrsVar.toFixed(1)}h</td>
+            <td class="py-2.5 px-3 text-right text-emeraldVault font-bold">${fmtCurrency(d.splh)}</td>
+            <td class="py-2.5 px-3 text-right font-bold ${breach ? 'text-crimson' : 'text-emeraldVault'}">${d.laborPct.toFixed(1)}%</td>
+            <td class="py-2.5 px-3">${badge}</td>
+          </tr>
+        `;
+      }).join('');
+
+      const roleBox = document.getElementById('labor-role-breakdown');
+      roleBox.innerHTML = roles.length === 0
+        ? '<div class="text-slate-500 py-4 text-center">0 scheduled or clocked roles in window.</div>'
+        : roles.map((r) => `
+          <div class="p-2.5 rounded-lg bg-obsidian border border-titanium flex items-center justify-between">
+            <div>
+              <div class="font-sans font-bold text-white">${esc(r.role)}</div>
+              <div class="text-[10px] text-slate-400">Sched ${r.schedHrs.toFixed(1)}h • Clocked ${r.actHrs.toFixed(1)}h</div>
+            </div>
+            <div class="text-right">
+              <div class="text-sovereign font-bold">${fmtCurrency(r.actCost > 0 ? r.actCost : r.schedCost)}</div>
+            </div>
+          </div>
+        `).join('');
+
+      const rosTbody = document.getElementById('labor-roster-tbody');
+      rosTbody.innerHTML = scopedSched.length === 0
+        ? '<tr><td colspan="7" class="py-5 text-center text-slate-500">0 shifts scheduled in venue_labor_schedules for active horizon. Click "+ Schedule Shift" above.</td></tr>'
+        : scopedSched.map((s) => `
+          <tr class="hover:bg-white/[0.02]">
+            <td class="py-2 px-2.5 text-slate-300">${esc(s.shift_date)}</td>
+            <td class="py-2 px-2.5 font-sans font-semibold text-white">${esc(s.staff_name)}</td>
+            <td class="py-2 px-2.5 text-emeraldVault">${esc(s.role_name)}</td>
+            <td class="py-2 px-2.5 text-slate-400">${esc(s.daypart)}</td>
+            <td class="py-2 px-2.5 text-right text-white">${Number(s.scheduled_hours || 0).toFixed(2)}</td>
+            <td class="py-2 px-2.5 text-right text-slate-300">${fmtCurrency(s.hourly_wage)}</td>
+            <td class="py-2 px-2.5 text-right font-bold text-sovereign">${fmtCurrency(s.projected_wage_cost ?? Number(s.scheduled_hours || 0) * Number(s.hourly_wage || 0))}</td>
+          </tr>
+        `).join('');
+    }
 
     // -------------------------------------------------------------------------
     // TAB 4.6: 8-POINT EXECUTIVE LEAKAGE WATERFALL & PREVENTIVE PLAYBOOK
     // -------------------------------------------------------------------------
     function computeEightPointVenueLeakage() {
-      // 1. Register & Override Bleed (`governance_audits`)
       const ww = computeWagonWheelAnalytics();
       const v1Retail = ww.cumulativeOverrides;
       const v1Wholesale = Number((v1Retail * 0.22).toFixed(2));
-      const v1Detail = `${ww.enrichedAudits.length} override(s) • ${ww.breachCount} tripwire breach(es) • ${ww.collusionRows.filter((c) => c.count >= 3).length} collusion pair(s)`;
+      const v1Detail = `${ww.enrichedAudits.length} override(s) • ${ww.totalNoSales} No-Sale pop(s) • ${ww.breachCount} tripwire breach(es)`;
 
-      // 2. Phantom Guest Un-Rung Sales Risk (Model A vs. Model B)
       const phantomRows = computePhantomGuestStations();
       const phantomGuests = phantomRows.reduce((s, r) => s + Math.max(0, r.phantomDelta), 0);
       const v2Retail = phantomRows.reduce((s, r) => s + r.unrungExposure, 0);
       const v2Wholesale = Number((v2Retail * 0.20).toFixed(2));
       const v2Detail = `+${phantomGuests} implied unrung guest(s) across ${phantomRows.filter((r) => r.phantomDelta > 2).length} station(s)`;
 
-      // 3. Bar Liquid Shrinkage (`Retail $` vs `Wholesale $`)
       const avgPourPrice = (() => {
         const barMenu = state.menuItems.filter((m) => String(m.department || 'BAR').toUpperCase() !== 'FOOD' && Number(m.price || 0) > 0 && Number(m.price || 0) < 80);
         if (!barMenu.length) return 14;
@@ -2680,10 +3272,9 @@
         }
       });
       const v3Detail = missingLiquorOz > 0
-        ? `${missingLiquorOz.toFixed(1)} oz physical pour shortage (${Math.round(missingLiquorOz / 1.5)} lost 1.5oz pours)`
+        ? `${missingLiquorOz.toFixed(1)} oz missing (~${Math.round(missingLiquorOz / 1.5)} lost 1.5oz pours)`
         : '0.0 oz physical vs. theoretical variance recorded';
 
-      // 4. High-Theft Kitchen Protein Drift (`food_inventory` + `loss_shelf_audits` PROTEIN)
       const avgEntreePrice = (() => {
         const foodMenu = state.menuItems.filter((m) => String(m.department || '').toUpperCase() === 'FOOD' && Number(m.price || 0) > 0);
         if (!foodMenu.length) return 20;
@@ -2727,7 +3318,6 @@
         ? `${missingProteinUnits} center-of-plate protein portion(s) missing vs. POS plates rung`
         : '0 unexplained kitchen protein portion gaps recorded';
 
-      // 5. Cash Drawer Over/Short & Exact-$0.00 Artificial Plugs (`loss_blind_drops`)
       let cashShortTotal = 0;
       let exactZeroPlugs = 0;
       let missedSkims = 0;
@@ -2744,7 +3334,6 @@
       const v5Retail = cashShortTotal;
       const v5Detail = `${fmtCurrency(cashShortTotal)} drawer cash shortage • ${exactZeroPlugs} exact-$0.00 plug flag(s) • ${missedSkims} missed 11:30p skim(s)`;
 
-      // 6. Door Wristband, Cover & CARBON | FEEDER — VIP Promoter Fraud
       let doorUnrungRetail = 0;
       let unbandedClickerGuests = 0;
       const feederFlags = [];
@@ -2778,9 +3367,8 @@
       });
       const v6Wholesale = paddedPromoterPayoutRisk;
       const v6Retail = doorUnrungRetail + paddedPromoterPayoutRisk;
-      const v6Detail = `${unbandedClickerGuests} unbanded clicker guest(s) • ${paddedPromoterHeads} padded Feeder promoter head(s) (${fmtCurrency(paddedPromoterPayoutRisk)} payout hold)`;
+      const v6Detail = `${unbandedClickerGuests} unbanded clicker guest(s) • ${paddedPromoterHeads} padded promoter head(s) (${fmtCurrency(paddedPromoterPayoutRisk)} payout hold)`;
 
-      // 7. VIP Bottle Cage & Section Leakage (Synced w/ CARBON | FEEDER — VIP)
       let unrungVipBottles = 0;
       let missingDeadSoldiers = 0;
       let v7Retail = 0;
@@ -2820,14 +3408,13 @@
           unrungVipBottles += (!hasCheck ? 1 : 0);
           feederFlags.push({
             tone: 'crimson',
-            title: `Feeder VIP Section Gap: ${res.vip_booth_section} (${res.guest_or_party_name})`,
-            detail: `Min Spend ${fmtCurrency(minSpend)} vs. Verified POS ${fmtCurrency(posSpend)} (${!hasCheck ? 'No POS Check Linked' : fmtCurrency(shortfall) + ' Shortfall'}).`
+            title: `Feeder VIP Section Gap: ${res.vip_section || 'VIP'} (${res.guest_or_party_name || 'Guest'})`,
+            detail: `Min Spend ${fmtCurrency(minSpend)} vs. Verified POS (${!hasCheck ? 'No POS Check Linked' : fmtCurrency(shortfall) + ' Shortfall'}).`
           });
         }
       });
       const v7Detail = `${unrungVipBottles} unrung VIP bottle/section gap(s) • ${missingDeadSoldiers} unreturned Dead Soldier(s)`;
 
-      // 8. "Riding the Clock" Timeclock & Micro-Packaging Drift (>1.5% Gross Sales)
       let paddedWageDollars = 0;
       const clockDriftRows = [];
 
@@ -2891,10 +3478,10 @@
       const pkgOverTarget = liveGross > 0 ? Math.max(0, pkgTotalCost - liveGross * 0.015) : 0;
       const v8Wholesale = paddedWageDollars + pkgShrinkCost + pkgOverTarget;
       const v8Retail = v8Wholesale;
-      const v8Detail = `${clockDriftRows.length} riding-the-clock flag(s) (${fmtCurrency(paddedWageDollars)}) • Packaging Shrink/Over-1.5%: ${fmtCurrency(pkgShrinkCost + pkgOverTarget)}`;
+      const v8Detail = `Labor Drift (${fmtCurrency(paddedWageDollars)}) • Packaging Shrink/Over-1.5%: ${fmtCurrency(pkgShrinkCost + pkgOverTarget)}`;
 
       const vectors = [
-        { id: 1, name: '1. Register & Override Bleed', source: 'CARBON POS • governance_audits', finding: v1Detail, wholesale: v1Wholesale, retail: v1Retail },
+        { id: 1, name: '1. Register, No-Sale & Override Bleed', source: 'CARBON POS • governance_audits', finding: v1Detail, wholesale: v1Wholesale, retail: v1Retail },
         { id: 2, name: '2. Phantom Guest Un-Rung Sales Risk', source: 'MODEL A vs. MODEL B • Stealth Burn', finding: v2Detail, wholesale: v2Wholesale, retail: v2Retail },
         { id: 3, name: '3. Bar Liquid Shrinkage (Oz vs. Shelf)', source: 'CARBON | BAR • liquor_inventory', finding: v3Detail, wholesale: v3Wholesale, retail: v3Retail },
         { id: 4, name: '4. High-Theft Kitchen Protein Drift', source: 'CARBON | KITCHEN • food_inventory', finding: v4Detail, wholesale: v4Wholesale, retail: v4Retail },
@@ -2925,7 +3512,7 @@
       } = computeEightPointVenueLeakage();
 
       const { startIso, endIso, isSingleDay } = getActiveDateRange();
-      const winText = isSingleDay ? `${state.leakageWindow} (${startIso})` : `${state.leakageWindow} (${startIso} → ${endIso})`;
+      const winText = isSingleDay ? `${startIso}` : `${startIso} → ${endIso}`;
       const winEl = document.getElementById('lk-window-label');
       if (winEl) winEl.textContent = `Window: ${winText}`;
 
@@ -2960,8 +3547,8 @@
               <div class="text-[10px] font-mono text-sovereign">${esc(v.source)}</div>
             </td>
             <td class="py-2.5 px-3 font-sans text-slate-300">${esc(v.finding)}</td>
-            <td class="py-2.5 px-3 text-right ${v.wholesale > 0 ? 'text-sovereign font-bold' : 'text-slate-400'}">${fmtCurrency(v.wholesale)}</td>
-            <td class="py-2.5 px-3 text-right ${v.retail > 0 ? 'text-crimson font-extrabold' : 'text-emeraldVault'}">${fmtCurrency(v.retail)}</td>
+            <td class="py-2.5 px-3 text-right ${v.wholesale > 0 ? 'text-sovereign font-bold' : 'text-slate-300'}">${fmtCurrency(v.wholesale)}</td>
+            <td class="py-2.5 px-3 text-right ${v.retail > 0 ? 'text-crimson font-bold' : 'text-white'}">${fmtCurrency(v.retail)}</td>
             <td class="py-2.5 px-3">${sevBadge}</td>
           </tr>
         `;
@@ -2987,14 +3574,13 @@
           <div class="p-3 rounded-xl bg-obsidian border border-crimson/50 flex items-center justify-between gap-2">
             <div>
               <div class="font-bold text-white">${esc(c.staff)} <span class="text-slate-400 font-mono text-[10px]">(${esc(c.role)})</span></div>
-              <div class="text-[11px] text-slate-400 font-mono">Pre-1st Ring: ${c.preRingMins}m • Post-Last Close: ${c.postCloseMins}m (+${c.excessMins}m Padded)</div>
+              <div class="text-[11px] text-slate-400 font-mono">Pre-1st Ring: ${c.preRingMins}m • Post-Last Close: ${c.postCloseMins}m (${c.excessMins}m Padded)</div>
             </div>
             <div class="text-right font-mono font-bold text-crimson">${fmtCurrency(c.wageBleed)}</div>
           </div>
         `).join('');
       }
 
-      // 1-Click Pre-Shift Preventive Execution Playbook Builder
       const spotList = spotCandidates.slice(0, 3);
       const spotBullets = spotList.length > 0
         ? spotList.map((s) => `Count ${s.name} (${s.gapLabel} prior variance • ${fmtCurrency(s.retailRisk)} risk)`)
@@ -3017,14 +3603,14 @@
 
       const top5Dvr = buildTop5DvrQueue();
       const dvrBullets = top5Dvr.length > 0
-        ? top5Dvr.map((d, i) => `#${i + 1} ${d.camera} @ ${d.timestamp} — ${d.reason}`)
+        ? top5Dvr.slice(0, 5).map((d, i) => `#${i + 1} ${d.camera} @ ${d.timestamp} — ${d.reason}`)
         : ['0 critical NVR timestamps queued — verify overhead well & cage camera angles live'];
 
       const triggerBullets = [];
-      if (vectors[0].retail > 0) triggerBullets.push(`Require live floor inspection on any post-print cash void or check transfer >= 4`);
-      if (vectors[1].retail > 0) triggerBullets.push(`Audit bar cup/napkin sleeve depletion at 1:00 AM against POS open covers`);
-      if (vectors[6].retail > 0) triggerBullets.push(`Zero VIP bottles leave cage without destructible foil sticker + verified POS Check #`);
-      if (clockDriftRows.length > 0) triggerBullets.push(`Enforce POS clock-in <= 15m before shift call & auto-clockout review 30m post-close`);
+      if (vectors[0].retail > 0) triggerBullets.push('Require live floor inspection on any post-print cash void, No-Sale cluster (>=3), or check transfer >= 4');
+      if (vectors[1].retail > 0) triggerBullets.push('Audit bar cup/napkin sleeve depletion at 1:00 AM against POS open covers');
+      if (vectors[6].retail > 0) triggerBullets.push('Zero VIP bottles leave cage without destructible foil sticker + verified POS Check #');
+      if (clockDriftRows.length > 0) triggerBullets.push('Enforce POS clock-in <= 15m before shift call & auto-clockout review 30m post-close');
       if (triggerBullets.length === 0) {
         triggerBullets.push('Maintain strict One-Way Blind Drop isolation for Night MOD closing packets');
         triggerBullets.push('Cross-verify Feeder VIP section deposits against closed POS checks prior to Vault Seal');
@@ -3076,7 +3662,7 @@
 
     function updateExecutiveKpiStrip() {
       const ww = computeWagonWheelAnalytics();
-      const criticalStaff = ww.staffRows.filter((s) => s.risk >= 70).length;
+      const criticalStaff = ww.staffRows.filter((s) => s.risk >= 70 || s.noSaleCount >= 3).length;
       document.getElementById('kpi-wagon-flags').textContent = criticalStaff;
       document.getElementById('kpi-override-dollars').textContent = fmtCurrency(ww.cumulativeOverrides);
 
@@ -3136,11 +3722,29 @@
       if (bankInput) bankInput.value = sel.value === 'DOOR' ? '200.00' : '300.00';
     }
 
+    async function promptManualNoSaleLog() {
+      const staff = prompt('Bartender / Cashier Name for No-Sale Drawer Pop:');
+      if (!staff) return;
+      const count = Math.max(1, parseInt(prompt('Number of No-Sale Drawer Pops on Z-Tape:', '1') || '1', 10));
+      const payload = {
+        venue_id: state.venueId,
+        action_type: 'NO_SALE',
+        staff_requester: staff.trim(),
+        manager_approver: state.role === 'OWNER' ? 'Owner Audit' : 'MOD Z-Tape',
+        amount: 0,
+        no_sale_count: count,
+        created_at: new Date().toISOString()
+      };
+      await persistRecord('governance_audits', payload, 'governanceAudits');
+      showToast(`Logged ${count} No-Sale Drawer Pop(s) for ${staff}.`, count >= 3 ? 'crimson' : 'gold');
+    }
+
     async function submitBlindDrop(e, sourceRole) {
       e.preventDefault();
       const fd = new FormData(e.target);
       const shiftDate = document.getElementById('active-shift-date').value;
       const skimAmt = parseFloat(fd.get('skim_1130_amount') || '0');
+      const noSaleCount = parseInt(fd.get('no_sale_count') || '0', 10);
       const rawExpected = fd.get('pos_expected_cash');
 
       const payload = {
@@ -3151,6 +3755,7 @@
         starting_bank: parseFloat(fd.get('starting_bank') || '300'),
         skim_1130_triggered: skimAmt > 0,
         skim_1130_amount: skimAmt,
+        no_sale_count: isNaN(noSaleCount) ? 0 : noSaleCount,
         blind_drawer_cash: parseFloat(fd.get('blind_drawer_cash') || '0'),
         pos_expected_cash: sourceRole === 'OWNER' && rawExpected !== null && rawExpected !== '' ? parseFloat(rawExpected) : null,
         safe_drop_envelope_id: fd.get('safe_drop_envelope_id'),
@@ -3163,7 +3768,7 @@
       e.target.reset();
       showToast(
         sourceRole === 'MOD'
-          ? 'Blind Cash Drop sealed into vault. Expected POS totals remain hidden.'
+          ? 'Blind Cash Drop & No-Sale Count sealed into vault.'
           : 'Blind Cash Drop logged & reconciled against POS expected cash.',
         'emerald'
       );
@@ -3248,6 +3853,51 @@
       showToast('Floor Incident & 4K DVR Camera Clip bookmarked.', 'emerald');
     }
 
+    async function submitModRedBookLog(e) {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const shiftDate = document.getElementById('active-shift-date').value;
+      const payload = {
+        venue_id: state.venueId,
+        shift_date: shiftDate,
+        category: fd.get('category') || 'SECURITY',
+        camera_channel: fd.get('camera_channel') || 'CAM-03 Main Floor',
+        summary: fd.get('summary'),
+        mod_author: fd.get('mod_author') || 'MOD',
+        dvr_flag: true
+      };
+      await persistRecord('mod_red_book_logs', payload, 'redBookLogs');
+      e.target.reset();
+      showToast('MOD Red Book exception appended to DVR Spot-Check Queue.', 'crimson');
+    }
+
+    async function submitLaborScheduleShift(e, sourceRole) {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const hrs = parseFloat(fd.get('scheduled_hours') || '0');
+      const rate = parseFloat(fd.get('hourly_wage') || '0');
+      const shiftDate = fd.get('shift_date') || document.getElementById('active-shift-date').value;
+
+      const payload = {
+        venue_id: state.venueId,
+        shift_date: shiftDate,
+        staff_name: fd.get('staff_name'),
+        role_name: fd.get('role_name') || 'Bartender',
+        daypart: fd.get('daypart') || 'LATE_VIP',
+        scheduled_hours: hrs,
+        hourly_wage: rate,
+        projected_wage_cost: Number((hrs * rate).toFixed(2)),
+        created_by_role: sourceRole,
+        ingestion_mode: state.ingestionMode
+      };
+
+      await persistRecord('venue_labor_schedules', payload, 'laborSchedules');
+      e.target.reset();
+      const dtInp = e.target.querySelector('[name="shift_date"]');
+      if (dtInp) dtInp.value = document.getElementById('active-shift-date').value;
+      showToast(`Scheduled ${payload.staff_name} (${payload.role_name} • ${hrs}h) in Roster Vault.`, 'emerald');
+    }
+// === END OF PART 7 ===
     async function sealShiftToSovereignVault(triggeredBy) {
       const shiftDate = document.getElementById('active-shift-date').value;
       const rawDigest = `${state.venueId}|${shiftDate}|drops:${state.blindDrops.length}|door:${state.doorRecons.length}|vip:${state.vipSwaps.length}`;
@@ -3280,6 +3930,7 @@
           blind_drops: state.blindDrops.length,
           door_packets: state.doorRecons.length,
           vip_bottles: state.vipSwaps.length,
+          red_book_flags: state.redBookLogs.length,
           mode: state.ingestionMode
         },
         seal_hash: sealHash,
@@ -3364,6 +4015,13 @@
           const { data, error } = await state.sb.from(tableName).insert([payload]).select();
           if (!error && data && data[0]) {
             state[stateArrayKey][0] = data[0];
+          } else if (error && payload.no_sale_count !== undefined && tableName === 'loss_blind_drops') {
+            const fallbackPayload = { ...payload };
+            delete fallbackPayload.no_sale_count;
+            const retry = await state.sb.from(tableName).insert([fallbackPayload]).select();
+            if (!retry.error && retry.data && retry.data[0]) {
+              state[stateArrayKey][0] = { ...retry.data[0], no_sale_count: payload.no_sale_count };
+            }
           }
         } catch (err) {
           console.warn(`Supabase insert note (${tableName}):`, err.message);
@@ -3373,7 +4031,7 @@
     }
 
     // =========================================================================
-    // 8. BLANK HEADER-ONLY CSV TEMPLATES, BULK PACKAGING IMPORTER & CSV BRIDGE
+    // 8. BLANK HEADER-ONLY CSV TEMPLATES, PACKAGING IMPORTER & PAYROLL BRIDGE
     // =========================================================================
     function downloadBlankPackagingCsvHeaders() {
       const headerOnly = 'sku_code,item_name,packaging_category,unit_cogs,par_level,opening_stock,vendor_deliveries,pos_theoretical_burn,physical_shelf_count\n';
@@ -3385,11 +4043,20 @@
     }
 
     function downloadBlankBridgeCsvHeaders() {
-      const headerOnly = 'action_type,check_number,staff_requester,manager_approver,amount,transfer_count,post_print_cash_void,timestamp\n';
+      const headerOnly = 'action_type,check_number,staff_requester,manager_approver,amount,transfer_count,post_print_cash_void,no_sale_count,timestamp\n';
       const blob = new Blob([headerOnly], { type: 'text/csv;charset=utf-8;' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = 'Carbon_Loss_Bridge_Headers.csv';
+      a.click();
+    }
+
+    function downloadBlankPayrollCsvHeaders() {
+      const headerOnly = 'staff_name,staff_role,clock_in,clock_out,hours_worked,hourly_rate,daypart\n';
+      const blob = new Blob([headerOnly], { type: 'text/csv;charset=utf-8;' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'Carbon_Loss_Payroll_Timeclock_Headers.csv';
       a.click();
     }
 
@@ -3457,13 +4124,26 @@
         const phys = i.physical_shelf_count ?? '';
         const uVar = phys !== '' ? Number(phys) - exp : '';
         const dVar = uVar !== '' ? (uVar * Number(i.unit_cogs || 0)).toFixed(2) : '';
-        return `"${String(i.sku_code).replace(/"/g, '""')}","${String(i.item_name).replace(/"/g, '""')}","${String(i.packaging_category || '').replace(/"/g, '""')}",${Number(i.unit_cogs || 0).toFixed(4)},${Number(i.par_level || 0)},${Number(i.opening_stock || 0)},${Number(i.vendor_deliveries || 0)},${theo},${exp},${phys},${uVar},${dVar}`;
+        return `"${String(i.sku_code || '').replace(/"/g, '""')}","${String(i.item_name || '').replace(/"/g, '""')}","${String(i.packaging_category || 'DISPOSABLES').replace(/"/g, '""')}",${Number(i.unit_cogs || 0).toFixed(4)},${Number(i.par_level || 0)},${Number(i.opening_stock || 0)},${Number(i.vendor_deliveries || 0)},${theo},${exp},${phys},${uVar},${dVar}`;
       }).join('\n');
 
       const blob = new Blob([header + body], { type: 'text/csv;charset=utf-8;' });
       const a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
       a.download = `CARBON_LOSS_Packaging_Vault_${state.venueId}_${document.getElementById('active-shift-date').value}.csv`;
+      a.click();
+    }
+
+    function exportLaborScheduleCsv() {
+      const { dayparts } = computeLaborVsRevenueAnalytics();
+      const hdr = 'Daypart,Gross_Sales,Net_Sales,Scheduled_Hours,Scheduled_Cost,Actual_Hours,Actual_Cost,Hours_Variance,SPLH,Labor_Pct_Net\n';
+      const body = dayparts.map((d) =>
+        `"${String(d.label).replace(/"/g, '""')}",${d.gross.toFixed(2)},${d.net.toFixed(2)},${d.schedHrs.toFixed(2)},${d.schedCost.toFixed(2)},${d.actHrs.toFixed(2)},${d.actCost.toFixed(2)},${d.hrsVar.toFixed(2)},${d.splh.toFixed(2)},${d.laborPct.toFixed(2)}`
+      ).join('\n');
+      const blob = new Blob([hdr + body], { type: 'text/csv;charset=utf-8;' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `CARBON_LOSS_Labor_vs_Revenue_${state.venueId}_${document.getElementById('active-shift-date').value}.csv`;
       a.click();
     }
 
@@ -3477,6 +4157,7 @@
         lines.slice(1).forEach((ln) => {
           const c = ln.split(',').map((x) => x.trim());
           if (c.length < 5) return;
+          const hasNineCols = c.length >= 9;
           importedAudits.push({
             venue_id: state.venueId,
             action_type: c[0],
@@ -3486,7 +4167,8 @@
             amount: parseFloat(c[4] || '0'),
             transfer_count: parseInt(c[5] || '0', 10),
             post_print_cash_void: c[6] === 'true',
-            created_at: c[7] || new Date().toISOString()
+            no_sale_count: hasNineCols ? parseInt(c[7] || '1', 10) : 1,
+            created_at: (hasNineCols ? c[8] : c[7]) || new Date().toISOString()
           });
         });
         state.governanceAudits = [...importedAudits, ...state.governanceAudits];
@@ -3499,7 +4181,7 @@
               record_type: 'CSV_BRIDGE_PACKET',
               incident_category: 'EXTERNAL_POS_CSV_INGEST',
               mod_on_duty: 'Sovereign Owner',
-              narrative: `Uploaded ${importedAudits.length} POS exception records via CSV Bridge.`,
+              narrative: `Uploaded ${importedAudits.length} POS exception/No-Sale records via CSV Bridge.`,
               forensic_snapshot: { rows: importedAudits },
               ingestion_mode: 'EXTERNAL_CSV'
             }]);
@@ -3507,13 +4189,41 @@
         }
 
         renderAllForensicViews();
-        showToast(`Ingested ${importedAudits.length} external POS exception rows into Wagon Wheel Matrix.`, 'emerald');
+        showToast(`Ingested ${importedAudits.length} external POS exception/No-Sale rows into Wagon Wheel Matrix.`, 'emerald');
+      };
+      reader.readAsText(file);
+    }
+
+    function handleExternalLaborCsvUpload(e) {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        const lines = String(ev.target.result || '').trim().split(/\r?\n/);
+        const shifts = [];
+        lines.slice(1).forEach((ln) => {
+          const c = ln.split(',').map((x) => x.trim());
+          if (c.length < 4) return;
+          shifts.push({
+            venue_id: state.venueId,
+            staff_name: c[0],
+            staff_role: c[1] || 'Staff',
+            clock_in: c[2] || new Date().toISOString(),
+            clock_out: c[3] || new Date().toISOString(),
+            hours_worked: parseFloat(c[4] || '0'),
+            hourly_rate: parseFloat(c[5] || '15'),
+            daypart: c[6] || classifyTimestampDaypart(c[2])
+          });
+        });
+        state.timeclockShifts = [...shifts, ...state.timeclockShifts];
+        renderAllForensicViews();
+        showToast(`Ingested ${shifts.length} Payroll/Timeclock rows into Shift Labor vs. Revenue Engine.`, 'emerald');
       };
       reader.readAsText(file);
     }
 
     // =========================================================================
-    // 9. NAVIGATION, MODALS & UTILITIES (FIXED `fmtSignedCurrency` + ESCAPING)
+    // 9. NAVIGATION, MODALS & UTILITIES (SAFE ENTITY ESCAPING)
     // =========================================================================
     function switchOwnerTab(tabId) {
       if (state.role === 'MOD') return;
@@ -3547,10 +4257,17 @@
     async function openSettingsModal() {
       document.getElementById('cfg-supabase-url').value = state.supabaseUrl;
       if (state.sb) {
-        const [oR, gR] = await Promise.all([state.sb.from('orders').select('venue_id').limit(40), state.sb.from('governance_audits').select('venue_id').limit(40)]);
-        const ids = [...new Set([...(oR.data || []), ...(gR.data || [])].map((r) => r.venue_id).filter(Boolean))];
-        const sel = document.getElementById('cfg-detected-venues');
-        if (sel) sel.innerHTML = '<option value="">⚡ Detected POS venue_id (' + ids.length + ')</option>' + ids.map((v) => '<option value="' + v + '">' + v + '</option>').join('');
+        try {
+          const [oR, gR] = await Promise.all([
+            fetchScopedOrFallback('orders', 'created_at', null, true),
+            fetchScopedOrFallback('governance_audits', 'created_at', null, true)
+          ]);
+          const ids = [...new Set([...(oR || []), ...(gR || [])].map((r) => r.venue_id).filter(Boolean))];
+          const sel = document.getElementById('cfg-detected-venues');
+          if (sel) {
+            sel.innerHTML = '<option value="">⚡ Detected POS venue_id (' + ids.length + ')</option>' + ids.map((v) => '<option value="' + esc(v) + '">' + esc(v) + '</option>').join('');
+          }
+        } catch (_) {}
       }
       document.getElementById('cfg-supabase-key').value = state.supabaseKey;
       document.getElementById('cfg-venue-id').value = state.venueId;
@@ -3561,7 +4278,7 @@
       document.getElementById('cfg-sovereign-webhook').value = state.sovereignWebhook;
       const modal = document.getElementById('settings-modal');
       modal.classList.remove('hidden');
-      modal.classList.add('flex'); 
+      modal.classList.add('flex');
     }
 
     function closeSettingsModal() {
@@ -3579,7 +4296,7 @@
     async function saveVaultConfig() {
       state.supabaseUrl = document.getElementById('cfg-supabase-url').value.trim() || DEFAULT_SUPABASE_URL;
       state.supabaseKey = document.getElementById('cfg-supabase-key').value.trim() || DEFAULT_SUPABASE_ANON_KEY;
-      state.venueId = (document.getElementById('cfg-venue-id').value.trim() || 'CARBON_HQ').toUpperCase();
+      state.venueId = (document.getElementById('cfg-venue-id').value.replace(/[^A-Za-z0-9_-]/g, '').toUpperCase() || DEFAULT_VENUE_ID);
       state.resolvedVenueUuid = null;
       state.ownerPin = document.getElementById('cfg-owner-pin').value.trim() || '9999';
       state.modPin = document.getElementById('cfg-mod-pin').value.trim() || '7777';
@@ -3658,6 +4375,7 @@
       const endInp = document.getElementById('lk-end-date');
       if (startInp) startInp.value = todayIso;
       if (endInp) endInp.value = todayIso;
+      document.querySelectorAll('input[name="shift_date"]').forEach((el) => { el.value = todayIso; });
       document.getElementById('header-venue-label').textContent = state.venueId;
 
       initPwaEngine();
